@@ -10,7 +10,7 @@ const tourRouter = require('./routes/tourRouter');
 const equipRouter = require('./routes/equipRouter');
 const tokensRouter = require('./routes/tokensRouter');
 const userRouter = require('./routes/userRouter');
-const commentRouter = require('./routes/commentRouter')
+const commentRouter = require('./routes/commentRouter');
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(morgan('dev'));
