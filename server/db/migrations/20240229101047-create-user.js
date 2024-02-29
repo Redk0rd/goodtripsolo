@@ -35,6 +35,7 @@ module.exports = {
       },
       isPro: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
