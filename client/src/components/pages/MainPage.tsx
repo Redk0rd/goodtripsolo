@@ -8,7 +8,7 @@ export default function MainPage(): JSX.Element {
       <SimpleGrid columns={[1, 1, 1, 2]} spacing={2}>
         <h1>MAINPAGE</h1>
         <h1>
-          GOOD TRIP
+          GOOD TRIP!
           <AppSpinner />
         </h1>
       </SimpleGrid>
