@@ -18,9 +18,6 @@ export default function NavBar(): JSX.Element {
           <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
             groups
           </NavLink>
-          <NavLink to="/badpage" className={({ isActive }) => (isActive ? 'active' : '')}>
-            badpage
-          </NavLink>
         </HStack>
         <HStack spacing={6}>
           {user.status !== 'logged' ? (
