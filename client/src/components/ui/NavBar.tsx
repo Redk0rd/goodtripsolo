@@ -13,30 +13,28 @@ export default function NavBar(): JSX.Element {
   return (
     <Box bg="transparent" px={4} fontSize={20}>
       <Flex h={24} alignItems="center" justifyContent="space-between">
+        <HStack>
+          <Box fontSize={30}>GOOD</Box>
+          <Avatar as={NavLink} to="/" size="lg" src="/logo.svg" />
+          <Box fontSize={30}>TRIP</Box>
+        </HStack>
         <HStack spacing={6} color="black">
-          <Box>Hi, {user.status === 'logged' ? user.username : 'guest'}</Box>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/tours" className={({ isActive }) => (isActive ? 'active' : '')}>
             Туры
           </NavLink>
           <NavLink to="/rent" className={({ isActive }) => (isActive ? 'active' : '')}>
-            {' '}
-            {/* Исправлено на /rent для Аренды */}
             Аренда
           </NavLink>
-        </HStack>
-        <HStack>
-        <Avatar
-                as={NavLink}
-                to={`/user/${user.id}`} 
-                size="lg"
-                src="../../../public/logo.svg"
-              />
-              <Box fontSize={30}>GOODTRIP</Box>
+          <NavLink to="/blog" className={({ isActive }) => (isActive ? 'active' : '')}>
+            Блог
+          </NavLink>
+          <NavLink to="/faq" className={({ isActive }) => (isActive ? 'active' : '')}>
+            FAQ
+          </NavLink>
         </HStack>
         <HStack spacing={6} color="black">
           {user && user.status !== 'logged' ? ( // Исправлена проверка наличия пользователя
             <>
-            
               <NavLink to="/signin" className={({ isActive }) => (isActive ? 'active' : '')}>
                 Войти
               </NavLink>
@@ -48,7 +46,7 @@ export default function NavBar(): JSX.Element {
             <>
               <Avatar
                 as={NavLink}
-                to={`/user/${user.id}`} 
+                to={`/user/${user.id}`}
                 size="sm"
                 src="https://www.svgrepo.com/download/6595/beer.svg"
               />
