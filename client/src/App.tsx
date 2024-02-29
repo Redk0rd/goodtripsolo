@@ -7,6 +7,10 @@ import SignUpPage from './components/pages/SignUpPage';
 import { checkTokenThunk } from './redux/thunkActions/authThunkActions';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHook';
 import PrivateRouter from './components/HOCs/PrivateRouter';
+import ToursPage from './components/pages/ToursPage';
+import RentPage from './components/pages/RentPage';
+import BlogPage from './components/pages/BlogPage';
+import FaqPage from './components/pages/FaqPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,6 +26,10 @@ function App(): JSX.Element {
       element: <Root />,
       children: [
         { path: '/', element: <MainPage /> },
+        { path: '/tours', element: <ToursPage /> },
+        { path: '/rent', element: <RentPage /> },
+        { path: '/blog', element: <BlogPage /> },
+        { path: '/faq', element: <FaqPage /> },
       ],
     },
     {
