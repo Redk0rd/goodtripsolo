@@ -1,19 +1,19 @@
 const categoryRouter = require('express').Router();
 
-const { Category } = require('../db/models');
+const { CategoryEquipment } = require('../db/models');
 
 categoryRouter.get('/', async (req, res) => {
-  const categories = await Category.findAll();
-  res.json(categories);
+  const categoriesEquip = await CategoryEquipment.findAll();
+  res.json(categoriesEquip);
 });
 
 categoryRouter.post('/', async (req, res) => {
-  const { category } = req.body;
-  if (!category) {
+  const { categoryEquip } = req.body;
+  if (!CategoryEquipment) {
     return res.status(400).json({ error: 'Category is required' });
   }
-  const newCategory = await Category.create({ category });
-  res.json(newCategory);
+  const newCategoryEquip = await CategoryEquipment.create({ categoryEquip });
+  res.json(newCategoryEquip);
 });
 
 categoryRouter.put('/:id', async (req, res) => {
@@ -21,12 +21,12 @@ categoryRouter.put('/:id', async (req, res) => {
   if (Number.isNaN(parseInt(id)) || Number(id) <= 0) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
-  const { category } = req.body;
-  if (!category) {
+  const { categoryEquip } = req.body;
+  if (!categoryEquip) {
     return res.status(400).json({ error: 'Category is required' });
   }
-  const updatedCategory = await Category.update({ category }, { where: { id } });
-  res.json(updatedCategory);
+  const updatedCategoryEquip = await CategoryEquipment.update({ categoryEquip }, { where: { id } });
+  res.json(updatedCategoryEquip);
 });
 
 categoryRouter.delete('/:id', async (req, res) => {
@@ -34,7 +34,7 @@ categoryRouter.delete('/:id', async (req, res) => {
   if (Number.isNaN(parseInt(id)) || Number(id) <= 0) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
-  await Category.destroy({ where: { id } });
+  await CategoryEquipment.destroy({ where: { id } });
   res.json({ message: 'Category deleted' });
 });
 
