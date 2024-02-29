@@ -13,7 +13,7 @@ tourRouter.get('/', async (req, res) => {
 });
 
 tourRouter.post('/', upload.single('file'), async (req, res) => {
-  const { name, description, price, catTId, location, date, endDate } = req.body;
+  const { name, description, price, catTId, location, date, endDate, places } = req.body;
   console.log(req.body);
   if (!name || !description || !price || !catTId) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -34,6 +34,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
     location,
     date,
     endDate,
+    places,
   });
   return res.json(newTour);
 });
