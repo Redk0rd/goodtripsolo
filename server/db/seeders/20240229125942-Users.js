@@ -7,7 +7,7 @@ module.exports = {
         {
           name: 'Иван Иванов',
           email: 'ivan@example.com',
-          pass: 'password1',
+          password: 'password1',
           about: 'Описание пользователя 1',
           phone: '123456789',
           telegram: '@ivan',
@@ -19,7 +19,7 @@ module.exports = {
         {
           name: 'Петр Петров',
           email: 'petr@example.com',
-          pass: 'password2',
+          password: 'password2',
           about: 'Описание пользователя 2',
           phone: '987654321',
           telegram: '@petr',
@@ -30,8 +30,8 @@ module.exports = {
         },
         {
           name: 'Админ Админов',
-          email: 'admin@example.com',
-          pass: 'adminpassword',
+          email: 'admin@admin',
+          password: '123',
           about: 'Описание администратора',
           phone: '555555555',
           telegram: '@admin',
