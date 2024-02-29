@@ -26,5 +26,4 @@ app.use('/api/equip', equipRouter);
 app.use('/api/auth', userRouter);
 app.use('/api/tokens', tokensRouter);
 app.use('/api/comments', commentRouter);
-app.use('/api/favourite');
 module.exports = app;

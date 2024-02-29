@@ -16,11 +16,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      desription: {
+      description: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      authorId: {
+      userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
