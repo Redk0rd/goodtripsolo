@@ -1,0 +1,38 @@
+import React, { useEffect, useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import MainPage from './components/pages/MainPage';
+import Root from './components/Root';
+import SignInPage from './components/pages/SignInPage';
+import SignUpPage from './components/pages/SignUpPage';
+import { checkTokenThunk } from './redux/thunkActions/authThunkActions';
+import { useAppDispatch, useAppSelector } from './hooks/useReduxHook';
+import PrivateRouter from './components/HOCs/PrivateRouter';
+
+function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    void dispatch(checkTokenThunk());
+  }, []);
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Root />,
+      children: [
+        { path: '/', element: <MainPage /> },
+      ],
+    },
+    {
+      element: <PrivateRouter isAllowed={user.status !== 'logged'} redirect="/" />,
+      children: [
+        { path: '/signin', element: <SignInPage /> },
+        { path: '/signup', element: <SignUpPage /> },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
+}
+
+export default App;
