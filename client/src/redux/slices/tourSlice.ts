@@ -6,6 +6,7 @@ import type { CategoryTourType } from '../../types/tourType'
 
 
 
+
 const initialState: CategoryTourType ={
     id: 0,
     name: '',
