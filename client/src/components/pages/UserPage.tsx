@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Box } from '@chakra-ui/react';
+import UserPageAboutUser from '../ui/userPage/userPageAboutUser/UserPageAboutUser';
+import UserPageFeedback from '../ui/userPage/userPageFeedback/UserPageFeedback';
+import UserPageTours from '../ui/userPage/userPageTours/UserPageTours';
+import '../ui/userPage/userPage.css'
 
 export default function UserPage(): JSX.Element {
   return (
-    <div>UserPage</div>
-    
-  )
+    <Box>
+      <UserPageAboutUser />
+      <UserPageTours />
+      <UserPageFeedback />
+    </Box>
+  );
 }
