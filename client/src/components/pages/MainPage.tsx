@@ -1,17 +1,16 @@
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid, Container, Text, Flex, Image } from '@chakra-ui/react';
 import React from 'react';
-import AppSpinner from '../ui/AppSpinner';
+import AboutUsTop from '../ui/MainPageUi/AboutUsTop';
+import AboutUsMid from '../ui/MainPageUi/AboutUsMid';
+import AboutUsBot from '../ui/MainPageUi/AboutUsBot';
+import '../ui/MainPageUi/AboutUsStyle.css'
 
 export default function MainPage(): JSX.Element {
   return (
-    <Box mt={10}>
-      <SimpleGrid columns={[1, 1, 1, 2]} spacing={2}>
-        <h1>MAINPAGE</h1>
-        <h1>
-          GOOD TRIP
-          <AppSpinner />
-        </h1>
-      </SimpleGrid>
+    <Box mt={0} p={0}>
+      <AboutUsTop />
+      <AboutUsMid />
+      <AboutUsBot />
     </Box>
   );
 }
