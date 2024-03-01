@@ -27,9 +27,6 @@ export default function AboutUsTop(): JSX.Element {
               уже известные с новых сторон, а может, просто ищете новые впечатления? Вам с нами по
               пути!
             </Text>
-            {/* <Button className='shadow__btn'>
-              yes
-            </Button> */}
           </Flex>
         </Flex>
       </Flex>
