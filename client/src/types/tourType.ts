@@ -14,6 +14,7 @@ export type TourType = {
 export type CategoryTourType ={
     id: number;
     name: string;
+    tours: TourType[];
 };
 
 export type CommentTourType = {
