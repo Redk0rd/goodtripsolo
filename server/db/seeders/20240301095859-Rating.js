@@ -4,8 +4,8 @@ module.exports = {
     await queryInterface.bulkInsert('Ratings', [
       {
         ratingValue: 5,
-        likedId: 1,
-        likerId: 2,
+        likedId: 2,
+        likerId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
