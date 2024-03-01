@@ -26,6 +26,7 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       catTId: {
         type: Sequelize.INTEGER,
@@ -33,6 +34,7 @@ module.exports = {
           model: 'CategoryTours',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       pathImg: {
         type: Sequelize.STRING,
