@@ -2,7 +2,7 @@ import type { AxiosInstance } from 'axios';
 import axiosInstance from './apiInstance';
 import type { CategoryTourType } from '../types/tourType';
 
-class TourService {
+class CategoryTourService {
   constructor(private readonly api: AxiosInstance) {}
 
   public getCategoryTour(): Promise<CategoryTourType[]> {
@@ -18,8 +18,8 @@ class TourService {
   }
 
   public changeCategoryTour(id: number): Promise<CategoryTourType> {
-    return this.api.delete<CategoryTourType>(`/api/category/tour/${id}`).then((res)=> res.data)
+    return this.api.put<CategoryTourType>(`/api/category/tour/${id}`).then((res)=> res.data)
   }
 }
 
-export default new TourService(axiosInstance);
+export default new CategoryTourService(axiosInstance);
