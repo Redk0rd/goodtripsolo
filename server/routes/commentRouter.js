@@ -1,6 +1,5 @@
 const commentRouter = require('express').Router();
 const { Comment, User } = require('../db/models');
-const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 commentRouter.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -15,7 +14,7 @@ commentRouter.get('/:id', async (req, res) => {
   res.json(comments);
 });
 
-commentRouter.post('/:id', verifyAccessToken, async (req, res) => {
+commentRouter.post('/:id', async (req, res) => {
   const { title } = req.body;
   const { id } = req.params;
   const newComment = await Comment.create({
@@ -33,7 +32,7 @@ commentRouter.post('/:id', verifyAccessToken, async (req, res) => {
   res.json(commentWithAuthor);
 });
 
-commentRouter.delete('/:id', verifyAccessToken, async (req, res) => {
+commentRouter.delete('/:id', async (req, res) => {
   const { id } = req.params;
   if (Number.isNaN(+id)) return res.status(400);
   await Comment.destroy({

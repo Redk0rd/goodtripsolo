@@ -1,5 +1,5 @@
 import type { AxiosInstance, AxiosResponse } from 'axios';
-import type { AuthStateType, UserSignInType } from '../types/authType';
+import type { AuthStateType, UserSignInType, UserSignUpType } from '../types/authType';
 import axiosInstance from './apiInstance';
 
 class AuthService {
@@ -13,7 +13,7 @@ class AuthService {
     return this.api.post<AuthStateType>('/auth/login', data).then((res) => res.data);
   }
 
-  public signUp(data: UserSignInType): Promise<AuthStateType> {
+  public signUp(data: UserSignUpType): Promise<AuthStateType> {
     return this.api.post<AuthStateType>('/auth/signup', data).then((res) => res.data);
   }
 
