@@ -1,13 +1,14 @@
 const categoryRouter = require('express').Router();
 
 const { CategoryTour } = require('../db/models');
+const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 categoryRouter.get('/', async (req, res) => {
   const categoriesTour = await CategoryTour.findAll();
   res.json(categoriesTour);
 });
 
-categoryRouter.post('/', async (req, res) => {
+categoryRouter.post('/', verifyAccessToken, async (req, res) => {
   const { categoryTour } = req.body;
   if (!categoryTour) {
     return res.status(400).json({ error: 'Category is required' });
@@ -16,7 +17,7 @@ categoryRouter.post('/', async (req, res) => {
   res.json(newCategoryTour);
 });
 
-categoryRouter.put('/:id', async (req, res) => {
+categoryRouter.put('/:id', verifyAccessToken, async (req, res) => {
   const { id } = req.params;
   if (Number.isNaN(parseInt(id)) || Number(id) <= 0) {
     return res.status(400).json({ error: 'Id is invalid' });
@@ -29,7 +30,7 @@ categoryRouter.put('/:id', async (req, res) => {
   res.json(updatedCategoryTour);
 });
 
-categoryRouter.delete('/:id', async (req, res) => {
+categoryRouter.delete('/:id', verifyAccessToken, async (req, res) => {
   const { id } = req.params;
   if (Number.isNaN(parseInt(id)) || Number(id) <= 0) {
     return res.status(400).json({ error: 'Id is invalid' });
