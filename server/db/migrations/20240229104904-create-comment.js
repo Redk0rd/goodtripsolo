@@ -19,6 +19,7 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       tourId: {
         type: Sequelize.INTEGER,
@@ -26,6 +27,7 @@ module.exports = {
           model: 'Tours',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
