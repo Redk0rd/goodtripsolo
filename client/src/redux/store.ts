@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices/authSlice';
+import tourSlice from './slices/tourSlice';
 
 
 
@@ -7,6 +8,7 @@ export const store = configureStore({
   reducer: {
 
     auth: authReducer,
+    tour: tourSlice,
   },
 });
 
