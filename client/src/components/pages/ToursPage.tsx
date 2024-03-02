@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
+import { getAllCategoryTourThunk } from '../../redux/thunkActions/categoryTourThunkActions';
+import { getAllTourThunk } from '../../redux/thunkActions/tourThunkActions';
 
-type Props = {};
+export default function ToursPage(): JSX.Element {
+  // const catTour = useAppSelector((state) => state.)
+  const dispatch = useAppDispatch();
 
-export default function ToursPage({}: Props) {
-  return <div>ToursPage</div>;
+  const tours = useAppSelector((store) => store.tour.tours);
+  useEffect(() => {
+    void dispatch(getAllTourThunk(0));
+  }, []);
+
+  return <div>{tours && tours.map((el) => <div>{el.name}</div>)}</div>;
 }
