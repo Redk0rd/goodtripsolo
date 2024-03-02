@@ -13,9 +13,9 @@ export default function NavBar(): JSX.Element {
   return (
     <Box bg="transparent" px={4} fontSize={20}>
       <Flex h={24} alignItems="center" justifyContent="space-between">
-        <HStack>
+        <HStack as={NavLink} to="/">
           <Box fontSize={30}>GOOD</Box>
-          <Avatar as={NavLink} to="/" size="lg" src="/logo.svg" />
+          <Avatar size="lg" src="/logo.svg" />
           <Box fontSize={30}>TRIP</Box>
         </HStack>
         <HStack spacing={6} color="black">
