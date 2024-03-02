@@ -9,7 +9,7 @@ import Footer from './ui/Footer';
 export default function Root(): JSX.Element {
   const status = useAppSelector((state) => state.auth.user.status);
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.xl" m={0} p={0}>
       {status === 'pending' ? (
         <AppSpinner />
       ) : (
