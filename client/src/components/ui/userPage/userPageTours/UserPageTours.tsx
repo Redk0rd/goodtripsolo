@@ -1,11 +1,29 @@
-import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 import './userPageToursStyle.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Carousel from 'react-bootstrap/Carousel';
+
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/css';
 import TourCard from '../../TourCard';
-import 'swiper/css';
 
 export default function UserPageTours(): JSX.Element {
+  const styleSliderContainer = {
+    minHeight: '200px',
+    minWidth: '200px',
+  };
+  const imgStyle = {
+    padding: '0',
+    width: '296px',
+    height: '260px',
+    objectFit: 'cover',
+    // margin: '10px 0',
+    borderTopLeftRadius: '12px',
+    borderTopRightRadius: '12px',
+  };
+
   return (
     <Box className="wrapper_tours">
       <Box>
@@ -25,11 +43,31 @@ export default function UserPageTours(): JSX.Element {
           <Flex className="flex_column">
             <Text className="text_description_who">организатор</Text>
 
-            <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <TourCard />
-              ))}
-            </SimpleGrid>
+            <Box>
+              <Carousel>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+              </Carousel>
+            </Box>
           </Flex>
         </Box>
       </Box>
