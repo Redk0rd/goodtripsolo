@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const tourRouter = require('express').Router();
 const fs = require('fs').promises;
 const sharp = require('sharp');
@@ -5,11 +6,26 @@ const sharp = require('sharp');
 const { Tour, CategoryTour } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
-tourRouter.get('/', async (req, res) => {
-  const tours = await CategoryTour.findAll({
-    include: Tour,
-  });
-  res.json(tours);
+tourRouter.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // const tours = await CategoryTour.findAll({
+    //   include: Tour,
+    // });
+    console.log(typeof id, 'ccccccccccccccccccccccccc');
+    const justTours = await Tour.findAll();
+    let filteredTours;
+    // if (id == 0) {
+    //   filteredTours = justTours;
+    // }
+    Number(id) === 0
+      ? (filteredTours = justTours)
+      : (filteredTours = justTours.filter((el) => el.catTId === Number(id)));
+    console.log(filteredTours, 'mamuebalebalmamuebalmamu');
+    res.json(filteredTours);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 tourRouter.post('/', upload.single('file'), async (req, res) => {

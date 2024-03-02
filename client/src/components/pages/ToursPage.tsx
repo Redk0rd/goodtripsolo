@@ -3,7 +3,6 @@ import { SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
 
 type Props = {};
-
 export default function ToursPage({}: Props) {
   return (
     <div>
