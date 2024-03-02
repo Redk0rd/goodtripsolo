@@ -3,11 +3,6 @@ import { SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
 
 type Props = {};
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
-import { getAllCategoryTourThunk } from '../../redux/thunkActions/categoryTourThunkActions';
-import { getAllTourThunk } from '../../redux/thunkActions/tourThunkActions';
-
 export default function ToursPage({}: Props) {
   return (
     <div>
