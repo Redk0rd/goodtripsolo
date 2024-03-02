@@ -4,7 +4,7 @@ import TourCard from '../ui/TourCard';
 
 type Props = {};
 
-export default function ToursPage({}: Props) {
+export default function ToursPage({}: Props): JSX.Element {
   return (
     <div>
       <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
