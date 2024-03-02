@@ -33,18 +33,15 @@ export default function UserPageTours(): JSX.Element {
           <Flex className="flex_column">
             <Text className="text_description_who">участник</Text>
 
-            <SimpleGrid columns={2} spacing={10}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <TourCard />
-              ))}
-            </SimpleGrid>
-          </Flex>
-
-          <Flex className="flex_column">
-            <Text className="text_description_who">организатор</Text>
-
             <Box>
-              <Carousel>
+              <Carousel
+                interval={3000}
+                indicators={false}
+                touch
+                wrap
+                variant="dark"
+                // controls={false}
+              >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
                     <TourCard />
@@ -68,6 +65,36 @@ export default function UserPageTours(): JSX.Element {
                 </Carousel.Item>
               </Carousel>
             </Box>
+          </Flex>
+
+          <Flex className="flex_column">
+            <Text className="text_description_who">организатор</Text>
+
+            {/* <Box>
+              <Carousel>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    <TourCard />
+                    <TourCard />
+                    <TourCard />
+                  </Grid>
+                </Carousel.Item>
+              </Carousel>
+            </Box> */}
           </Flex>
         </Box>
       </Box>
