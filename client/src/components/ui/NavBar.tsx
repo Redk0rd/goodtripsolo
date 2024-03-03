@@ -2,10 +2,12 @@ import { Avatar, Box, Button, Flex, HStack, useColorModeValue } from '@chakra-ui
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
-import { logOutThunk } from '../../redux/thunkActions/authThunkActions';
+import { logOutThunk } from '../../redux/slices/auth/authThunkActions';
 
 export default function NavBar(): JSX.Element {
+
   const user = useAppSelector((state) => state.auth.user);
+  
   const dispatch = useAppDispatch();
   const logoutHandler = (): void => {
     void dispatch(logOutThunk());
