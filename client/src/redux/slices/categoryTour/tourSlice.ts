@@ -37,6 +37,10 @@ const tourSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+
+    
+
+
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
       state.tours = action.payload;
     });
