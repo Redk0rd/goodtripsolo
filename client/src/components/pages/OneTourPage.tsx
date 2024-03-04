@@ -7,6 +7,7 @@ import { formatDate } from '../../utils/dataFormater';
 import AboutTour from '../ui/OneTourPageUi/AboutTour';
 import './center.css';
 import { allCommentsThunk } from '../../redux/slices/comments/commentThunkActions';
+import CommentsForTour from '../ui/OneTourPageUi/CommentsForTour';
 
 export default function OneTourPage(): JSX.Element {
   const { id } = useParams();
@@ -30,6 +31,7 @@ export default function OneTourPage(): JSX.Element {
       <Box className="center">
         <Container minH="80vh">
           <AboutTour tour={tour} />
+          <CommentsForTour comments={comments} />
         </Container>
       </Box>
     </Box>
