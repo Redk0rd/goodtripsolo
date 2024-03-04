@@ -1,8 +1,13 @@
 import { Avatar, Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import './userPageAboutUserStyle.css';
+import type { UserStateType, UserType } from '../../../../types/authType';
 
-export default function UserPageAboutUser(): JSX.Element {
+type UserPageAboutUserPropsType = {
+  user: UserStateType;
+};
+
+export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType): JSX.Element {
   return (
     <Box className="wrapper">
       <Box className="container">
@@ -22,10 +27,14 @@ export default function UserPageAboutUser(): JSX.Element {
             </Box>
             <Box className="text_container">
               <Flex className="flex_column text_shadow">
-                <Text className="text_description">Имя: {null}</Text>
-                <Text className="text_description">О себе: {null}</Text>
-                <Text className="text_description">Email: <a href="mailto:info@example.com">info@example.com</a></Text>
-                <Text className="text_description">Телефон: <a href="tel:+1234567890">+1 (234) 567-890</a></Text>
+                <Text className="text_description">Имя: {user.name}</Text>
+                <Text className="text_description">О себе: {user.about}</Text>
+                <Text className="text_description">
+                  Email: <a href="mailto:info@example.com">{user.email}</a>
+                </Text>
+                <Text className="text_description">
+                  Телефон: <a href="tel:+1234567890">{user.phone}</a>
+                </Text>
               </Flex>
             </Box>
           </Box>
