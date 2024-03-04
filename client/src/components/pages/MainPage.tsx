@@ -11,7 +11,7 @@ import SliderPhotoTopPage from '../ui/MainPageUi/Slider/SliderPhotoTopPage';
 export default function MainPage(): JSX.Element {
   return (
     <Box mt={0} p={0}>
-      <SliderPhotoTopPage />
+      {/* <SliderPhotoTopPage /> */}
       <AboutUsTop />
       <AboutUsMid />
       <AboutUsBot />

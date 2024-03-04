@@ -7,28 +7,28 @@ import { Box, Image } from '@chakra-ui/react';
 
 export default function SliderPhotoTopPage(): JSX.Element {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <Image src="https://p4.wallpaperbetter.com/wallpaper/362/276/920/nature-4k-pc-full-hd-wallpaper-preview.jpg" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Image src="https://p4.wallpaperbetter.com/wallpaper/362/276/920/nature-4k-pc-full-hd-wallpaper-preview.jpg" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Image src="https://p4.wallpaperbetter.com/wallpaper/362/276/920/nature-4k-pc-full-hd-wallpaper-preview.jpg" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <Box className="box_container">
+      <Box className="">
+        <Carousel
+         interval={5000}
+         indicators={false}
+         controls={false}
+         touch
+         wrap
+         slide={false}
+         fade={false}
+         variant="dark">
+          <Carousel.Item>
+            <Image src="https://interier-foto.ru/wp-content/uploads/2014/11/juzhno-chujskij-hrebet6421.jpg" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <Image src="https://interier-foto.ru/wp-content/uploads/panoramnoe-foto-6390.jpg" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <Image src="https://interier-foto.ru/wp-content/uploads/2014/11/juzhno-chujskij-hrebet6422.jpg" />
+          </Carousel.Item>
+        </Carousel>
+      </Box>
+    </Box>
   );
 }
