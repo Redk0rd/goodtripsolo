@@ -20,42 +20,62 @@ type TourCardPropType = {
   tour: TourType;
 };
 
+const monthNames = [
+  'янв',
+  'фев',
+  'мар',
+  'апр',
+  'мая',
+  'июн',
+  'июл',
+  'авг',
+  'сент',
+  'окт',
+  'нояб',
+  'дек',
+];
+
+const formatDate = (date: string) => {
+  const d = new Date(date);
+  const day = d.getDate();
+  const monthName = monthNames[d.getMonth()];
+  return `${day} ${monthName}`;
+};
+
 export default function TourCard({ tour }: TourCardPropType): JSX.Element {
+  const formattedStartDate = formatDate(tour.date);
+  const formattedEndDate = formatDate(tour.endDate);
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
+        <Image src={tour.pathImg} alt="Green double couch with wooden legs" borderRadius="lg" />
         <Badge ml="1" fontSize="0.8em" colorScheme="green">
-          Турция
+          {tour.location}
         </Badge>
         <Badge ml="1" fontSize="0.8em" colorScheme="purple">
-          Пеший поход
+          {tour.CategoryTour?.name}
         </Badge>
         <Heading mt="4" size="md">
-          ЛИКИЙСКАЯ ТРОПА. ﻿«ЧЕРЕЗ ГОРЫ К МОРЮ»
+          {tour.name}
         </Heading>
         <Flex mt="4">
-          <Avatar src="https://bit.ly/sage-adebayo" />
+          <Avatar src={tour.User?.pathImg} />
           <Box ml="3">
             <Text fontWeight="bold">
-              Иван Жуков
-              <Badge ml="1" variant='outline' colorScheme="green">
+              {tour.User?.name}
+              <Badge ml="1" variant="outline" colorScheme="green">
                 PRO
               </Badge>
             </Text>
             <Text fontSize="sm">Рейтинг 4,8</Text>
           </Box>
         </Flex>
-        <Flex justify = 'space-between'>
+        <Flex justify="space-between">
           <Text mt="2" color="blue.600" fontSize="2xl">
-            11-20 июня
+            {formattedStartDate}-{formattedEndDate}
           </Text>
           <Text mt="2" color="blue.600" fontSize="2xl">
-            Места: 5/10
+            Места: {tour.places}
           </Text>
         </Flex>
       </CardBody>

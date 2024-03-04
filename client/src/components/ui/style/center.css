@@ -1,0 +1,27 @@
+.main_container_center {
+    max-width: 1400px;
+  }
+  .wrappre_container_center {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container_center {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 50px 0;
+    height: 100%;
+    max-width: 1300px;
+  }
+
+  .margin {
+    margin: 0 30px;
+  }
+
+  .hundred {
+    width: 100%;
+  }

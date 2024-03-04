@@ -6,7 +6,7 @@ class CategoryTourService {
   constructor(private readonly api: AxiosInstance) {}
 
   public getCategory(): Promise<CategoryTourType[]> {
-    return this.api.get<CategoryTourType[]>('/api/category/tour').then((res) => res.data);
+    return this.api.get<CategoryTourType[]>('/category/tour').then((res) => res.data);
   }
 
 //   public addCategoryTour(categoryTour: { name: string }): Promise<CategoryTourType> {
