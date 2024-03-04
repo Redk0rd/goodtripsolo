@@ -10,15 +10,15 @@ class TourService {
   // }
 
   // public addTour(tour: TourType): Promise<TourType> {
-  //   return this.api.post<TourType>('/tour', tour).then((res) => res.data);
+  //   return this.api.post<TourType>('/api/tour', tour).then((res) => res.data);
   // }
 
   // public deleteTour(id: number): Promise<void> {
-  //   return this.api.delete(`/tour/${id}`);
+  //   return this.api.delete(`/api/tour/${id}`);
   // }
 
   // public changeTour(id: number): Promise<TourType> {
-  //   return this.api.put<TourType>(`/tour/${id}`).then((res) => res.data);
+  //   return this.api.put<TourType>(`/api/tour/${id}`).then((res) => res.data);
   // }
 
   public getTours(id: CategoryTourType['id']): Promise<TourType[]> {

@@ -62,9 +62,9 @@ const tourSlice = createSlice({
     //   );
     // });
 
-    builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
-      state.category = action.payload;
-    });
+    // builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
+    //   state.category = action.payload;
+    // });
   },
 });
 

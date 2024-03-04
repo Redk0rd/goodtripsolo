@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiService from '../../../services/categoryTourService';
 import type { CategoryTourType, TourType } from '../../../types/tourType';
 
-export const getAllCategoryTourThunk = createAsyncThunk<CategoryTourType[]>(
-  'category/all',
-  async () => {
-    const allCategoryTour = await apiService.getCategory();
-    return allCategoryTour;
-  },
-);
+// export const getAllCategoryTourThunk = createAsyncThunk<CategoryTourType[]>(
+//   'category/all',
+//   async () => {
+//     const allCategoryTour = await apiService.getCategory();
+//     return allCategoryTour;
+//   },
+// );
 
 // export const addCategoryTourThunk = createAsyncThunk<CategoryTourType, { name: string }>(
 //   'categoryTour/add',
