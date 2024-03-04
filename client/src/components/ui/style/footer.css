@@ -1,0 +1,29 @@
+.footer_background {
+  /* background: rgb(155, 68, 68); */
+  width: 800px;
+  height: 100%;
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+}
+
+.logo_footer {
+  width: 100px;
+  margin: 0 30px;
+}
+
+.coloumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.width {
+  padding: 0 20px;
+}
+
+.logo {
+    width: 19px;
+    height: 19px;
+    margin: 0 7px;
+}
