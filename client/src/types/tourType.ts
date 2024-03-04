@@ -41,3 +41,7 @@ export type CommentTourType = {
   userId: number;
   tourId: number;
 };
+
+export type CommentsTypeState = {
+  comments: CommentTourType[]
+}
