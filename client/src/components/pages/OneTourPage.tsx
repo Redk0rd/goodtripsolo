@@ -4,7 +4,7 @@ import { Container } from '@chakra-ui/react';
 import type { TourType } from '../../types/tourType';
 import { useAppSelector } from '../../hooks/useReduxHook';
 import { formatDate } from '../../utils/dataFormater';
-import AboutTour from '../ui/OneTourPageUi/aboutTour';
+import AboutTour from '../ui/OneTourPageUi/AboutTour'
 import CommentsForTour from '../ui/OneTourPageUi/CommentsForTour';
 
 export default function OneTourPage(): JSX.Element {
