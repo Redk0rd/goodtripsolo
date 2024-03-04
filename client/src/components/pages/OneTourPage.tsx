@@ -5,6 +5,7 @@ import type { TourType } from '../../types/tourType';
 import { useAppSelector } from '../../hooks/useReduxHook';
 import { formatDate } from '../../utils/dataFormater';
 import AboutTour from '../ui/OneTourPageUi/aboutTour';
+import CommentsForTour from '../ui/OneTourPageUi/CommentsForTour';
 
 export default function OneTourPage(): JSX.Element {
   const { id } = useParams();
@@ -18,8 +19,9 @@ export default function OneTourPage(): JSX.Element {
  
 
   return (
-    <Container h="80vh">
+    <Container minH='80vh'>
       <AboutTour tour={tour} />
+      <CommentsForTour/>
     </Container>
   );
 }
