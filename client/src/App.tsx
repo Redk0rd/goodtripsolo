@@ -4,7 +4,6 @@ import MainPage from './components/pages/MainPage';
 import Root from './components/Root';
 import SignInPage from './components/pages/SignInPage';
 import SignUpPage from './components/pages/SignUpPage';
-import { checkTokenThunk } from './redux/thunkActions/authThunkActions';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHook';
 import PrivateRouter from './components/HOCs/PrivateRouter';
 import ToursPage from './components/pages/ToursPage';

@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { CategoryTourType, TourType } from '../../types/tourType';
+import type { CategoryTourType, TourType } from '../../../types/tourType';
 import {
   // addCategoryTourThunk,
   // changeCategoryTourThunk,
   // deleteCategoryTourThunk,
   getAllCategoryTourThunk,
-} from '../thunkActions/categoryTourThunkActions';
-import { getAllTourThunk } from '../thunkActions/tourThunkActions';
+} from './categoryTourThunkActions';
+import { getAllTourThunk } from './tourThunkActions';
 
 type InitialStateProps = {
   category: CategoryTourType[];
@@ -37,11 +37,14 @@ const tourSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+
+    
+
+
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
       state.tours = action.payload;
     });
 
-   
     // builder.addCase(addCategoryTourThunk.fulfilled, (state, action) => {
     //   if (state) state.category = [...state.category, action.payload];
     // });
@@ -59,12 +62,9 @@ const tourSlice = createSlice({
     //   );
     // });
 
-
-
     builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
-      state.category = action.payload
-    })
-
+      state.category = action.payload;
+    });
   },
 });
 
