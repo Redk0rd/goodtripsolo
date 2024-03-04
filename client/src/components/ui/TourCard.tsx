@@ -35,7 +35,7 @@ const monthNames = [
   'дек',
 ];
 
-const formatDate = (date: string) => {
+const formatDate = (date: string):string => {
   const d = new Date(date);
   const day = d.getDate();
   const monthName = monthNames[d.getMonth()];

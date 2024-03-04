@@ -10,6 +10,7 @@ import ToursPage from './components/pages/ToursPage';
 import RentPage from './components/pages/RentPage';
 import BlogPage from './components/pages/BlogPage';
 import FaqPage from './components/pages/FaqPage';
+import UserPage from './components/pages/UserPage';
 import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 
 function App(): JSX.Element {
@@ -30,6 +31,7 @@ function App(): JSX.Element {
         { path: '/rent', element: <RentPage /> },
         { path: '/blog', element: <BlogPage /> },
         { path: '/faq', element: <FaqPage /> },
+        { path: '/user', element: <UserPage /> },
       ],
     },
     {

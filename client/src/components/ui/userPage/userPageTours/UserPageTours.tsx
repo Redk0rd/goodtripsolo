@@ -1,28 +1,24 @@
-import { Box, Flex, Grid, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Flex, Grid, GridItem, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 import './userPageToursStyle.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
 import TourCard from '../../TourCard';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
+import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
+// import { getAllTourThunk } from '../../../../redux/thunkActions/tourThunkActions';
 
 export default function UserPageTours(): JSX.Element {
-  const styleSliderContainer = {
-    minHeight: '200px',
-    minWidth: '200px',
-  };
-  const imgStyle = {
-    padding: '0',
-    width: '296px',
-    height: '260px',
-    objectFit: 'cover',
-    // margin: '10px 0',
-    borderTopLeftRadius: '12px',
-    borderTopRightRadius: '12px',
-  };
+  const tours = useAppSelector((state) => state.tour.tours);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    void dispatch(getAllTourThunk(0));
+  }, []);
+  console.log(tours);
 
   return (
     <Box className="wrapper_tours">
@@ -31,36 +27,20 @@ export default function UserPageTours(): JSX.Element {
           <Text className="main_title">Мои туры:</Text>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">участник</Text>
+            <Text className="text_description_who">участник:</Text>
 
             <Box>
               <Carousel
-                interval={3000}
+                interval={5000}
                 indicators={false}
                 touch
                 wrap
                 variant="dark"
-                // controls={false}
+                controls={false}
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
-                  </Grid>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
-                  </Grid>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
+                    {tours?.map((el) => <TourCard tour={el} />)}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -68,33 +48,26 @@ export default function UserPageTours(): JSX.Element {
           </Flex>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">организатор</Text>
+            <Text className="text_description_who">организатор: </Text>
 
-            {/* <Box>
-              <Carousel>
+            <Box>
+              <Carousel
+                interval={5000}
+                indicators={false}
+                touch
+                wrap
+                variant="dark"
+                controls={false}
+              >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
-                  </Grid>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
-                  </Grid>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    <TourCard />
-                    <TourCard />
-                    <TourCard />
+                    {tours.map((el) => (
+                      <TourCard tour={el} />
+                    ))}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
-            </Box> */}
+            </Box>
           </Flex>
         </Box>
       </Box>
