@@ -5,25 +5,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
 import TourCard from '../../TourCard';
 
 export default function UserPageTours(): JSX.Element {
-  const styleSliderContainer = {
-    minHeight: '200px',
-    minWidth: '200px',
-  };
-  const imgStyle = {
-    padding: '0',
-    width: '296px',
-    height: '260px',
-    objectFit: 'cover',
-    // margin: '10px 0',
-    borderTopLeftRadius: '12px',
-    borderTopRightRadius: '12px',
-  };
-
   return (
     <Box className="wrapper_tours">
       <Box>
@@ -31,16 +15,16 @@ export default function UserPageTours(): JSX.Element {
           <Text className="main_title">Мои туры:</Text>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">участник</Text>
+            <Text className="text_description_who">участник:</Text>
 
             <Box>
               <Carousel
-                interval={3000}
+                interval={5000}
                 indicators={false}
                 touch
                 wrap
                 variant="dark"
-                // controls={false}
+                controls={false}
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
@@ -68,10 +52,17 @@ export default function UserPageTours(): JSX.Element {
           </Flex>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">организатор</Text>
+            <Text className="text_description_who">организатор: </Text>
 
-            {/* <Box>
-              <Carousel>
+            <Box>
+              <Carousel
+                interval={5000}
+                indicators={false}
+                touch
+                wrap
+                variant="dark"
+                controls={false}
+              >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
                     <TourCard />
@@ -94,7 +85,8 @@ export default function UserPageTours(): JSX.Element {
                   </Grid>
                 </Carousel.Item>
               </Carousel>
-            </Box> */}
+            </Box>
+
           </Flex>
         </Box>
       </Box>

@@ -23,3 +23,9 @@
     background: #8a6666;
     border-radius: 14px;
 }
+
+.text_description_who {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;;
+}
