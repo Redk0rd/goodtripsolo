@@ -5,6 +5,7 @@ import AboutUsMid from '../ui/MainPageUi/AboutUsMid';
 import AboutUsBot from '../ui/MainPageUi/AboutUsBot';
 import '../ui/MainPageUi/AboutUsStyle.css';
 import SliderPhotoTopPage from '../ui/MainPageUi/Slider/SliderPhotoTopPage';
+import { useAppSelector } from '../../hooks/useReduxHook';
 
 
 
