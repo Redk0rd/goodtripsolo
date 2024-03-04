@@ -1,0 +1,10 @@
+.main_container_center {
+    max-width: 1400px;
+  }
+  .wrappre_container_center {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
