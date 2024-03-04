@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
 import { logOutThunk } from '../../redux/thunkActions/authThunkActions';
+import './style/center.css'
 
 export default function NavBar(): JSX.Element {
   const user = useAppSelector((state) => state.auth.user);
@@ -11,14 +12,16 @@ export default function NavBar(): JSX.Element {
     void dispatch(logOutThunk());
   };
   return (
-    <Box bg="transparent" px={4} fontSize={20}>
+    <Box className='wrappre_container_center'>
+    <Box className='main_container_center'>
+    <Box  className='hundred' bg="transparent" px={4} fontSize={20}>
       <Flex h={24} alignItems="center" justifyContent="space-between">
-        <HStack as={NavLink} to="/">
+        <HStack className='margin' as={NavLink} to="/">
           <Box fontSize={30}>GOOD</Box>
           <Avatar size="lg" src="/logo.svg" />
           <Box fontSize={30}>TRIP</Box>
         </HStack>
-        <HStack spacing={6} color="black">
+        <HStack className='margin' spacing={6} color="black">
           <NavLink to="/tours" className={({ isActive }) => (isActive ? 'active' : '')}>
             Туры
           </NavLink>
@@ -32,7 +35,7 @@ export default function NavBar(): JSX.Element {
             FAQ
           </NavLink>
         </HStack>
-        <HStack spacing={6} color="black">
+        <HStack className='margin' spacing={6} color="black">
           {user && user.status !== 'logged' ? ( // Исправлена проверка наличия пользователя
             <>
               <NavLink to="/signin" className={({ isActive }) => (isActive ? 'active' : '')}>
@@ -55,6 +58,8 @@ export default function NavBar(): JSX.Element {
           )}
         </HStack>
       </Flex>
+    </Box>
+    </Box>
     </Box>
   );
 }
