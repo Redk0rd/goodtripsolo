@@ -2,7 +2,7 @@ export type TourType = {
   id: number;
   name: string;
   description: string;
-  userId: number;
+  authorId: number;
   catTId: number;
   pathImg: string;
   location: string;
@@ -11,15 +11,14 @@ export type TourType = {
   places: number;
 };
 
-export type CategoryTourType ={
-    id: number;
-    name: string;
-    tours: TourType[]
+export type CategoryTourType = {
+  id: number;
+  name: string;
 };
 
 export type CommentTourType = {
-    id: number;
-    title: string;
-    userId: number;
-    tourId: number;
+  id: number;
+  title: string;
+  userId: number;
+  tourId: number;
 };
