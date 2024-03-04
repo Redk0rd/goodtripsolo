@@ -16,17 +16,15 @@ tourRouter.get('/:id', async (req, res) => {
       include: [
         {
           model: User,
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
         },
         { model: CategoryTour },
       ],
-      // .findAll({
-      //   include: [{ model: CategoryTour }, { model: User }],
-      // include: { model: User, as: 'authorId' },
     });
     let filteredTours;
-    // if (id == 0) {
-    //   filteredTours = justTours;
-    // }
+
     Number(id) === 0
       ? (filteredTours = justTours)
       : (filteredTours = justTours.filter((el) => el.catTId === Number(id)));
