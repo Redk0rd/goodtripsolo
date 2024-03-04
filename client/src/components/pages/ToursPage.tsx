@@ -10,7 +10,7 @@ export default function ToursPage(): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
 
   useEffect(() => {
-    void dispatch(getAllTourThunk(2));
+    void dispatch(getAllTourThunk(0));
   }, []);
 
   return (
