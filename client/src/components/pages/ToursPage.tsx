@@ -2,16 +2,19 @@ import React, { useEffect } from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
-import { getAllCategoryTourThunk } from '../../redux/thunkActions/categoryTourThunkActions';
-import { getAllTourThunk } from '../../redux/thunkActions/tourThunkActions';
+import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
 
 export default function ToursPage(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const tours = useAppSelector((state) => state.tour.tours);
 
-  useEffect(() => {
-    void dispatch(getAllTourThunk(0));
-  }, []);
+const dispatch = useAppDispatch()
+
+const tours = useAppSelector((state) => state.tour.tours)
+
+useEffect(()=> {
+
+  void dispatch(getAllTourThunk(0))
+
+}, [])
 
   return (
     <div>

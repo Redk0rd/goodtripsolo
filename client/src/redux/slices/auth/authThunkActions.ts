@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import type { AuthStateType, UserSignInType, UserSignUpType } from '../../types/authType';
-import authService from '../../services/authService';
+import type { AuthStateType, UserSignInType, UserSignUpType } from '../../../types/authType';
+import authService from '../../../services/authService';
 
 export const checkTokenThunk = createAsyncThunk<AuthStateType>('auth/checkToken', async () =>
   authService.checkToken(),

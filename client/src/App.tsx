@@ -4,13 +4,13 @@ import MainPage from './components/pages/MainPage';
 import Root from './components/Root';
 import SignInPage from './components/pages/SignInPage';
 import SignUpPage from './components/pages/SignUpPage';
-import { checkTokenThunk } from './redux/thunkActions/authThunkActions';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHook';
 import PrivateRouter from './components/HOCs/PrivateRouter';
 import ToursPage from './components/pages/ToursPage';
 import RentPage from './components/pages/RentPage';
 import BlogPage from './components/pages/BlogPage';
 import FaqPage from './components/pages/FaqPage';
+import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();

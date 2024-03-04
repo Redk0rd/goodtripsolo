@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { useAppDispatch } from '../../hooks/useReduxHook';
 import type { UserSignUpType } from '../../types/authType';
-import { signUpThunk } from '../../redux/thunkActions/authThunkActions';
+import { signUpThunk } from '../../redux/slices/auth/authThunkActions';
 
 export default function SignUpPage(): JSX.Element {
   const dispatch = useAppDispatch();
