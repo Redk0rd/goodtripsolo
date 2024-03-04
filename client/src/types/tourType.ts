@@ -2,7 +2,7 @@ export type TourType = {
   id: number;
   name: string;
   description: string;
-  userId: number;
+  authorId: number;
   catTId: number;
   pathImg: string;
   location: string;

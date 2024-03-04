@@ -24,7 +24,7 @@ export const changeTour = createAsyncThunk<TourType, number>('tour/change', asyn
 });
 
 export const getAllTourThunk = createAsyncThunk<TourType[], number>(
-  'categoryTour/all',
+  'Tour/all',
   async (id: number) => {
     const allCategoryTour = await apiService.getTours(id);
     return allCategoryTour;
