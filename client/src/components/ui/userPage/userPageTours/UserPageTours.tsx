@@ -10,13 +10,17 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
 import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
 // import { getAllTourThunk } from '../../../../redux/thunkActions/tourThunkActions';
 
-export default function UserPageTours(): JSX.Element {
+type UserPageToursPropType = {
+  id: number;
+};
+
+export default function UserPageTours({ id }: UserPageToursPropType): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(getAllTourThunk(0));
+    void dispatch(getAllTourThunk(id));
   }, []);
   console.log(tours);
 
