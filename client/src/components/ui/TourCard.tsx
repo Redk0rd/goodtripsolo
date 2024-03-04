@@ -10,13 +10,9 @@ import {
   CardFooter,
   Divider,
   Flex,
-  HStack,
   Heading,
   Image,
-  Stack,
   Text,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react';
 import type { TourType } from '../../types/tourType';
 
@@ -34,20 +30,20 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
           borderRadius="lg"
         />
         <Badge ml="1" fontSize="0.8em" colorScheme="green">
-          Location
+          {tour.location}
         </Badge>
         <Badge ml="1" fontSize="0.8em" colorScheme="purple">
-          type
+          {tour.catTId}
         </Badge>
         <Heading mt="4" size="md">
-          ЛИКИЙСКАЯ ТРОПА. ﻿«ЧЕРЕЗ ГОРЫ К МОРЮ»
+          {tour.name}
         </Heading>
         <Flex mt="4">
-          <Avatar src="https://bit.ly/sage-adebayo" />
+          <Avatar src={tour} />
           <Box ml="3">
             <Text fontWeight="bold">
-              Иван Жуков
-              <Badge ml="1" colorScheme="green">
+              {tour.authorId}
+              <Badge ml="1" variant='outline' colorScheme="green">
                 PRO
               </Badge>
             </Text>
@@ -56,10 +52,10 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
         </Flex>
         <Flex justify = 'space-between'>
           <Text mt="2" color="blue.600" fontSize="2xl">
-            11-20 июня
+            {tour.date}-{tour.endDate}
           </Text>
           <Text mt="2" color="blue.600" fontSize="2xl">
-            Места: 5/10
+            Места: {tour.places}
           </Text>
         </Flex>
       </CardBody>
