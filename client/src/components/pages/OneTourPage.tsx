@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import type { TourType } from '../../types/tourType';
 import { useAppSelector } from '../../hooks/useReduxHook';
 import { formatDate } from '../../utils/dataFormater';
 import AboutTour from '../ui/OneTourPageUi/aboutTour';
+import './center.css';
 
 export default function OneTourPage(): JSX.Element {
   const { id } = useParams();
@@ -15,11 +16,14 @@ export default function OneTourPage(): JSX.Element {
   if (!tour) {
     return <div>Tour not found</div>;
   }
- 
 
   return (
-    <Container h="80vh">
-      <AboutTour tour={tour} />
-    </Container>
+    <Box className="center_100">
+      <Box className="center">
+        <Container minH="80vh">
+          <AboutTour tour={tour} />
+        </Container>
+      </Box>
+    </Box>
   );
 }

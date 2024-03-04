@@ -1,10 +1,12 @@
-.main_container_center {
+.center {
     max-width: 1400px;
   }
-  .wrappre_container_center {
+  .center_100 {
+    background: rgba(73, 116, 55, 0.13);
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+  
