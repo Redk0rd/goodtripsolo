@@ -11,6 +11,7 @@ import RentPage from './components/pages/RentPage';
 import BlogPage from './components/pages/BlogPage';
 import FaqPage from './components/pages/FaqPage';
 import UserPage from './components/pages/UserPage';
+import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
