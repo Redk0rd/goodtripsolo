@@ -33,7 +33,7 @@ function App(): JSX.Element {
         { path: '/blog', element: <BlogPage /> },
         { path: '/faq', element: <FaqPage /> },
         { path: '/tours/:id', element: <OneTourPage /> },
-        { path: '/user', element: <UserPage /> },
+        { path: '/user/:id', element: <UserPage /> },
       ],
     },
     {
