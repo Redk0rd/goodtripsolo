@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
 import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
+import './center.css'
 
 export default function ToursPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,10 +15,12 @@ export default function ToursPage(): JSX.Element {
   }, []);
 
   return (
-    <div>
-      <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-        {tours?.map((tour) => <TourCard tour={tour} />)}
-      </SimpleGrid>
-    </div>
+    <Box className="center_100">
+      <Box className="center">
+        <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
+          {tours?.map((tour) => <TourCard tour={tour} />)}
+        </SimpleGrid>
+      </Box>
+    </Box>
   );
 }
