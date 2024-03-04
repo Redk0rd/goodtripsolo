@@ -1,0 +1,31 @@
+.wrapper_tours {
+    widows: 100vw;
+    background-color: rgb(155, 136, 111);
+  }
+  .container_tours_flex {
+    max-width: 1300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .text_description_who{
+    color: white;
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 150px;
+    height: 250px;
+    background: #8a6666;
+    border-radius: 14px;
+}
+
+.text_description_who {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;;
+}

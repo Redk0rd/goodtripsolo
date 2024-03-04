@@ -14,37 +14,20 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import type { TourType } from '../../types/tourType';
+import { formatDate } from '../../utils/dataFormater';
 
 type TourCardPropType = {
   tour: TourType;
 };
 
-const monthNames = [
-  'янв',
-  'фев',
-  'мар',
-  'апр',
-  'мая',
-  'июн',
-  'июл',
-  'авг',
-  'сент',
-  'окт',
-  'нояб',
-  'дек',
-];
 
-const formatDate = (date: string) => {
-  const d = new Date(date);
-  const day = d.getDate();
-  const monthName = monthNames[d.getMonth()];
-  return `${day} ${monthName}`;
-};
 
 export default function TourCard({ tour }: TourCardPropType): JSX.Element {
   const formattedStartDate = formatDate(tour.date);
   const formattedEndDate = formatDate(tour.endDate);
+
   return (
     <Card maxW="sm">
       <CardBody>
@@ -67,7 +50,7 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
                 PRO
               </Badge>
             </Text>
-            <Text fontSize="sm">Рейтинг 4,8</Text>
+            <Text fontSize="sm">Рейтинг</Text>
           </Box>
         </Flex>
         <Flex justify="space-between">
@@ -85,7 +68,7 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
           <Button variant="solid" colorScheme="blue">
             Добавить в избранное
           </Button>
-          <Button variant="ghost" colorScheme="blue">
+          <Button variant="ghost" colorScheme="blue" as={Link} to={`/tours/${tour.id}`}>
             Подробнее
           </Button>
         </ButtonGroup>
