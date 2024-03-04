@@ -11,6 +11,7 @@ const equipRouter = require('./routes/equipRouter');
 const tokensRouter = require('./routes/tokensRouter');
 const userRouter = require('./routes/userRouter');
 const commentRouter = require('./routes/commentRouter');
+const favoriteRouter = require('./routes/favoriteRouter');
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(morgan('dev'));
@@ -26,4 +27,5 @@ app.use('/api/equip', equipRouter);
 app.use('/api/auth', userRouter);
 app.use('/api/tokens', tokensRouter);
 app.use('/api/comments', commentRouter);
+app.use('/api/favorite', favoriteRouter);
 module.exports = app;

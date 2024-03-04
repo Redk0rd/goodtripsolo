@@ -21,6 +21,10 @@ class TourService {
   //   return this.api.put<TourType>(`/api/tour/${id}`).then((res) => res.data);
   // }
 
+  public getFavoritesTours(): Promise<TourType[]> {
+    return this.api.get<TourType[]>(`/favorites`).then((res) => res.data);
+  }
+
   public getTours(id: CategoryTourType['id']): Promise<TourType[]> {
     return this.api.get<TourType[]>(`/tour/${id || 0}`).then((res) => res.data);
   }

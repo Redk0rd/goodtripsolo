@@ -9,13 +9,11 @@ const upload = require('../middlewares/multerMid');
 tourRouter.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    // const tours = await CategoryTour.findAll({
-    //   include: Tour,
-    // });
     const justTours = await Tour.findAll({
       include: [
         {
           model: User,
+          as: 'author',
           attributes: {
             exclude: ['password', 'isAdmin'],
           },
