@@ -16,4 +16,12 @@ export const addCommentThunk = createAsyncThunk<CommentTourType, {tourId:number,
     const newComm = await commentService.addComment(obj);
     return newComm;
   },
-);
+
+  );
+  
+  export const deleteCommentThunk = createAsyncThunk<CommentTourType['id'], CommentTourType['id']>('delete/comment', async (id)=> {
+    console.log('sasaaaaank', id);
+    
+     await commentService.deleteComment(id).then(()=> id)
+    return id
+  })
