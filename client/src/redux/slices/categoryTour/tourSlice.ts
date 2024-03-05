@@ -39,7 +39,6 @@ const tourSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
-      console.log('builder', action.payload);
       
       state.allCount = action.payload.count;
       if (state.tours.length < state.allCount) {
