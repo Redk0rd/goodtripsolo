@@ -124,6 +124,25 @@
   filter: brightness(1.1); /* Увеличение яркости при наведении */
 }
 
+.wrapper_container_mainPage_imgTop {
+  width: 100vw;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.wrapper_container_mainPage_imgTop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Цвет затемнения (черный с прозрачностью) */
+}
+
 .wrapper_container_mainPage_imgBot {
   width: 100vw;
   min-height: 100vh;
@@ -169,7 +188,7 @@
 }
 
 .btn-white::before {
-  content: "";
+  content: '';
   background-color: #fff;
   display: block;
   width: 45px;
@@ -178,7 +197,7 @@
 }
 
 .btn-white::after {
-  content: "";
+  content: '';
   background-color: #fff;
   display: block;
   width: 0%;
@@ -217,4 +236,3 @@
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-

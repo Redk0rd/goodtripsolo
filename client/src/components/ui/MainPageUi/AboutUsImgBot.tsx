@@ -1,20 +1,34 @@
-import { Box, Flex, Image, SkipNavLink, Text } from '@chakra-ui/react';
+import { Box, CloseButton, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
+import { motion } from 'framer-motion';
 import './AboutUsStyle.css';
 import { NavLink } from 'react-router-dom';
-import { textAnimation, textAnimation2, textAnimationTitle, containerOpen } from './motion';
+import { buttonMotion, TextImgMotion } from './motion';
 
 export default function AboutUsImgBot(): JSX.Element {
   return (
     <Box className="wrapper_container_mainPage_imgBot">
       <Image className="img_top_bot" src="../../../../public/forest.jpeg" alt="Dan Abramov" />
-      <Box className='wrapper_img_absolute' >
-      <Text className='title_M'>Посмотрим туры?</Text>
-        <NavLink to="/tours">
-          <button type="button" className="btn-white">
-            Да, посмотрим
-          </button>
-        </NavLink>
+      <Box className="wrapper_img_absolute">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2, once: true }}
+          custom={0.8}
+        >
+          <Flex direction='column'>
+          <Text className="title_M" as={motion.button} custom={0.7} variants={TextImgMotion}>
+            Посмотрим туры?
+          </Text>
+          <Box as={motion.button} custom={1.4} variants={buttonMotion}>
+            <NavLink to="/tours">
+              <button type="button" className="btn-white">
+                Да, конечно!
+              </button>
+            </NavLink>
+          </Box>
+          </Flex>
+        </motion.div>
       </Box>
     </Box>
   );
