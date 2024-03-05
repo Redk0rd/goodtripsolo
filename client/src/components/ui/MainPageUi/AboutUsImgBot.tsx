@@ -12,50 +12,20 @@ export default function AboutUsImgBot(): JSX.Element {
       <Box className="wrapper_img_absolute">
         <motion.div initial="hidden" whileInView="visible" viewport={{ amount: 0.2, once: true }}>
           <Flex direction="column">
-
             <Flex>
-              <Text className="title_M" as={motion.p} custom={1} variants={TextFromTop}>
-                П
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.1} variants={TextFromTop}>
-                о
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.2} variants={TextFromTop}>
-                с
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.3} variants={TextFromTop}>
-                м
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.4} variants={TextFromTop}>
-                о
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.5} variants={TextFromTop}>
-                т
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.6} variants={TextFromTop}>
-                р
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.7} variants={TextFromTop}>
-                и
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.6} variants={TextFromTop}>
-                м
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.5} variants={TextFromTop}>
-                Т
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.4} variants={TextFromTop}>
-                у
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.3} variants={TextFromTop}>
-                р
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.2} variants={TextFromTop}>
-                ы
-              </Text>
-              <Text className="title_M" as={motion.p} custom={1.1} variants={TextFromTop}>
-                ?
-              </Text>
+              {['П', 'о', 'с', 'м', 'о', 'т', 'р', 'и', 'м', ' ', 'Т', 'у', 'р', 'ы', '?'].map(
+                (letter, index) => (
+                  <Text
+                    key={index}
+                    className="title_M"
+                    as={motion.p}
+                    custom={1 + index / 10} // Предполагаем, что каждая буква должна быть видна с небольшой задержкой
+                    variants={TextFromTop}
+                  >
+                    {letter}
+                  </Text>
+                ),
+              )}
             </Flex>
 
             <Box as={motion.button} custom={0.9} variants={buttonMotion}>
