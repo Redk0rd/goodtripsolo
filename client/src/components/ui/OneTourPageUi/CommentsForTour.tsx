@@ -20,7 +20,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import type { CommentTourType, TourType } from '../../../types/tourType';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
-import { addCommentThunk } from '../../../redux/slices/comments/commentThunkActions';
+import { addCommentThunk, deleteCommentThunk } from '../../../redux/slices/comments/commentThunkActions';
 import type { UserType } from '../../../types/authType';
 
 type CommentsProps = {
@@ -48,6 +48,11 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
       addCommentThunk({ title: newComm.title, tourId: Number(tourId), userId: Number(userId) }),
     );
   };
+
+  const deleteHandler = (e: React.MouseEvent<HTMLButtonElement>, commentId: CommentTourType['id']) : void => {
+    e.preventDefault()
+    void dispatch(deleteCommentThunk(commentId))
+  }
   return (
     <>
       <Card>
@@ -72,6 +77,7 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
                 <Text pt="2" fontSize="sm">
                   {comm.title}
                 </Text>
+                <Button onClick={(e)=> deleteHandler(e, comm.id)}>Удалить</Button>
               </Box>
             ))}
           </Stack>
