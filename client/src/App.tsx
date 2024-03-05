@@ -9,7 +9,7 @@ import PrivateRouter from './components/HOCs/PrivateRouter';
 import ToursPage from './components/pages/ToursPage';
 import RentPage from './components/pages/RentPage';
 import BlogPage from './components/pages/BlogPage';
-import FaqPage from './components/pages/FaqPage';
+import FaqPage from './components/pages/FaqPage/FaqPage';
 import UserPage from './components/pages/UserPage';
 import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 import OneTourPage from './components/pages/OneTourPage';
