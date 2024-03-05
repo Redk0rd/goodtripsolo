@@ -96,6 +96,6 @@ export const TextFromTop = {
   visible: (custom: number) => ({
     y: 0,
     opacity: 1,
-    transition: { duration: 0.2, delay: 0.2 },
+    transition: { duration: 0.2, delay: custom * 0.3 },
   }),
 };
