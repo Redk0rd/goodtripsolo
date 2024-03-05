@@ -64,11 +64,7 @@ const tourSlice = createSlice({
     //   state.category = state?.category.map((category) =>
     //     action.payload.id === category.id ? action.payload : category
     //   );
-
-    
   },
 });
-    
-
 
 export default tourSlice.reducer;
