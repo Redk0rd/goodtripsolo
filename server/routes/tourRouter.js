@@ -8,10 +8,10 @@ const upload = require('../middlewares/multerMid');
 
 tourRouter.get('/:id/offset/:offset', async (req, res) => {
   const { id, offset } = req.params;
-  console.log(offset);
   if (Number.isNaN(+id)) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
+
   try {
     const justTours = await Tour.findAndCountAll({
       offset,
@@ -27,13 +27,14 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
         { model: CategoryTour },
       ],
     });
-    let filteredTours;
-    Number(id) === 0
-      ? (filteredTours = justTours)
-      : (filteredTours = justTours.filter((el) => el.catTId === Number(id)));
-    res.json(filteredTours);
+
+    if (Number(id) !== 0) {
+      justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
+    }
+    res.json(justTours);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 });
 
