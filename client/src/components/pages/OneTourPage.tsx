@@ -33,7 +33,7 @@ export default function OneTourPage(): JSX.Element {
       <Box className="center">
         <Container minH="80vh">
           <AboutTour tour={tour} />
-          <CommentsForTour comments={comments} />
+          <CommentsForTour  comments={comments} />
         </Container>
       </Box>
     </Box>
