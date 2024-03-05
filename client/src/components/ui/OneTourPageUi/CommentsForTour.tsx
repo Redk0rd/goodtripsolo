@@ -17,39 +17,37 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import React from 'react';
-import type { CommentTourType } from '../../../types/tourType';
+import { useParams } from 'react-router-dom';
+import type { CommentTourType, TourType } from '../../../types/tourType';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
+import { addCommentThunk } from '../../../redux/slices/comments/commentThunkActions';
+import type { UserType } from '../../../types/authType';
 
 type CommentsProps = {
   comments: CommentTourType[];
 };
 
 export default function CommentsForTour({ comments }: CommentsProps): JSX.Element {
-  //   const comms = [
-  //     {
-  //       title: 'Отличный тур!',
-  //       userId: 'JORA',
-  //       img: 'https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg',
-  //       tourId: 1,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //     {
-  //       title: 'Спасибо за отличное путешествие!',
-  //       userId: 'VOVA',
-  //       img: 'https://cdn.sortiraparis.com/images/80/66131/994455-avatar-frontiers-of-pandora-le-jeu-d-ubisoft-est-passe-gold.jpg',
-  //       tourId: 2,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //     {
-  //       title: 'Прекрасный отдых, рекомендую!',
-  //       userId: 'MAMA',
-  //       img: 'https://lumiere-a.akamaihd.net/v1/images/a_avatarpandorapedia_kiri_16x9_1098_04_39d940d1.jpeg?region=0%2C60%2C1920%2C960',
-  //       tourId: 3,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //   ];
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.auth.user);
+  console.log(user);
+
+  const { id } = useParams();
+  console.log(id);
+
+  const submitHandler = (
+    e: React.FormEvent<HTMLFormElement>,
+    userId: UserType['id'],
+    tourId: TourType['id'],
+  ): void => {
+    console.log(e);
+
+    e.preventDefault();
+    const newComm = Object.fromEntries(new FormData(e.currentTarget)) as { title: string };
+    void dispatch(
+      addCommentThunk({ title: newComm.title, tourId: Number(tourId), userId: Number(userId) }),
+    );
+  };
   return (
     <>
       <Card>
@@ -79,15 +77,17 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
           </Stack>
         </CardBody>
       </Card>
-      <Box mt="10px">
-        <Text>Оставьте комментарий:</Text>
-        <Textarea placeholder="Here is a sample placeholder" background='white'/>
-        <Flex justify="flex-end">
-          <Button mb="10px" mt="10px" colorScheme="blue">
-            Написать
-          </Button>
-        </Flex>
-      </Box>
+      <form onSubmit={(e) => submitHandler(e, user.id, id)}>
+        <Box mt="10px">
+          <Text>Оставьте комментарий:</Text>
+          <Textarea name="title" placeholder="Here is a sample placeholder" background="white" />
+          <Flex justify="flex-end">
+            <Button type="submit" mb="10px" mt="10px" colorScheme="blue">
+              Написать
+            </Button>
+          </Flex>
+        </Box>
+      </form>
     </>
   );
 }
