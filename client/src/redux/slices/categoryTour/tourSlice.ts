@@ -13,39 +13,41 @@ type InitialStateProps = {
   category: CategoryTourType[];
   tours: TourType[];
   favorites: TourType[];
+  allCount: number;
+  offset: number;
+  filter: number;
 };
 
 const initialState: InitialStateProps = {
   category: [],
   tours: [],
   favorites: [],
+  allCount: 0,
+  offset: 0,
+  filter: 0,
 };
-
-// const initialState: CategoryTourType[] = []
 
 const tourSlice = createSlice({
   name: 'tour',
   initialState,
-  reducers: {
-    // addTours: ( state ) => {
-    //     state.tours = state.category.map((el) => el.tours)
-    // }
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
-
-    
-
-
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
-      state.tours = action.payload;
+      state.allCount = action.payload.count;
+      if (state.tours || action.payload.rows) {
+        state.tours = [...action.payload.rows, ...state.tours];
+      }
+      state.offset = state.tours.length;
     });
 
     builder.addCase(getFavoritesToursThunk.fulfilled, (state, action) => {
-      state.favorites = action.payload
-    })
+      state.favorites = action.payload;
+    });
 
-
+    builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
+      state.category = action.payload;
+    });
 
     // builder.addCase(addCategoryTourThunk.fulfilled, (state, action) => {
     //   if (state) state.category = [...state.category, action.payload];
@@ -62,12 +64,11 @@ const tourSlice = createSlice({
     //   state.category = state?.category.map((category) =>
     //     action.payload.id === category.id ? action.payload : category
     //   );
-    // });
 
-    // builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
-    //   state.category = action.payload;
-    // });
+    
   },
 });
+    
+
 
 export default tourSlice.reducer;
