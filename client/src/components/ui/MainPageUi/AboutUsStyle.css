@@ -140,6 +140,7 @@
   flex-direction: column;
   position: relative;
 }
+
 .wrapper_container_mainPage_imgTop::before {
   content: '';
   position: absolute;

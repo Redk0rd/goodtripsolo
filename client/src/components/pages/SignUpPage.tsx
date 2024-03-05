@@ -13,6 +13,7 @@ import {
 import { useAppDispatch } from '../../hooks/useReduxHook';
 import type { UserSignUpType } from '../../types/authType';
 import { signUpThunk } from '../../redux/slices/auth/authThunkActions';
+import './authStyle.css'
 
 export default function SignUpPage(): JSX.Element {
   const dispatch = useAppDispatch();
