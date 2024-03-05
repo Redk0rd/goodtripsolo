@@ -7,8 +7,11 @@ const { Tour, User, CategoryTour } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
 tourRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  if (Number.isNaN(+id)) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
   try {
-    const { id } = req.params;
     const justTours = await Tour.findAll({
       include: [
         {
