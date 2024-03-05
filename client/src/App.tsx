@@ -13,6 +13,7 @@ import FaqPage from './components/pages/FaqPage';
 import UserPage from './components/pages/UserPage';
 import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 import OneTourPage from './components/pages/OneTourPage';
+import AddTourPage from './components/pages/AddTourPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -34,6 +35,7 @@ function App(): JSX.Element {
         { path: '/faq', element: <FaqPage /> },
         { path: '/tours/:id', element: <OneTourPage /> },
         { path: '/user/:id', element: <UserPage /> },
+        { path: '/addtour', element: <AddTourPage /> },
       ],
     },
     {
