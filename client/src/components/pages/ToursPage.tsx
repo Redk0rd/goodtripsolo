@@ -13,39 +13,48 @@ export default function ToursPage(): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
   const categories = useAppSelector((state) => state.tour.category);
 
-  const allCount = useAppSelector((state) => state.tour.allCount)
+  const allCount = useAppSelector((state) => state.tour.allCount);
 
   const offset = useAppSelector((state) => state.tour.offset);
 
   useEffect(() => {
     void dispatch(getAllTourThunk({ id: 0, offset: 0 }));
-    void dispatch(getAllCategoryTourThunk())
+    void dispatch(getAllCategoryTourThunk());
   }, []);
 
   return (
     <Box className="center_100">
       <HeaderToursPage />
-      <Select placeholder="Выберите тур">
-        {categories?.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option> // eslint-disable-line react/jsx-key
-        ))}
-      </Select>
-      <Box className="center">
-        <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-          
+      <Box w="100%" mt="10px">
+        <Flex justify="space-around">
+          <Select
+            placeholder="Выберите тип тура"
+            maxW="200px"
+            bg="tomato"
+            borderColor="tomato"
+            color="white"
+          >
+            {categories?.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option> // eslint-disable-line react/jsx-key
+            ))}
+          </Select>
           <Button
+            colorScheme="yellow"
             onClick={() => {
               if (offset !== allCount) {
-               void dispatch(getAllTourThunk({ id: 0, offset: 3 }));
+                void dispatch(getAllTourThunk({ id: 0, offset: tours.length }));
               }
             }}
             disabled={offset === allCount}
           >
-            еще
+            Загрузить еще
           </Button>
-
+        </Flex>
+      </Box>
+      <Box className="center" mt="10px">
+        <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
           {tours?.map((tour) => <TourCard tour={tour} />)}
         </SimpleGrid>
       </Box>

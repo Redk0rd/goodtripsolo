@@ -7,7 +7,7 @@ import {
   // deleteCategoryTourThunk,
   getAllCategoryTourThunk,
 } from './categoryTourThunkActions';
-import { getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
+import { addTourThunk, getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
 
 type InitialStateProps = {
   category: CategoryTourType[];
@@ -48,6 +48,7 @@ const tourSlice = createSlice({
     builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
       state.category = action.payload;
     });
+
 
     // builder.addCase(addCategoryTourThunk.fulfilled, (state, action) => {
     //   if (state) state.category = [...state.category, action.payload];

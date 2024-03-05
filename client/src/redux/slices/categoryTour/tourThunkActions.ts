@@ -8,10 +8,10 @@ import type { CategoryTourType, TourCountType, TourType } from '../../../types/t
 //   return tours;
 // });
 
-// export const addTour = createAsyncThunk<TourType, TourType>('tour/add', async (obj) => {
-//   const tour = await apiService.addTour(obj);
-//   return tour;
-// });
+export const addTourThunk = createAsyncThunk<TourType, TourType>('tour/add', async (obj) => {
+  const tour = await apiService.addTour(obj);
+  return tour;
+});
 
 // export const deleteTour = createAsyncThunk<number, number>('tour/delete', async (id) => {
 //   await apiService.deleteTour(id);

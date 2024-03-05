@@ -39,28 +39,39 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
 
 tourRouter.post('/', upload.single('file'), async (req, res) => {
   const { name, description, price, catTId, location, date, endDate, places } = req.body;
-  console.log(req.body);
-  if (!name || !description || !price || !catTId) {
+
+  if (!name || !description || !catTId) {
     return res.status(400).json({ error: 'All fields are required' });
   }
+
   if (!req.file) {
     return res.status(400).json({ message: 'File not found' });
   }
 
+  // Имя файла для сохранения
   const fileName = `${Date.now()}.webp`;
+
+  // Путь для сохранения оригинального имени файла в базе данных
+  const pathImg = req.file.originalname;
+
+  // Обработка и сохранение файла с новым именем
   const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
-  await fs.writeFile(`./public/img/${fileName}`, outputBuffer);
+  await fs.promises.writeFile(`./public/img/${fileName}`, outputBuffer);
+
+  // Создание записи тура с pathImg содержащим оригинальное имя файла
   const newTour = await Tour.create({
     name,
     description,
     price,
     catTId,
-    pathImg: fileName,
     location,
     date,
     endDate,
     places,
+    pathImg, // Сохраняем оригинальное имя файла
+    // Возможно, вам также потребуется сохранить измененное имя файла для доступа к файлу на сервере
   });
+
   return res.json(newTour);
 });
 
