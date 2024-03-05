@@ -4,13 +4,16 @@ import MainPage from './components/pages/MainPage';
 import Root from './components/Root';
 import SignInPage from './components/pages/SignInPage';
 import SignUpPage from './components/pages/SignUpPage';
-import { checkTokenThunk } from './redux/thunkActions/authThunkActions';
 import { useAppDispatch, useAppSelector } from './hooks/useReduxHook';
 import PrivateRouter from './components/HOCs/PrivateRouter';
 import ToursPage from './components/pages/ToursPage';
 import RentPage from './components/pages/RentPage';
 import BlogPage from './components/pages/BlogPage';
-import FaqPage from './components/pages/FaqPage';
+import FaqPage from './components/pages/FaqPage/FaqPage';
+import UserPage from './components/pages/UserPage';
+import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
+import OneTourPage from './components/pages/OneTourPage';
+import AddTourPage from './components/pages/AddTourPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -30,6 +33,9 @@ function App(): JSX.Element {
         { path: '/rent', element: <RentPage /> },
         { path: '/blog', element: <BlogPage /> },
         { path: '/faq', element: <FaqPage /> },
+        { path: '/tours/:id', element: <OneTourPage /> },
+        { path: '/user/:id', element: <UserPage /> },
+        { path: '/addtour', element: <AddTourPage /> },
       ],
     },
     {

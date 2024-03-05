@@ -1,15 +1,41 @@
+/* eslint-disable no-unused-expressions */
 const tourRouter = require('express').Router();
 const fs = require('fs').promises;
 const sharp = require('sharp');
 
-const { Tour, CategoryTour } = require('../db/models');
+const { Tour, User, CategoryTour } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
-tourRouter.get('/', async (req, res) => {
-  const tours = await CategoryTour.findAll({
-    include: Tour,
-  });
-  res.json(tours);
+tourRouter.get('/:id/offset/:offset', async (req, res) => {
+  const { id, offset } = req.params;
+  if (Number.isNaN(+id)) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
+
+  try {
+    const justTours = await Tour.findAndCountAll({
+      offset,
+      limit: 3,
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
+        },
+        { model: CategoryTour },
+      ],
+    });
+
+    if (Number(id) !== 0) {
+      justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
+    }
+    res.json(justTours);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 tourRouter.post('/', upload.single('file'), async (req, res) => {

@@ -1,9 +1,12 @@
 const categoryRouter = require('express').Router();
 
-const { CategoryTour } = require('../db/models');
+const { CategoryTour, Tour } = require('../db/models');
 
 categoryRouter.get('/', async (req, res) => {
-  const categoriesTour = await CategoryTour.findAll();
+  const categoriesTour = await CategoryTour.findAll({
+    include: Tour,
+  });
+
   res.json(categoriesTour);
 });
 
