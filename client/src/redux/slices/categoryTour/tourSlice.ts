@@ -1,3 +1,4 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { CategoryTourType, TourType } from '../../../types/tourType';
@@ -30,13 +31,21 @@ const initialState: InitialStateProps = {
 const tourSlice = createSlice({
   name: 'tour',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCategoryTour: (state, action: PayloadAction<number>) => {
+      state.filter = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
+      
       state.allCount = action.payload.count;
-      if (state.tours || action.payload.rows) {
+      if (state.tours.length < state.allCount) {
         state.tours = [...action.payload.rows, ...state.tours];
+      }
+      if (state.filter > 0) {
+        state.tours = action.payload.rows
       }
       state.offset = state.tours.length;
     });
@@ -68,3 +77,4 @@ const tourSlice = createSlice({
 });
 
 export default tourSlice.reducer;
+export const { setSelectedCategoryTour } = tourSlice.actions

@@ -6,28 +6,41 @@ import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkAction
 import './center.css';
 import HeaderToursPage from '../ui/ToursPageUi/HeaderToursPage';
 import { getAllCategoryTourThunk } from '../../redux/slices/categoryTour/categoryTourThunkActions';
+import { setSelectedCategoryTour } from '../../redux/slices/categoryTour/tourSlice';
 
 export default function ToursPage(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const tours = useAppSelector((state) => state.tour.tours);
+
   const categories = useAppSelector((state) => state.tour.category);
+
+  const filter = useAppSelector((state) => state.tour.filter)
 
   const allCount = useAppSelector((state) => state.tour.allCount)
 
   const offset = useAppSelector((state) => state.tour.offset);
 
+
+  const handleCategoryTourChenge = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    e.preventDefault()
+   void dispatch(setSelectedCategoryTour(Number(e.target.value)))
+  }
+
   useEffect(() => {
-    void dispatch(getAllTourThunk({ id: 0, offset: 0 }));
-    void dispatch(getAllCategoryTourThunk())
-  }, []);
+    void dispatch(getAllCategoryTourThunk());
+  },[]);
+
+  useEffect(() => {
+    void dispatch(getAllTourThunk({ id: filter, offset: 0 }));
+  }, [filter]);
 
   return (
     <Box className="center_100">
       <HeaderToursPage />
-      <Select placeholder="Выберите тур">
+      <Select placeholder="Выберите тур" onChange={handleCategoryTourChenge}>
         {categories?.map((category) => (
-          <option key={category.id} value={category.id}>
+          <option key={category.id} value={category.id} >
             {category.name}
           </option> // eslint-disable-line react/jsx-key
         ))}
@@ -38,7 +51,7 @@ export default function ToursPage(): JSX.Element {
           <Button
             onClick={() => {
               if (offset !== allCount) {
-               void dispatch(getAllTourThunk({ id: 0, offset: 3 }));
+               void dispatch(getAllTourThunk({ id: filter, offset: tours.length }));
               }
             }}
             disabled={offset === allCount}
