@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './AboutUsStyle.css';
 import { NavLink } from 'react-router-dom';
-import {  TextImgMotion, TextLitera, TextLiteraLeft } from './motion';
+import { TextImgMotion, TextLitera, TextLiteraLeft } from './motion';
 
 export default function ImgUnderHeader(): JSX.Element {
   return (
@@ -25,33 +25,19 @@ export default function ImgUnderHeader(): JSX.Element {
               Уникальные путешествия по России и Миру
             </Text>
 
-            <Flex align='center' justify='center'>
-              <Text className="title_XL" as={motion.p} custom={1.7} variants={TextLiteraLeft}>
-                G
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={1.5} variants={TextLiteraLeft}>
-                o
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={1.3} variants={TextLiteraLeft}>
-                o
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={1.2} variants={TextLiteraLeft}>
-                d
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={1.8} variants={TextLitera}>
-                T
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={2} variants={TextLitera}>
-                r
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={2.2} variants={TextLitera}>
-                i
-              </Text>
-              <Text className="title_XL" as={motion.p} custom={2.4} variants={TextLitera}>
-                p
-              </Text>
+            <Flex align="center" justify="center">
+              {['G', 'o', 'o', 'd', 'T', 'r', 'i', 'p'].map((letter, index) => (
+                <Text
+                  key={index}
+                  className="title_XL"
+                  as={motion.p}
+                  custom={1.2 + index / 10} // Предполагаем, что каждая буква должна быть видна с небольшой задержкой
+                  variants={index < 4 ? TextLiteraLeft : TextLitera}
+                >
+                  {letter}
+                </Text>
+              ))}
             </Flex>
-
           </Flex>
         </motion.div>
       </Box>
