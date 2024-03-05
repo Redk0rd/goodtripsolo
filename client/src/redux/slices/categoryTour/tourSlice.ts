@@ -33,19 +33,17 @@ const tourSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-
-    
-
-
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
       state.tours = action.payload;
     });
 
     builder.addCase(getFavoritesToursThunk.fulfilled, (state, action) => {
-      state.favorites = action.payload
-    })
+      state.favorites = action.payload;
+    });
 
-
+    builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
+      state.category = action.payload;
+    });
 
     // builder.addCase(addCategoryTourThunk.fulfilled, (state, action) => {
     //   if (state) state.category = [...state.category, action.payload];
@@ -64,9 +62,6 @@ const tourSlice = createSlice({
     //   );
     // });
 
-    // builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
-    //   state.category = action.payload;
-    // });
   },
 });
 

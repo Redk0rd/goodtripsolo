@@ -26,8 +26,8 @@ import type { CategoryTourType, TourType } from '../../../types/tourType';
 export const getAllTourThunk = createAsyncThunk<TourType[], number>(
   'Tour/all',
   async (id: number) => {
-    const allCategoryTour = await apiService.getTours(id);
-    return allCategoryTour;
+    const allTour = await apiService.getTours(id);
+    return allTour;
   },
 );
 
