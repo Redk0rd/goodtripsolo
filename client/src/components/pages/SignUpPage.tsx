@@ -42,7 +42,7 @@ export default function SignUpPage(): JSX.Element {
               <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Name</FormLabel>
               <Input
                 placeholder="Name"
-                name="username"
+                name="name"
                 bg={useColorModeValue('gray.100', 'gray.900')}
                 color={useColorModeValue('current', 'white')}
               />
