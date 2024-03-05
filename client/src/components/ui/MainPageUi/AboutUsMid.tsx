@@ -10,7 +10,7 @@ export default function AboutUs(): JSX.Element {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.2, once: true }}
         variants={containerOpen}
         custom={0.8}
       >

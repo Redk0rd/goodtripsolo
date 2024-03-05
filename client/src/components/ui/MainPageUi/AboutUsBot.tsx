@@ -10,9 +10,10 @@ export default function AboutUsTop(): JSX.Element {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.2, once: true }}
         variants={containerOpen}
         custom={0.8}
+        transition={{ duration: 2 }}
       >
         <Flex className="container">
           <Text as={motion.h1} className="main_title" custom={1} variants={textAnimationTitle}>
