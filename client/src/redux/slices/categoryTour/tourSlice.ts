@@ -44,12 +44,7 @@ const tourSlice = createSlice({
     builder.addCase(getFavoritesToursThunk.fulfilled, (state, action) => {
       state.favorites = action.payload;
     });
-      state.favorites = action.payload;
-    });
 
-    builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
-      state.category = action.payload;
-    });
     builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
       state.category = action.payload;
     });
@@ -69,8 +64,11 @@ const tourSlice = createSlice({
     //   state.category = state?.category.map((category) =>
     //     action.payload.id === category.id ? action.payload : category
     //   );
-    // });
+
+    
   },
 });
+    
+
 
 export default tourSlice.reducer;
