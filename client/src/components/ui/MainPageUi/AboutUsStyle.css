@@ -1,16 +1,17 @@
-/* .root_container_center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} */
-
 /* containers style */
 .main_container {
   max-width: 1400px;
 }
 .wrappre_container {
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapper_container_mainPage {
+  width: 100vw;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,11 +50,13 @@
 }
 
 /* text style */
-.main_title {
+
+.title_M {
+  font-weight: 600;
   color: white;
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 45px;
+  font-size: 55px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 .title {
   color: white;

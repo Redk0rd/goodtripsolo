@@ -6,7 +6,7 @@ import { textAnimation, textAnimation2, textAnimationTitle, containerOpen } from
 
 export default function AboutUsTop(): JSX.Element {
   return (
-    <Box className="wrappre_container" bg="#714e3b">
+    <Box className="wrapper_container_mainPage" bg="#714e3b">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -15,10 +15,10 @@ export default function AboutUsTop(): JSX.Element {
         custom={0.8}
       >
         <Flex className="container">
-          <Text as={motion.h1} className="main_title" custom={1} variants={textAnimationTitle}>
+          <Text as={motion.h1} className="title_M" custom={1} variants={textAnimationTitle}>
             Что такое GoodTrip?
           </Text>
-          <Flex className="wrapper_img_and_text" bg="#714e3b">
+          <Flex className="wrapper_img_and_text">
             <Box position="relative" className="img_wrapper">
               <Image
                 className="img_top"
@@ -26,7 +26,7 @@ export default function AboutUsTop(): JSX.Element {
                 alt="Dan Abramov"
               />
             </Box>
-            <Flex className="text_wrapper_flex" bg="#714e3b">
+            <Flex className="text_wrapper_flex">
               <Text as={motion.h1} className="title" custom={0.8} variants={textAnimation}>
                 Что такое GoodTrip?
               </Text>

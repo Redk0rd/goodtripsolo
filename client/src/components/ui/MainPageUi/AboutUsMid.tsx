@@ -6,7 +6,7 @@ import { textAnimation, textAnimation2, textAnimationTitle, containerOpen } from
 
 export default function AboutUs(): JSX.Element {
   return (
-    <Box className="wrappre_container" bg="#908059db">
+    <Box className="wrapper_container_mainPage" bg="#908059db">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -15,7 +15,7 @@ export default function AboutUs(): JSX.Element {
         custom={0.8}
       >
         <Flex className="container">
-          <Text as={motion.h1} className="main_title" custom={1} variants={textAnimationTitle}>
+          <Text as={motion.h1} className="title_M" custom={1} variants={textAnimationTitle}>
             Что может предложить GoodTrip?
           </Text>
           <Flex className="wrapper_img_and_text" direction="row-reverse">
