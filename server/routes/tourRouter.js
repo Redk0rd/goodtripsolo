@@ -6,13 +6,16 @@ const sharp = require('sharp');
 const { Tour, User, CategoryTour } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
-tourRouter.get('/:id', async (req, res) => {
-  const { id } = req.params;
+tourRouter.get('/:id/offset/:offset', async (req, res) => {
+  const { id, offset } = req.params;
+  console.log(offset);
   if (Number.isNaN(+id)) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
   try {
-    const justTours = await Tour.findAll({
+    const justTours = await Tour.findAndCountAll({
+      offset,
+      limit: 3,
       include: [
         {
           model: User,
@@ -25,7 +28,6 @@ tourRouter.get('/:id', async (req, res) => {
       ],
     });
     let filteredTours;
-
     Number(id) === 0
       ? (filteredTours = justTours)
       : (filteredTours = justTours.filter((el) => el.catTId === Number(id)));

@@ -9,3 +9,11 @@ export const allCommentsThunk = createAsyncThunk<CommentTourType[], number>(
     return allComments;
   },
 );
+
+export const addCommentThunk = createAsyncThunk<CommentTourType, {tourId:number, title: string, userId:number}>(
+  'add/comment',
+  async (obj) => {
+    const newComm = await commentService.addComment(obj);
+    return newComm;
+  },
+);

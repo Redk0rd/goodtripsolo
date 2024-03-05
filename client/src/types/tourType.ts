@@ -13,6 +13,11 @@ export type TourType = {
   User?: OneUserType
 };
 
+export type TourCountType = {
+  count: number;
+  rows: [] | TourType[]
+}
+
 export type OneUserType = {
   id: number;
   name: string;

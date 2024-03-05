@@ -9,6 +9,10 @@ class CommentService {
   public getAllComments(id: number): Promise<CommentTourType[]> {
     return this.api.get<CommentTourType[]>(`/comments/${id}`).then((res) => res.data);
   }
+
+  public addComment({tourId, title, userId}: {tourId:number, title: string, userId:number}): Promise<CommentTourType> {
+    return this.api.post<CommentTourType>(`/comments/${tourId}`,{title, userId}).then((res)=>res.data)
+  }
 }
 
 export default new CommentService(axiosInstance);
