@@ -14,13 +14,12 @@ export default function AboutUsImgBot(): JSX.Element {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.2, once: true }}
-          custom={0.8}
         >
           <Flex direction='column'>
-          <Text className="title_M" as={motion.button} custom={0.7} variants={TextImgMotion}>
+          <Text className="title_M" as={motion.button} custom={0.3} variants={TextImgMotion}>
             Посмотрим туры?
           </Text>
-          <Box as={motion.button} custom={1.4} variants={buttonMotion}>
+          <Box as={motion.button} custom={0.9} variants={buttonMotion}>
             <NavLink to="/tours">
               <button type="button" className="btn-white">
                 Да, конечно!

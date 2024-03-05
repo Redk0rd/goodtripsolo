@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './AboutUsStyle.css';
 import { NavLink } from 'react-router-dom';
-import { buttonMotion, TextImgMotion, TextLitera } from './motion';
+import {  TextImgMotion, TextLitera, TextLiteraLeft } from './motion';
 
 export default function ImgUnderHeader(): JSX.Element {
   return (
@@ -21,33 +21,33 @@ export default function ImgUnderHeader(): JSX.Element {
           custom={0.8}
         >
           <Flex direction="column">
-            <Text className="title" as={motion.button} custom={0.7} variants={TextImgMotion}>
+            <Text className="title" as={motion.button} custom={0.5} variants={TextImgMotion}>
               Уникальные путешествия по России и Миру
             </Text>
 
             <Flex align='center' justify='center'>
-              <Text className="title_M" as={motion.p} custom={1} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={1.7} variants={TextLiteraLeft}>
                 G
               </Text>
-              <Text className="title_M" as={motion.p} custom={1.2} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={1.5} variants={TextLiteraLeft}>
                 o
               </Text>
-              <Text className="title_M" as={motion.p} custom={1.4} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={1.3} variants={TextLiteraLeft}>
                 o
               </Text>
-              <Text className="title_M" as={motion.p} custom={1.6} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={1.2} variants={TextLiteraLeft}>
                 d
               </Text>
-              <Text className="title_M" as={motion.p} custom={1.8} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={1.8} variants={TextLitera}>
                 T
               </Text>
-              <Text className="title_M" as={motion.p} custom={2} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={2} variants={TextLitera}>
                 r
               </Text>
-              <Text className="title_M" as={motion.p} custom={2.2} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={2.2} variants={TextLitera}>
                 i
               </Text>
-              <Text className="title_M" as={motion.p} custom={2.4} variants={TextLitera}>
+              <Text className="title_XL" as={motion.p} custom={2.4} variants={TextLitera}>
                 p
               </Text>
             </Flex>
