@@ -31,7 +31,7 @@ export default function ToursPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    void dispatch(getAllTourThunk({ id: filter, offset: 0 }));
+    void dispatch(getAllTourThunk({ id: filter, offset}));
   }, [filter]);
 
   return (

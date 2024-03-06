@@ -45,7 +45,7 @@ export const containerOpen = {
 };
 export const buttonMotion = {
   hidden: {
-    x: -300,
+    x: -100,
     opacity: 0,
   },
   visible: (custom: number) => ({
@@ -68,7 +68,7 @@ export const TextImgMotion = {
 
 export const TextLitera = {
   hidden: {
-    x: 300,
+    x: 100,
     opacity: 0,
   },
   visible: (custom: number) => ({
@@ -79,7 +79,7 @@ export const TextLitera = {
 };
 export const TextLiteraLeft = {
   hidden: {
-    x: -300,
+    x: -100,
     opacity: 0,
   },
   visible: (custom: number) => ({
@@ -90,7 +90,7 @@ export const TextLiteraLeft = {
 };
 export const TextFromTop = {
   hidden: {
-    y: -300,
+    y: -100,
     opacity: 0,
   },
   visible: (custom: number) => ({

@@ -13,7 +13,7 @@ export default function AboutTour({ tour }: Props): JSX.Element {
     <div>
       {' '}
       <h1>name :{tour?.name}</h1>
-      <img src={tour?.pathImg} alt="nu net img" />
+      <img src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`} alt="nu net img" />
       <p> desription: {tour?.description}</p>
       <p>
         dates: {formattedStartDate}-{formattedEndDate}

@@ -7,7 +7,7 @@ import './center.css';
 export default function AddTourPage(): JSX.Element {
   return (
     <Box className="center_100">
-      <HeaderAddPage />
+      <HeaderAddPage head='Добавить тур'/>
       <AddTourForm />
     </Box>
   );
