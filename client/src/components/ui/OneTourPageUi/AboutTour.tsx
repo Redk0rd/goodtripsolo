@@ -1,6 +1,7 @@
 import React from 'react';
 import type { TourType } from '../../../types/tourType';
 import { formatDate } from '../../../utils/dataFormater';
+import '../../pages/OneTourPage/oneTourStyle.css';
 
 type Props = {
   tour: TourType;
@@ -12,16 +13,34 @@ export default function AboutTour({ tour }: Props): JSX.Element {
   return (
     <div>
       {' '}
-      <h1>name :{tour?.name}</h1>
-      <img src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`} alt="nu net img" />
-      <p> desription: {tour?.description}</p>
-      <p>
-        dates: {formattedStartDate}-{formattedEndDate}
+      <h1 className="whiteTextAboutTour titleAbouTour">{tour?.name}</h1>
+      <img
+        className="imgAboutTour"
+        src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`}
+        alt="nu net img"
+      />
+      <p className="whiteTextAboutTour">
+        {' '}
+        <span className="spanAboutTour">описание:</span> {tour?.description}
       </p>
-      <p>author: {tour?.author.name}</p>
-      <p>Location:{tour?.location}</p>
-      <p>type:{tour?.CategoryTour?.name}</p>
-      <p>slots:{tour?.places}</p>
+      <p className="whiteTextAboutTour">
+        <span className="spanAboutTour">даты тура:</span> {formattedStartDate}-{formattedEndDate}
+      </p>
+      <p className="whiteTextAboutTour">
+        <span className="spanAboutTour">автор тура: </span> {tour?.author.name}
+      </p>
+      <p className="whiteTextAboutTour">
+        <span className="spanAboutTour">где будет тур: </span>
+        {tour?.location}
+      </p>
+      <p className="whiteTextAboutTour">
+        <span className="spanAboutTour">тип тура: </span>
+        {tour?.CategoryTour?.name}
+      </p>
+      <p className="whiteTextAboutTour">
+        <span className="spanAboutTour">кол-во мест: </span>
+        {tour?.places}
+      </p>
     </div>
   );
 }

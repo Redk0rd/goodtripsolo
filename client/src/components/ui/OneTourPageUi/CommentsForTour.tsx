@@ -58,13 +58,13 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
   };
 
   return (
-    <>
-      <Card>
+    <Box className='centerCommentsForTour'>
+      <Card className="containerCommentsForTour">
         <CardHeader>
           <Heading size="md">Comments</Heading> {/* Updated text */}
         </CardHeader>
 
-        <CardBody>
+        <CardBody className='cardForCommet'>
           <Stack divider={<StackDivider />} spacing="4">
             {comments.map((comment) => (
               <Box key={comment.id}>
@@ -87,23 +87,24 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
           </Stack>
         </CardBody>
       </Card>
-      <form onSubmit={(e) => submitHandler(e, user.id, Number(id))}>
+      <form className='formForCommetTour' onSubmit={(e) => submitHandler(e, user.id, Number(id))}>
         <Box mt="10px">
-          <Text>Оставьте комментарий:</Text>
+          <Text color='white' textAlign='center'  mb='10px'>Оставьте комментарий:</Text>
           <Textarea
+          className='commentInputForTour'
             name="title"
-            placeholder="Here is a sample placeholder"
+            placeholder="Ваше мнение?"
             value={title}
-            background="white"
+            // background="white"
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Flex justify="flex-end">
-            <Button type="submit" mb="10px" mt="10px" colorScheme="blue">
+          <Flex justify="center" >
+            <Button className='btnCommetnsForTout' type="submit" mt={4}>
               Написать
             </Button>
           </Flex>
         </Box>
       </form>
-    </>
+    </Box>
   );
 }
