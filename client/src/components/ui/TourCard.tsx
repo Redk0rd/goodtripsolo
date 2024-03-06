@@ -29,7 +29,7 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
   return (
     <Card maxW="sm" borderRadius="20px">
       <CardBody>
-        <Image src={tour?.pathImg} alt="Green double couch with wooden legs" borderRadius="lg" />
+        <Image src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`} alt="Green double couch with wooden legs" borderRadius="lg" />
         <Badge ml="1" fontSize="0.8em" colorScheme="green">
           {tour.location}
         </Badge>

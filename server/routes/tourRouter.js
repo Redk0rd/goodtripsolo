@@ -29,6 +29,7 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
         },
       ],
       where: +id !== 0 ? { catTId: id } : {},
+      order: [['id', 'ASC']],
     });
 
     // if (Number(id) !== 0) {
@@ -42,7 +43,7 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
 });
 
 tourRouter.post('/', upload.single('file'), async (req, res) => {
-  const { name, description, price, catTId, location, date, endDate, places } = req.body;
+  const { name, description, price, catTId, location, date, endDate, places, authorId } = req.body;
 
   if (!name || !description || !catTId) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -56,7 +57,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
   const fileName = `${Date.now()}.webp`;
 
   // Путь для сохранения оригинального имени файла в базе данных
-  const pathImg = req.file.originalname;
+  const pathImg = fileName;
 
   // Обработка и сохранение файла с новым именем
   const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
@@ -68,6 +69,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
     description,
     price,
     catTId,
+    authorId,
     location,
     date,
     endDate,
