@@ -7,29 +7,52 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import TourCard from '../../TourCard';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
-import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
+// import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
+import { getFavoritesToursThunk } from '../../../../redux/slices/favorites/favoriteThunkActions';
+import { UserStateType, UserType } from '../../../../types/authType';
+// import { getAllTourThunk } from '../../../../redux/thunkActions/tourThunkActions';
 
 // type UserPageToursPropType = {
 //   id: number;
 // };
 
-export default function UserPageTours(
-  // { id }: UserPageToursPropType
-  )
-  : JSX.Element {
+export default function UserPageTours(): JSX.Element {
   // const tours = useAppSelector((state) => state.tour.tours);
+  const favoritesTours = useAppSelector((state)=>state.favorite.favorites)
 
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   void dispatch(getAllTourThunk(id));
-  // }, []);
+  useEffect(() => {
+    // void dispatch(getAllTourThunk(id));
+    void dispatch(getFavoritesToursThunk())
+  }, []);
 
   return (
     <Box className="wrapper_tours">
       <Box>
         <Box className="container_tours_flex">
           <Text className="main_title">Мои туры:</Text>
+
+          <Flex className="flex_column">
+            <Text className="text_description_who">Избранное:</Text>
+
+            <Box>
+              <Carousel
+                interval={5000}
+                indicators={false}
+                touch
+                wrap
+                variant="dark"
+                controls={false}
+              >
+                <Carousel.Item>
+                  <Grid templateColumns="repeat(3, 1fr)" gap={3}>
+                    {favoritesTours?.map((tour)=> (<TourCard tour={tour} />))}
+                  </Grid>
+                </Carousel.Item>
+              </Carousel>
+            </Box>
+          </Flex>
 
           <Flex className="flex_column">
             <Text className="text_description_who">участник:</Text>

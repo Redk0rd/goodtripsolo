@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices/auth/authSlice';
 import tourSlice from './slices/categoryTour/tourSlice';
 import commentSlice from './slices/comments/commentSlice';
+import favoriteSlice from './slices/favorites/favoriteSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     tour: tourSlice,
     comment: commentSlice,
+    favorite: favoriteSlice,
   },
 });
 

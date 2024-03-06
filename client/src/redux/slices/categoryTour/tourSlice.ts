@@ -8,7 +8,8 @@ import {
   // deleteCategoryTourThunk,
   getAllCategoryTourThunk,
 } from './categoryTourThunkActions';
-import { addTourThunk, getAllTourThunk, getFavoritesToursThunk, getOneTourThunk } from './tourThunkActions';
+import { addTourThunk, getAllTourThunk, getOneTourThunk } from './tourThunkActions';
+import { getFavoritesToursThunk } from '../favorites/favoriteThunkActions';
 
 type InitialStateProps = {
   category: CategoryTourType[];

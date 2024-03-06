@@ -39,7 +39,8 @@ export const getAllTourThunk = createAsyncThunk<TourCountType, { id: number; off
   },
 );
 
-export const getFavoritesToursThunk = createAsyncThunk<TourType[]>('Favorites/all', async () => {
-  const allFavoritesTours = await apiService.getFavoritesTours();
-  return allFavoritesTours;
-});
+// export const getFavoritesToursThunk = createAsyncThunk<TourType[]>('Favorites/all', async () => {
+//   const allFavoritesTours = await apiService.getFavoritesTours();
+//   return allFavoritesTours;
+// });
+  
