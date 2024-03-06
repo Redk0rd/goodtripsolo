@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -63,9 +64,13 @@ export default function SignUpPage(): JSX.Element {
                 />
               </FormControl>
 
-              <Button type="submit" m={4}>
+              <Button type="submit" m={1}>
                 Создать аккаунт
               </Button>
+
+              <NavLink to="/signin" className="have_acc">
+                войти в существующий аккаунт
+              </NavLink>
             </VStack>
           </form>
         </Box>
