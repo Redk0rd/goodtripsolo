@@ -13,22 +13,16 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
 import { addTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
 import { getAllCategoryTourThunk } from '../../../redux/slices/categoryTour/categoryTourThunkActions';
 
-export default function AddTourForm(): JSX.Element {
+export default function AddEquipForm(): JSX.Element {
   const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state.tour.category);
+  const categories = useAppSelector((state) => state);
   const user = useAppSelector((state) => state.auth.user);
-
-  const nums = Array.from({ length: 20 }, (_, i) => i + 1);
 
   const [formValues, setFormValues] = useState({
     name: '',
-    location: '',
     description: '',
-    catTId: '',
-    date: '',
-    endDate: '',
+    catEId: '',
     price: '',
-    places: '',
     authorId: user.id,
   });
   const [file, setFile] = useState(null);
@@ -51,7 +45,7 @@ export default function AddTourForm(): JSX.Element {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'catTId' || name === 'price' || name === 'places') {
+    if (name === 'catEId' || name === 'price') {
       setFormValues((prev) => ({ ...prev, [name]: value ? Number(value) : '' }));
     } else {
       setFormValues((prev) => ({ ...prev, [name]: value }));
@@ -87,21 +81,12 @@ export default function AddTourForm(): JSX.Element {
           background="white"
           type="text"
         />
-        <FormHelperText>введите название своего тура чтобы привлечь туристов</FormHelperText>
+        <FormHelperText>введите наименование оборудования</FormHelperText>
         <FormControl>
           <FormLabel>Фото</FormLabel>
           <input type="file" name="pathImg" onChange={handleFileChange} />
         </FormControl>
-        <FormLabel>Локация</FormLabel>
-        <Input
-          name="location"
-          value={formValues.location}
-          onChange={handleChange}
-          background="white"
-          type="text"
-        />
-        <FormHelperText>опишите локацию где будет проходить тур</FormHelperText>
-        <FormLabel>Описание тура</FormLabel>
+        <FormLabel>Описание оборудования</FormLabel>
         <Textarea
           name="description"
           value={formValues.description}
@@ -109,13 +94,13 @@ export default function AddTourForm(): JSX.Element {
           background="white"
           placeholder=""
         />
-        <FormHelperText>добавьте подробное описание тура</FormHelperText>
-        <FormLabel>Выберете тип тура</FormLabel>
-        <Select
-          name="catTId"
-          value={formValues.catTId}
+        <FormHelperText>добавьте подробное описание оборудования</FormHelperText>
+        <FormLabel>Выберете тип оборудования</FormLabel>
+        {/* <Select
+          name="catEId"
+          value={formValues.catEId}
           onChange={handleChange}
-          placeholder="Тип тура"
+          placeholder="Тип оборудования"
           background="white"
           typeof="number"
         >
@@ -124,27 +109,7 @@ export default function AddTourForm(): JSX.Element {
               {category.name}
             </option>
           ))}
-        </Select>
-        <FormHelperText>Дата начала тура</FormHelperText>
-        <Input
-          name="date"
-          value={formValues.date}
-          onChange={handleChange}
-          background="white"
-          placeholder="Select Date and Time"
-          size="md"
-          type="datetime-local"
-        />
-        <FormHelperText>Дата окончания тура</FormHelperText>
-        <Input
-          name="endDate"
-          value={formValues.endDate}
-          onChange={handleChange}
-          background="white"
-          placeholder="Select Date and Time"
-          size="md"
-          type="datetime-local"
-        />
+        </Select> */}
          <FormLabel>Стоимость</FormLabel>
         <Input
           name="price"
@@ -153,22 +118,7 @@ export default function AddTourForm(): JSX.Element {
           background="white"
           type="number"
         />
-        <FormHelperText>укажите ориентировачную стоимость тура </FormHelperText>
-        <FormLabel mt="10px">Укажите колчисство мест</FormLabel>
-        <Select
-          name="places"
-          placeholder="Количество мест"
-          value={formValues.places}
-          onChange={handleChange}
-          background="white"
-          mb="10px"
-        >
-          {nums.map((num) => (
-            <option key={num} value={num}>
-              {num}
-            </option>
-          ))}
-        </Select>
+        <FormHelperText>укажите стоимость аренды в сутки </FormHelperText>
       </FormControl>
       <Button colorScheme="teal" size="lg" type="submit">
         Добавить

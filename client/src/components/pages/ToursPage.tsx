@@ -15,21 +15,20 @@ export default function ToursPage(): JSX.Element {
 
   const categories = useAppSelector((state) => state.tour.category);
 
-  const filter = useAppSelector((state) => state.tour.filter)
+  const filter = useAppSelector((state) => state.tour.filter);
 
-  const allCount = useAppSelector((state) => state.tour.allCount)
+  const allCount = useAppSelector((state) => state.tour.allCount);
 
   const offset = useAppSelector((state) => state.tour.offset);
 
-
   const handleCategoryTourChenge = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    e.preventDefault()
-   void dispatch(setSelectedCategoryTour(Number(e.target.value)))
-  }
+    e.preventDefault();
+    void dispatch(setSelectedCategoryTour(Number(e.target.value)));
+  };
 
   useEffect(() => {
     void dispatch(getAllCategoryTourThunk());
-  },[]);
+  }, []);
 
   useEffect(() => {
     void dispatch(getAllTourThunk({ id: filter, offset: 0 }));
@@ -38,27 +37,35 @@ export default function ToursPage(): JSX.Element {
   return (
     <Box className="center_100">
       <HeaderToursPage />
-      <Select placeholder="Выберите тур" onChange={handleCategoryTourChenge}>
-        {categories?.map((category) => (
-          <option key={category.id} value={category.id} >
-            {category.name}
-          </option> // eslint-disable-line react/jsx-key
-        ))}
-      </Select>
-      <Box className="center">
-        <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-          
-          <Button
-            onClick={() => {
-              if (offset !== allCount) {
-               void dispatch(getAllTourThunk({ id: filter, offset: tours.length }));
-              }
-            }}
-            disabled={offset === allCount}
-          >
-            еще
-          </Button>
+      <Flex mt="10px" justify="space-between">
+        <Select
+          placeholder="Все туры"
+          background="white"
+          onChange={handleCategoryTourChenge}
+        >
+          {categories?.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option> // eslint-disable-line react/jsx-key
+          ))}
+        </Select>
+        <Button
+          width="180px"
+          colorScheme="teal"
+          size="md"
+          onClick={() => {
+            if (offset !== allCount) {
+              void dispatch(getAllTourThunk({ id: filter, offset: tours.length }));
+            }
+          }}
+          disabled={offset === allCount}
+        >
+          Показать еще
+        </Button>
+      </Flex>
 
+      <Box className="center" mt="10px">
+        <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
           {tours?.map((tour) => <TourCard tour={tour} />)}
         </SimpleGrid>
       </Box>
