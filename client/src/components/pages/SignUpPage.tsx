@@ -38,6 +38,9 @@ export default function SignUpPage(): JSX.Element {
         className="bg_motion"
       >
         <Box className="bg" bg={useColorModeValue('', 'gray.900')}>
+          <NavLink to="/" className="exit_to_main">
+            X
+          </NavLink>
           <Text fontSize="3xl" fontWeight="bold" align="center" mb={4} color="white">
             Регистрация
           </Text>
@@ -68,9 +71,15 @@ export default function SignUpPage(): JSX.Element {
                 Создать аккаунт
               </Button>
 
-              <NavLink to="/signin" className="have_acc">
-                войти в существующий аккаунт
-              </NavLink>
+              <Flex justify="space-around" w="100%">
+                <NavLink to="/signin" className="have_acc">
+                  войти в существующий аккаунт
+                </NavLink>
+                {/* <Text color='white'>/</Text> */}
+                {/* <NavLink to="/" className="have_acc">
+                  на главную страницу
+                </NavLink> */}
+              </Flex>
             </VStack>
           </form>
         </Box>

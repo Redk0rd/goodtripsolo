@@ -21,6 +21,7 @@
   background: rgba(0, 0, 0, 0.6);
   border-radius: 30px;
   padding: 10px 30px;
+  position: relative;
 }
 
 .input_sign {
@@ -40,9 +41,29 @@
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 8px;
   padding: 4px 7px;
-  transition: background 0.2s ease; 
+  transition: background 0.2s ease;
 }
 
 .have_acc:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.exit_to_main {
+  color: white;
+  font-size: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%; 
+  width: 30px; 
+  height: 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+}
+.exit_to_main:hover {
   background: rgba(255, 255, 255, 0.25);
 }

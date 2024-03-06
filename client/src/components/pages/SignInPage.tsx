@@ -24,6 +24,7 @@ export default function SignInPage(): JSX.Element {
   };
 
   return (
+
     <Flex justify="center">
       <Box bg={useColorModeValue('', 'gray.900')} w="lg" p={8} borderRadius="md">
         <Text
