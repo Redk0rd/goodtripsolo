@@ -1,0 +1,82 @@
+.center {
+  max-width: 1400px;
+}
+.center_sign {
+  background: rgba(71, 112, 53, 0.13);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url(../../../../public/topMainPageImg.jpeg);
+  background-size: cover; /* чтобы фон заполнял всю доступную область */
+  background-position: center; /* чтобы фон был выровнен по центру */
+  background-attachment: fixed;
+}
+.center_sign_in {
+  background: rgba(71, 112, 53, 0.13);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url(../../../../public/imgSignIn.jpeg);
+  background-size: cover; /* чтобы фон заполнял всю доступную область */
+  background-position: center; /* чтобы фон был выровнен по центру */
+  background-attachment: fixed;
+}
+.bg_motion {
+  min-width: 30%;
+}
+.bg {
+  background: #00000099;
+  border-radius: 30px;
+  padding: 10px 30px;
+  position: relative;
+}
+
+.input_sign {
+  color: white;
+  font-size: 17px;
+  border: none; /* Убрать границу, если она не нужна */
+}
+
+.input_sign:focus {
+  background-color: rgba(255, 255, 255, 0.15); /* Прозрачный цвет фона */
+  outline: none; /* Убрать стандартную обводку */
+}
+
+.have_acc {
+  color: white;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  padding: 4px 7px;
+  transition: background 0.2s ease;
+}
+
+.have_acc:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.exit_to_main {
+  color: white;
+  font-size: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%; 
+  width: 30px; 
+  height: 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+}
+.exit_to_main:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
