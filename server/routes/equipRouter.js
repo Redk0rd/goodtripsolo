@@ -2,15 +2,67 @@ const equipRouter = require('express').Router();
 const fs = require('fs').promises;
 const sharp = require('sharp');
 
-const { Equipment, CategoryEquipment } = require('../db/models');
+const { Equipment, CategoryEquipment, User } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
-equipRouter.get('/', async (req, res) => {
-  const equips = await CategoryEquipment.findAll({
-    include: Equipment,
-  });
-  res.json(equips);
+equipRouter.get('/:id/offset/:offset', async (req, res) => {
+  const { id, offset } = req.params;
+  if (Number.isNaN(+id)) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
+
+  try {
+    const justTours = await Equipment.findAndCountAll({
+      offset,
+      limit: 3,
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
+        },
+        {
+          model: CategoryEquipment,
+        },
+      ],
+      where: +id !== 0 ? { catTId: id } : {},
+    });
+    // if (Number(id) !== 0) {
+    //   justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
+    // }
+    res.json(justTours);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
+
+
+
+
+
+
+
+
+
+
+
+// .get('/', async (req, res) => {
+//   const equips = await CategoryEquipment.findAll({
+//     include: Equipment,
+//   });
+//   res.json(equips);
+// });
+
+
+
+
+
+
+
+
 
 equipRouter.post('/', upload.single('file'), async (req, res) => {
   const { name, description, price, catEId } = req.body;

@@ -9,7 +9,6 @@ import {
   getAllCategoryTourThunk,
 } from './categoryTourThunkActions';
 import { addTourThunk, getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
-import { redirect } from 'react-router-dom';
 
 type InitialStateProps = {
   category: CategoryTourType[];

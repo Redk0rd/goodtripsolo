@@ -24,13 +24,16 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
             exclude: ['password', 'isAdmin'],
           },
         },
-        { model: CategoryTour },
+        {
+          model: CategoryTour,
+        },
       ],
+      where: +id !== 0 ? { catTId: id } : {},
     });
 
-    if (Number(id) !== 0) {
-      justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
-    }
+    // if (Number(id) !== 0) {
+    //   justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
+    // }
     res.json(justTours);
   } catch (error) {
     console.log(error);
