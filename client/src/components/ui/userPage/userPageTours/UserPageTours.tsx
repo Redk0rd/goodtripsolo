@@ -8,21 +8,22 @@ import Carousel from 'react-bootstrap/Carousel';
 import TourCard from '../../TourCard';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
 import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
-// import { getAllTourThunk } from '../../../../redux/thunkActions/tourThunkActions';
 
-type UserPageToursPropType = {
-  id: number;
-};
+// type UserPageToursPropType = {
+//   id: number;
+// };
 
-export default function UserPageTours({ id }: UserPageToursPropType): JSX.Element {
-  const tours = useAppSelector((state) => state.tour.tours);
+export default function UserPageTours(
+  // { id }: UserPageToursPropType
+  )
+  : JSX.Element {
+  // const tours = useAppSelector((state) => state.tour.tours);
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    void dispatch(getAllTourThunk(id));
-  }, []);
-  console.log(tours);
+  // useEffect(() => {
+  //   void dispatch(getAllTourThunk(id));
+  // }, []);
 
   return (
     <Box className="wrapper_tours">
@@ -44,7 +45,7 @@ export default function UserPageTours({ id }: UserPageToursPropType): JSX.Elemen
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {tours?.map((el) => <TourCard tour={el} />)}
+                    {/* {tours?.map((el) => <TourCard tour={el} />)} */}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -65,9 +66,9 @@ export default function UserPageTours({ id }: UserPageToursPropType): JSX.Elemen
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {tours.map((el) => (
+                    {/* {tours.map((el) => (
                       <TourCard tour={el} />
-                    ))}
+                    ))} */}
                   </Grid>
                 </Carousel.Item>
               </Carousel>

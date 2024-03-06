@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ReactReduxContext } from 'react-redux';
 import { Box, Button, Flex, Heading, Select, SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
@@ -6,24 +7,25 @@ import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkAction
 import './center.css';
 import HeaderToursPage from '../ui/ToursPageUi/HeaderToursPage';
 import { getAllCategoryTourThunk } from '../../redux/slices/categoryTour/categoryTourThunkActions';
-import { setSelectedCategoryTour } from '../../redux/slices/categoryTour/tourSlice';
+import {
+  changeCategoryTour,
+  setSelectedCategoryTour,
+} from '../../redux/slices/categoryTour/tourSlice';
 
-export default function ToursPage(): JSX.Element {
+// Обернуть компонент с React.memo
+const MemoizedToursPage = React.memo(() => {
   const dispatch = useAppDispatch();
 
   const tours = useAppSelector((state) => state.tour.tours);
-
   const categories = useAppSelector((state) => state.tour.category);
-
   const filter = useAppSelector((state) => state.tour.filter);
-
   const allCount = useAppSelector((state) => state.tour.allCount);
-
   const offset = useAppSelector((state) => state.tour.offset);
 
   const handleCategoryTourChenge = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     e.preventDefault();
     void dispatch(setSelectedCategoryTour(Number(e.target.value)));
+    void dispatch(changeCategoryTour());
   };
 
   useEffect(() => {
@@ -38,11 +40,7 @@ export default function ToursPage(): JSX.Element {
     <Box className="center_100">
       <HeaderToursPage />
       <Flex mt="10px" justify="space-between">
-        <Select
-          placeholder="Все туры"
-          background="white"
-          onChange={handleCategoryTourChenge}
-        >
+        <Select placeholder="Все туры" background="white" onChange={handleCategoryTourChenge}>
           {categories?.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
@@ -66,9 +64,11 @@ export default function ToursPage(): JSX.Element {
 
       <Box className="center" mt="10px">
         <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-          {tours?.map((tour) => <TourCard tour={tour} />)}
+          {tours?.map((tour) => <TourCard tour={tour} key={tour.id} />)}
         </SimpleGrid>
       </Box>
     </Box>
   );
-}
+});
+
+export default MemoizedToursPage;

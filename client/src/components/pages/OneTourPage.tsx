@@ -8,22 +8,25 @@ import AboutTour from '../ui/OneTourPageUi/AboutTour';
 import './center.css';
 import { allCommentsThunk } from '../../redux/slices/comments/commentThunkActions';
 import CommentsForTour from '../ui/OneTourPageUi/CommentsForTour';
-import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
+import { getOneTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
+// import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
 
 export default function OneTourPage(): JSX.Element {
   const { id } = useParams();
-  const tours = useAppSelector((state) => state.tour.tours);
-  const comments = useAppSelector((state):CommentTourType[] => state.comment.comments);
+  const tour = useAppSelector((state) => state.tour.oneTour);
+  const comments = useAppSelector((state): CommentTourType[] => state.comment.comments);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     void dispatch(allCommentsThunk(Number(id)));
-    void dispatch(getAllTourThunk(0));
   }, []);
-  console.log(comments);
+
+  useEffect(() => {
+    void dispatch(getOneTourThunk(Number(id)));
+  }, []);
 
   // Преобразуем id в число для сравнения, если ваши ID представлены числами
-  const tour = tours.find((el) => el.id === Number(id));
+  // const tour = tours.find((el) => el.id === Number(id));
   if (!tour) {
     return <div>Tour not found</div>;
   }
@@ -33,7 +36,7 @@ export default function OneTourPage(): JSX.Element {
       <Box className="center">
         <Container minH="80vh">
           <AboutTour tour={tour} />
-          <CommentsForTour  comments={comments} />
+          <CommentsForTour comments={comments} />
         </Container>
       </Box>
     </Box>
