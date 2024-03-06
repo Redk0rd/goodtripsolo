@@ -10,9 +10,13 @@ import {
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/useReduxHook';
 import type { UserSignInType } from '../../types/authType';
 import { signInThunk } from '../../redux/slices/auth/authThunkActions';
+import './authStyle.css';
+import { containerOpen } from '../ui/MainPageUi/motion';
 
 export default function SignInPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,49 +28,53 @@ export default function SignInPage(): JSX.Element {
   };
 
   return (
+    <Flex className="center_sign_in">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2, once: true }}
+        variants={containerOpen}
+        custom={0.4}
+        className="bg_motion"
+      >
+        <Box className="bg" bg={useColorModeValue('', 'gray.900')}>
+          <NavLink to="/" className="exit_to_main">
+            X
+          </NavLink>
+          <Text fontSize="3xl" fontWeight="bold" align="center" mb={4} color="white">
+            Вход в аккаунт
+          </Text>
+          <form onSubmit={submitHandler}>
+            <VStack spacing={4}>
+              <FormControl isRequired>
+                <FormLabel color="white">Email</FormLabel>
+                <Input type="email" placeholder="Email" name="email" className="input_sign" />
+              </FormControl>
 
-    <Flex justify="center">
-      <Box bg={useColorModeValue('', 'gray.900')} w="lg" p={8} borderRadius="md">
-        <Text
-          fontSize="2xl"
-          fontWeight="bold"
-          align="center"
-          mb={4}
-          color={useColorModeValue('gray.900', 'gray.100')}
-        >
-          Sign In
-        </Text>
-        <form onSubmit={submitHandler}>
-          <VStack spacing={4}>
-            <FormControl isRequired>
-              <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Email</FormLabel>
-              <Input
-                type="email"
-                placeholder="Email"
-                name="email"
-                bg={useColorModeValue('gray.100', 'gray.900')}
-              />
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel color="white">Password</FormLabel>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="input_sign"
+                />
+              </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Password</FormLabel>
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                bg={useColorModeValue('gray.100', 'gray.900')}
-              />
-              <Text mt={1} color={useColorModeValue('gray.900', 'gray.100')}>
-                At least 8 characters long
-              </Text>
-            </FormControl>
+              <Button type="submit" background='#edf2f6d1' mt={1}>
+                sign in
+              </Button>
 
-            <Button type="submit" colorScheme="blue" w="full" mt={4}>
-              sign in
-            </Button>
-          </VStack>
-        </form>
-      </Box>
+              <Flex justify="space-around" w="100%">
+                <NavLink to="/signup" className="have_acc">
+                  нет аккаунта?
+                </NavLink>
+
+              </Flex>
+            </VStack>
+          </form>
+        </Box>
+      </motion.div>
     </Flex>
   );
 }

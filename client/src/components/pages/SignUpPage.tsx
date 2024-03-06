@@ -67,7 +67,7 @@ export default function SignUpPage(): JSX.Element {
                 />
               </FormControl>
 
-              <Button type="submit" m={1}>
+              <Button type="submit" background='#edf2f6d1' m={1}>
                 Создать аккаунт
               </Button>
 
@@ -75,10 +75,6 @@ export default function SignUpPage(): JSX.Element {
                 <NavLink to="/signin" className="have_acc">
                   войти в существующий аккаунт
                 </NavLink>
-                {/* <Text color='white'>/</Text> */}
-                {/* <NavLink to="/" className="have_acc">
-                  на главную страницу
-                </NavLink> */}
               </Flex>
             </VStack>
           </form>
