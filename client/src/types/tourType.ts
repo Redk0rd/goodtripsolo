@@ -53,3 +53,8 @@ export type CommentTourType = {
 export type CommentsTypeState = {
   comments: CommentTourType[];
 };
+
+export type FavoriteTypeState = {
+  favorites: TourType[]
+  isFavorite: boolean;
+}

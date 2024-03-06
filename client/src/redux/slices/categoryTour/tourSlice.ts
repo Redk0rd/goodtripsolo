@@ -8,8 +8,7 @@ import {
   // deleteCategoryTourThunk,
   getAllCategoryTourThunk,
 } from './categoryTourThunkActions';
-import { addTourThunk, getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
-import { redirect } from 'react-router-dom';
+import { addTourThunk, getAllTourThunk } from './tourThunkActions';
 
 type InitialStateProps = {
   category: CategoryTourType[];
@@ -50,9 +49,9 @@ const tourSlice = createSlice({
       state.offset = state.tours.length;
     });
 
-    builder.addCase(getFavoritesToursThunk.fulfilled, (state, action) => {
-      state.favorites = action.payload;
-    });
+    // builder.addCase(getFavoritesToursThunk.fulfilled, (state, action) => {
+    //   state.favorites = action.payload;
+    // });
 
     builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
       state.category = action.payload;
