@@ -23,6 +23,14 @@ export const addTourThunk = createAsyncThunk<TourType, TourType>('tour/add', asy
 //   return updateTour;
 // });
 
+export const getOneTourThunk = createAsyncThunk<TourType, TourType['id']>(
+  'Tour/One',
+  async (id) => {
+    const oneTour = await apiService.getOneTour(id);
+    return oneTour;
+  },
+);
+
 export const getAllTourThunk = createAsyncThunk<TourCountType, { id: number; offset: number }>(
   'Tour/all',
   async ({ id, offset }) => {
@@ -35,3 +43,4 @@ export const getAllTourThunk = createAsyncThunk<TourCountType, { id: number; off
 //   const allFavoritesTours = await apiService.getFavoritesTours();
 //   return allFavoritesTours;
 // });
+  

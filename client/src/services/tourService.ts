@@ -36,6 +36,11 @@ class TourService {
   public getTours(id: CategoryTourType['id'],offset: number): Promise<TourCountType> {
     return this.api.get<TourCountType>(`/tour/${id || 0}/offset/${offset || 0}`).then((res) => res.data);
   }
+
+  public getOneTour(id: TourType['id']): Promise<TourType> {
+    return this.api.get<TourType>(`/tour/one/${id}`).then((res) => res.data);
+  }
+
 }
 
 export default new TourService(axiosInstance);

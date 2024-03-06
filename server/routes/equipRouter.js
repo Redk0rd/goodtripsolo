@@ -18,7 +18,7 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
       include: [
         {
           model: User,
-          as: 'author',
+          // as: 'author',
           attributes: {
             exclude: ['password', 'isAdmin'],
           },
