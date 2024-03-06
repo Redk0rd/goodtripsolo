@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
   Avatar,
   Badge,
@@ -16,40 +17,46 @@ import {
   Text,
   Textarea,
 } from '@chakra-ui/react';
-import React from 'react';
-import type { CommentTourType } from '../../../types/tourType';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import type { CommentTourType, TourType } from '../../../types/tourType';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
+import {
+  addCommentThunk,
+  deleteCommentThunk,
+} from '../../../redux/slices/comments/commentThunkActions';
+import type { UserType } from '../../../types/authType';
 
 type CommentsProps = {
   comments: CommentTourType[];
 };
 
 export default function CommentsForTour({ comments }: CommentsProps): JSX.Element {
-  //   const comms = [
-  //     {
-  //       title: 'Отличный тур!',
-  //       userId: 'JORA',
-  //       img: 'https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg',
-  //       tourId: 1,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //     {
-  //       title: 'Спасибо за отличное путешествие!',
-  //       userId: 'VOVA',
-  //       img: 'https://cdn.sortiraparis.com/images/80/66131/994455-avatar-frontiers-of-pandora-le-jeu-d-ubisoft-est-passe-gold.jpg',
-  //       tourId: 2,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //     {
-  //       title: 'Прекрасный отдых, рекомендую!',
-  //       userId: 'MAMA',
-  //       img: 'https://lumiere-a.akamaihd.net/v1/images/a_avatarpandorapedia_kiri_16x9_1098_04_39d940d1.jpeg?region=0%2C60%2C1920%2C960',
-  //       tourId: 3,
-  //       createdAt: new Date(),
-  //       updatedAt: new Date(),
-  //     },
-  //   ];
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((store) => store.auth.user);
+
+  const [title, setTitle] = useState('');
+
+  const { id } = useParams();
+
+  const submitHandler = (
+    e: React.FormEvent<HTMLFormElement>,
+    userId: UserType['id'],
+    tourId: TourType['id'],
+  ): void => {
+    e.preventDefault();
+    void dispatch(addCommentThunk({ title, tourId: Number(tourId), userId: Number(userId) }));
+    setTitle('');
+  };
+
+  const deleteHandler = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    commentId: CommentTourType['id'],
+  ): void => {
+    e.preventDefault();
+    void dispatch(deleteCommentThunk(commentId));
+  };
+
   return (
     <>
       <Card>
@@ -59,35 +66,44 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
 
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
-            {comments.map((comm) => (
-              <Box key={comm.id}>
+            {comments.map((comment) => (
+              <Box key={comment.id}>
                 {' '}
                 {/* Added key prop */}
                 <Flex align="center" gap="4">
                   {' '}
                   {/* Added alignment and gap */}
-                  <Avatar src={comm.img} />
+                  <Avatar src={comment.img} />
                   <Heading size="xs" textTransform="uppercase">
-                    {comm.User.name}
+                    {comment.User.name}
                   </Heading>
                 </Flex>
                 <Text pt="2" fontSize="sm">
-                  {comm.title}
+                  {comment.title}
                 </Text>
+                <Button onClick={(e) => deleteHandler(e, comment.id)}>Удалить</Button>
               </Box>
             ))}
           </Stack>
         </CardBody>
       </Card>
-      <Box mt="10px">
-        <Text>Оставьте комментарий:</Text>
-        <Textarea placeholder="Here is a sample placeholder" background='white'/>
-        <Flex justify="flex-end">
-          <Button mb="10px" mt="10px" colorScheme="blue">
-            Написать
-          </Button>
-        </Flex>
-      </Box>
+      <form onSubmit={(e) => submitHandler(e, user.id, Number(id))}>
+        <Box mt="10px">
+          <Text>Оставьте комментарий:</Text>
+          <Textarea
+            name="title"
+            placeholder="Here is a sample placeholder"
+            value={title}
+            background="white"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Flex justify="flex-end">
+            <Button type="submit" mb="10px" mt="10px" colorScheme="blue">
+              Написать
+            </Button>
+          </Flex>
+        </Box>
+      </form>
     </>
   );
 }

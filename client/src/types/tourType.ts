@@ -45,6 +45,9 @@ export type CommentTourType = {
   title: string;
   userId: number;
   tourId: number;
+  img: string;
+  name: string;
+  User: OneUserType
 };
 
 export type CommentsTypeState = {

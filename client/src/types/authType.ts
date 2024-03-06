@@ -1,10 +1,10 @@
 export type UserType = {
   id: number;
-  username: string;
+  name: string;
   email: string;
 };
 export type UserSignUpType = {
-  username: string;
+  name: string;
   email: string;
   password: string;
 };
@@ -18,7 +18,6 @@ export type UserStateType =
   | { status: 'pending' }
   | { status: 'guest' }
   | ({ status: 'logged' } & UserType);
-
 
 export type AuthStateType = {
   accessToken: string;
