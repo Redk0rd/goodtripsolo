@@ -22,16 +22,14 @@ type TourCardPropType = {
   tour: TourType;
 };
 
-
-
 export default function TourCard({ tour }: TourCardPropType): JSX.Element {
   const formattedStartDate = formatDate(tour.date);
   const formattedEndDate = formatDate(tour.endDate);
 
   return (
-    <Card maxW="sm">
+    <Card maxW="sm" borderRadius="20px">
       <CardBody>
-        <Image src={tour.pathImg} alt="Green double couch with wooden legs" borderRadius="lg" />
+        <Image src={tour?.pathImg} alt="Green double couch with wooden legs" borderRadius="lg" />
         <Badge ml="1" fontSize="0.8em" colorScheme="green">
           {tour.location}
         </Badge>
@@ -42,10 +40,10 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
           {tour.name}
         </Heading>
         <Flex mt="4">
-          <Avatar src={tour.User?.pathImg} />
+          <Avatar src={tour?.author?.pathImg} />
           <Box ml="3">
             <Text fontWeight="bold">
-              {tour.User?.name}
+              {tour.author?.name}
               <Badge ml="1" variant="outline" colorScheme="green">
                 PRO
               </Badge>

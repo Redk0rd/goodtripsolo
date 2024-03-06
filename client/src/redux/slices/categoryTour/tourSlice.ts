@@ -8,7 +8,8 @@ import {
   // deleteCategoryTourThunk,
   getAllCategoryTourThunk,
 } from './categoryTourThunkActions';
-import { getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
+import { addTourThunk, getAllTourThunk, getFavoritesToursThunk } from './tourThunkActions';
+import { redirect } from 'react-router-dom';
 
 type InitialStateProps = {
   category: CategoryTourType[];
@@ -39,13 +40,12 @@ const tourSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
-      
       state.allCount = action.payload.count;
       if (state.tours.length < state.allCount) {
         state.tours = [...action.payload.rows, ...state.tours];
       }
       if (state.filter > 0) {
-        state.tours = action.payload.rows
+        state.tours = action.payload.rows;
       }
       state.offset = state.tours.length;
     });
@@ -56,6 +56,10 @@ const tourSlice = createSlice({
 
     builder.addCase(getAllCategoryTourThunk.fulfilled, (state, action) => {
       state.category = action.payload;
+    });
+
+    builder.addCase(addTourThunk.fulfilled, (state, action) => {
+      state.tours = [action.payload, ...state.tours];
     });
 
     // builder.addCase(addCategoryTourThunk.fulfilled, (state, action) => {
@@ -77,4 +81,4 @@ const tourSlice = createSlice({
 });
 
 export default tourSlice.reducer;
-export const { setSelectedCategoryTour } = tourSlice.actions
+export const { setSelectedCategoryTour } = tourSlice.actions;
