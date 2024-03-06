@@ -62,7 +62,7 @@ export default function SignInPage(): JSX.Element {
               </FormControl>
 
               <Button type="submit" background='#edf2f6d1' mt={1}>
-                sign in
+                Войти
               </Button>
 
               <Flex justify="space-around" w="100%">
