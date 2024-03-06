@@ -1,3 +1,19 @@
+export type OneUserType = {
+  id: number;
+  name: string;
+  isPro: boolean;
+  email: string;
+  phone: string;
+  pathImg: string;
+  about: string;
+  telegram: string;
+};
+
+export type OneCategoryType = {
+  id: number;
+  name: string;
+};
+
 export type TourType = {
   id: number;
   name: string;
@@ -9,35 +25,19 @@ export type TourType = {
   date: string;
   endDate: string;
   places: number;
-  CategoryTour?: OneCategoryType
-  User?: OneUserType
+  CategoryTour?: OneCategoryType;
+  author: OneUserType;
 };
 
 export type TourCountType = {
   count: number;
-  rows: [] | TourType[]
-}
-
-export type OneUserType = {
-  id: number;
-  name: string;
-  isPro: boolean;
-  email: string;
-  phone: string;
-  pathImg: string;
-  about: string;
-  telegram: string;
-}
-
-export type OneCategoryType = {
-  id: number;
-  name: string;
-}
+  rows: [] | TourType[];
+};
 
 export type CategoryTourType = {
   id: number;
   name: string;
-  Tours: TourType[]
+  Tours: TourType[];
 };
 
 export type CommentTourType = {
@@ -47,9 +47,9 @@ export type CommentTourType = {
   tourId: number;
   img: string;
   name: string;
-  User: OneUserType
+  User: OneUserType;
 };
 
 export type CommentsTypeState = {
-  comments: CommentTourType[]
-}
+  comments: CommentTourType[];
+};

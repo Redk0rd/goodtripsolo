@@ -18,7 +18,7 @@ export default function AboutTour({ tour }: Props): JSX.Element {
       <p>
         dates: {formattedStartDate}-{formattedEndDate}
       </p>
-      <p>author: {tour?.User?.name}</p>
+      <p>author: {tour?.author.name}</p>
       <p>Location:{tour?.location}</p>
       <p>type:{tour?.CategoryTour?.name}</p>
       <p>slots:{tour?.places}</p>
