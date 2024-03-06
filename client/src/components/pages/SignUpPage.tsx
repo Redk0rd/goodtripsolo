@@ -10,10 +10,12 @@ import {
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useAppDispatch } from '../../hooks/useReduxHook';
 import type { UserSignUpType } from '../../types/authType';
 import { signUpThunk } from '../../redux/slices/auth/authThunkActions';
-import './authStyle.css'
+import './authStyle.css';
+import { containerOpen } from '../ui/MainPageUi/motion';
 
 export default function SignUpPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -25,59 +27,49 @@ export default function SignUpPage(): JSX.Element {
   };
 
   return (
-    <Flex justify="center">
-      <Box bg={useColorModeValue('', 'gray.900')} w="lg" p={8} borderRadius="md">
-        <Text
-          fontSize="2xl"
-          fontWeight="bold"
-          align="center"
-          mb={4}
-          color={useColorModeValue('gray.900', 'gray.100')}
-        >
-          Sign Up
-        </Text>
+    <Flex className="center_sign">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2, once: true }}
+        variants={containerOpen}
+        custom={0.4}
+        className='bg_motion'
+      >
+        <Box className="bg" bg={useColorModeValue('', 'gray.900')}>
+          <Text fontSize="3xl" fontWeight="bold" align="center" mb={4} color="white">
+            Регистрация
+          </Text>
 
-        <form onSubmit={submitHandler}>
-          <VStack spacing={4}>
-            <FormControl isRequired>
-              <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Name</FormLabel>
-              <Input
-                placeholder="Name"
-                name="name"
-                bg={useColorModeValue('gray.100', 'gray.900')}
-                color={useColorModeValue('current', 'white')}
-              />
-            </FormControl>
+          <form onSubmit={submitHandler}>
+            <VStack spacing={4}>
+              <FormControl isRequired>
+                <FormLabel color="white">Name</FormLabel>
+                <Input className="input_sign" placeholder="Name" name="name" />
+              </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Email</FormLabel>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email"
-                bg={useColorModeValue('gray.100', 'gray.900')}
-              />
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel color="white">Email</FormLabel>
+                <Input className="input_sign" type="email" name="email" placeholder="Email" />
+              </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel color={useColorModeValue('gray.900', 'gray.100')}>Password</FormLabel>
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                bg={useColorModeValue('gray.100', 'gray.900')}
-              />
-              <Text mt={1} color={useColorModeValue('gray.900', 'gray.100')}>
-                At least 8 characters long
-              </Text>
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel color="white">Password</FormLabel>
+                <Input
+                  className="input_sign"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+              </FormControl>
 
-            <Button type="submit" colorScheme="blue" w="full" mt={4}>
-              Create Account
-            </Button>
-          </VStack>
-        </form>
-      </Box>
+              <Button type="submit" m={4}>
+                Create Account
+              </Button>
+            </VStack>
+          </form>
+        </Box>
+      </motion.div>
     </Flex>
   );
 }

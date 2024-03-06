@@ -1,12 +1,29 @@
 .center {
-    max-width: 1400px;
-  }
-  .center_100 {
-    background: rgba(71, 112, 53, 0.13);
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
+  max-width: 1400px;
+}
+.center_sign {
+  background: rgba(71, 112, 53, 0.13);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url(../../../../public/topMainPageImg.jpeg);
+  background-size: cover; /* чтобы фон заполнял всю доступную область */
+  background-position: center; /* чтобы фон был выровнен по центру */
+  background-attachment: fixed;
+}
+.bg_motion {
+  min-width: 30%;
+}
+.bg {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+  padding: 10px 30px;
+}
+
+.input_sign {
+  color: white;
+  font-size: 17px;
+}
