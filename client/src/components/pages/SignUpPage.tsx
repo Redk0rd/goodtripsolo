@@ -34,7 +34,7 @@ export default function SignUpPage(): JSX.Element {
         viewport={{ amount: 0.2, once: true }}
         variants={containerOpen}
         custom={0.4}
-        className='bg_motion'
+        className="bg_motion"
       >
         <Box className="bg" bg={useColorModeValue('', 'gray.900')}>
           <Text fontSize="3xl" fontWeight="bold" align="center" mb={4} color="white">
@@ -44,17 +44,17 @@ export default function SignUpPage(): JSX.Element {
           <form onSubmit={submitHandler}>
             <VStack spacing={4}>
               <FormControl isRequired>
-                <FormLabel color="white">Name</FormLabel>
+                <FormLabel color="white">Имя</FormLabel>
                 <Input className="input_sign" placeholder="Name" name="name" />
               </FormControl>
 
               <FormControl isRequired>
-                <FormLabel color="white">Email</FormLabel>
+                <FormLabel color="white">Эл.почта</FormLabel>
                 <Input className="input_sign" type="email" name="email" placeholder="Email" />
               </FormControl>
 
               <FormControl isRequired>
-                <FormLabel color="white">Password</FormLabel>
+                <FormLabel color="white">Пароль</FormLabel>
                 <Input
                   className="input_sign"
                   type="password"
@@ -64,7 +64,7 @@ export default function SignUpPage(): JSX.Element {
               </FormControl>
 
               <Button type="submit" m={4}>
-                Create Account
+                Создать аккаунт
               </Button>
             </VStack>
           </form>

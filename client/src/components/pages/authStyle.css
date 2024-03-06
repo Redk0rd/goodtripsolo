@@ -26,4 +26,12 @@
 .input_sign {
   color: white;
   font-size: 17px;
+  border: none; /* Убрать границу, если она не нужна */
 }
+
+.input_sign:focus {
+  background-color: rgba(255, 255, 255, 0.15); /* Прозрачный цвет фона */
+  outline: none; /* Убрать стандартную обводку */
+}
+
+
