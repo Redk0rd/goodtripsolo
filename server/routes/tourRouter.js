@@ -57,7 +57,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
 
   // Обработка и сохранение файла с новым именем
   const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
-  await fs.promises.writeFile(`./public/img/${fileName}`, outputBuffer);
+  await fs.writeFile(`./public/img/${fileName}`, outputBuffer); // Исправленная строка
 
   // Создание записи тура с pathImg содержащим оригинальное имя файла
   const newTour = await Tour.create({
@@ -72,7 +72,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
     pathImg, // Сохраняем оригинальное имя файла
     // Возможно, вам также потребуется сохранить измененное имя файла для доступа к файлу на сервере
   });
-
+  console.log(newTour);
   return res.json(newTour);
 });
 
