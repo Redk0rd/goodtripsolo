@@ -58,48 +58,50 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
   };
 
   return (
-    <Box className='centerCommentsForTour'>
+    <Box className="centerCommentsForTour">
       <Card className="containerCommentsForTour">
-        <CardHeader>
-          <Heading size="md">Comments</Heading> {/* Updated text */}
-        </CardHeader>
-
-        <CardBody className='cardForCommet'>
+        {/* <CardHeader className='styleCardHeader'>
+          <Heading size="md" textAlign='center'>Комментарии</Heading> 
+        </CardHeader> */}
+{comments.length > 0 && (
+        <CardBody className="cardForCommet">
           <Stack divider={<StackDivider />} spacing="4">
             {comments.map((comment) => (
-              <Box key={comment.id}>
+              <Box className="bodyCommet" key={comment.id}>
                 {' '}
                 {/* Added key prop */}
                 <Flex align="center" gap="4">
                   {' '}
                   {/* Added alignment and gap */}
                   <Avatar src={comment.img} />
-                  <Heading size="xs" textTransform="uppercase">
+                  <Heading color="white" size="xs" textTransform="uppercase">
                     {comment.User.name}
                   </Heading>
                 </Flex>
-                <Text pt="2" fontSize="sm">
-                  {comment.title}
-                </Text>
-                <Button onClick={(e) => deleteHandler(e, comment.id)}>Удалить</Button>
+                <Text className="commentTextTour">{comment.title}</Text>
+                <Flex justify='flex-end' position='relative'>
+                  <Button size='xs' className='btnSize' onClick={(e) => deleteHandler(e, comment.id)}>Удалить</Button>
+                </Flex>
               </Box>
             ))}
           </Stack>
         </CardBody>
+        )}
       </Card>
-      <form className='formForCommetTour' onSubmit={(e) => submitHandler(e, user.id, Number(id))}>
+      <form className="formForCommetTour" onSubmit={(e) => submitHandler(e, user.id, Number(id))}>
         <Box mt="10px">
-          <Text color='white' textAlign='center'  mb='10px'>Оставьте комментарий:</Text>
+          <Text color="white" textAlign="center" fontSize="20px" mb="10px">
+            Оставьте комментарий:
+          </Text>
           <Textarea
-          className='commentInputForTour'
+            className="commentInputForTour"
             name="title"
             placeholder="Ваше мнение?"
             value={title}
-            // background="white"
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Flex justify="center" >
-            <Button className='btnCommetnsForTout' type="submit" mt={4}>
+          <Flex justify="center">
+            <Button className="btnCommetnsForTout" type="submit" mt={4}>
               Написать
             </Button>
           </Flex>

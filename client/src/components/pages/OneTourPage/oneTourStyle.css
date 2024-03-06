@@ -4,11 +4,12 @@
   background-position: center;
   background-attachment: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 40px 0;
 }
 /* СТИЛИ ДЛЯ AboutTour */
 /* СТИЛИ ДЛЯ AboutTour */
@@ -31,10 +32,12 @@
   max-height: 100%;
   background-size: cover;
   background-position: center;
+  border: 2px solid #00e7b952;
+  border-radius: 10px;
 }
 .spanAboutTour {
   font-weight: bold;
-  color: rgba(0, 231, 185, 0.588);
+  color: #00e7b996;
   font-size: 16px;
 }
 /* СТИЛИ ДЛЯ CommentsForTour */
@@ -53,7 +56,8 @@
 /* НАДО ДОДЕЛАТЬ С КОММЕНТАМИ!!! */
 /* НАДО ДОДЕЛАТЬ С КОММЕНТАМИ!!! */
 .cardForCommet {
-  background: #0000002b;
+  background: rgba(0, 0, 0, 0.43);
+  padding: 0;
 }
 .formForCommetTour {
   margin-top: 10px;
@@ -63,6 +67,29 @@
   color: white;
 }
 .commentInputForTour:focus {
-  background: rgba(193, 193, 193, 0.4);
+  background: rgba(193, 193, 193, 0.22);
 }
 
+.bodyCommet {
+  background: rgba(0, 0, 0, 0.549);
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.673);
+  border-radius: 5px;
+}
+
+.commentTextTour {
+  color: white;
+  padding: 15px 5px;
+  font-size: 17px;
+}
+.btnSize {
+  position: absolute;
+  bottom: -12px;
+  left: -43%;
+}
+.styleCardHeader{
+    background: rgba(0, 0, 0, 0.219);
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
