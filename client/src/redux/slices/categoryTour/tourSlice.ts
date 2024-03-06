@@ -39,13 +39,12 @@ const tourSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(getAllTourThunk.fulfilled, (state, action) => {
-      
       state.allCount = action.payload.count;
       if (state.tours.length < state.allCount) {
         state.tours = [...action.payload.rows, ...state.tours];
       }
       if (state.filter > 0) {
-        state.tours = action.payload.rows
+        state.tours = action.payload.rows;
       }
       state.offset = state.tours.length;
     });
@@ -77,4 +76,4 @@ const tourSlice = createSlice({
 });
 
 export default tourSlice.reducer;
-export const { setSelectedCategoryTour } = tourSlice.actions
+export const { setSelectedCategoryTour } = tourSlice.actions;

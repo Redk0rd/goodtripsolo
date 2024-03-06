@@ -34,8 +34,8 @@ function App(): JSX.Element {
         { path: '/blog', element: <BlogPage /> },
         { path: '/faq', element: <FaqPage /> },
         { path: '/tours/:id', element: <OneTourPage /> },
-        { path: '/user/:id', element: <UserPage /> },
         { path: '/addtour', element: <AddTourPage /> },
+        { path: '/user/:id', element: <UserPage /> },
       ],
     },
     {
