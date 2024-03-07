@@ -3,7 +3,7 @@ const tourRouter = require('express').Router();
 const fs = require('fs').promises;
 const sharp = require('sharp');
 
-const { Tour, User, CategoryTour } = require('../db/models');
+const { Tour, User, CategoryTour, Favorite } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
 tourRouter.get('/:catTId/offset/:offset', async (req, res) => {
@@ -14,7 +14,7 @@ tourRouter.get('/:catTId/offset/:offset', async (req, res) => {
   try {
     const justTours = await Tour.findAndCountAll({
       offset,
-      limit: 3,
+      limit: 6,
       include: [
         {
           model: User,

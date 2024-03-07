@@ -15,13 +15,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import type { TourType } from '../../../types/tourType';
-import { formatDate } from '../../../utils/dataFormater';
-import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
+import type { TourType } from '../../types/tourType';
+import { formatDate } from '../../utils/dataFormater';
+import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
 import {
   addFavoriteThunk,
   deleteFavoriteThunk,
-} from '../../../redux/slices/favorites/favoriteThunkActions';
+} from '../../redux/slices/favorites/favoriteThunkActions';
 
 type TourCardPropType = {
   tour: TourType;
@@ -35,7 +35,8 @@ export default function TourCard({ tour, favoritesTours }: TourCardPropType): JS
 
   const aidishki = favoritesTours.map((el) => el.id);
   const isLiked = aidishki.includes(tour.id);
-
+  console.log(tour);
+  console.log('----------------------------', favoritesTours);
   
   
 

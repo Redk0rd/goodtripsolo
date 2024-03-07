@@ -12,6 +12,7 @@ import {
   setCleanTour,
   setSelectedCategoryTour,
 } from '../../redux/slices/categoryTour/tourSlice';
+import { getFavoritesToursThunk } from '../../redux/slices/favorites/favoriteThunkActions';
 
 const MemoizedToursPage = React.memo(() => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,9 @@ const MemoizedToursPage = React.memo(() => {
   const allCount = useAppSelector((state) => state.tour.allCount);
   const offset = useAppSelector((state) => state.tour.offset);
 
+  const favoritesTours = useAppSelector((state) => state.favorite.favTours);
+  // console.log(favoritesTours, '-----------------------------------------------------')
+
   const handleCategoryTourChenge = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     e.preventDefault();
     void dispatch(setSelectedCategoryTour(Number(e.target.value)));
@@ -30,6 +34,7 @@ const MemoizedToursPage = React.memo(() => {
 
   useLayoutEffect(() => {
     void dispatch(getAllCategoryTourThunk());
+    void dispatch(getFavoritesToursThunk())
     return () => {
       dispatch(setCleanTour());
     };
@@ -70,7 +75,7 @@ const MemoizedToursPage = React.memo(() => {
 
       <Box className="center" mt="10px">
         <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-          {tours?.map((tour) => <TourCard tour={tour} key={tour.id} />)}
+          {tours?.map((tour) => <TourCard favoritesTours={favoritesTours} tour={tour} />)}
         </SimpleGrid>
       </Box>
     </Box>
