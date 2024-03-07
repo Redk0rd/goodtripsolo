@@ -43,6 +43,9 @@ const MemoizedToursPage = React.memo(() => {
     <Box className="center_100_TourStule">
       <HeaderToursPage />
 
+      
+      
+
       <Flex mt="10px" justify="space-between">
         <HStack spacing={3} m={10}>
           <Select placeholder="Все туры" background="#ffffffd0" onChange={handleCategoryTourChenge} >

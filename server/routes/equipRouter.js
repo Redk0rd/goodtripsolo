@@ -12,7 +12,7 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
   }
 
   try {
-    const justTours = await Equipment.findAndCountAll({
+    const justEquips = await Equipment.findAndCountAll({
       offset,
       limit: 3,
       include: [
@@ -30,24 +30,14 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
       where: +id !== 0 ? { catEId: id } : {},
     });
     // if (Number(id) !== 0) {
-    //   justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
+    //   justEquips.rows = justEquips.rows.filter((el) => el.catEId === Number(id));
     // }
-    res.json(justTours);
+    res.json(justEquips);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
-
-
-
-
-
-
-
-
-
-
 
 // .get('/', async (req, res) => {
 //   const equips = await CategoryEquipment.findAll({
@@ -56,24 +46,63 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
 //   res.json(equips);
 // });
 
-
-
-
-
-
-
-
+equipRouter.get('/one/:id', async (req, res) => {
+  const { id } = req.params;
+  if (Number.isNaN(Number(id))) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
+  try {
+    const oneEquip = await Equipment.findOne({
+      where: { id },
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
+        },
+        {
+          model: CategoryEquipment,
+        },
+      ],
+    });
+    // Проверяем, найден ли тур
+    if (!oneEquip) {
+      return res.status(404).json({ error: 'Tour not found' });
+    }
+    res.json(oneEquip);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 equipRouter.post('/', upload.single('file'), async (req, res) => {
-  const { name, description, price, catEId } = req.body;
+  const { name, description, price, catEId, userId } = req.body;
   console.log(req.body);
-  if (!name || !description || !price || !catEId) {
+  if (!name || !price || !catEId) {
     return res.status(400).json({ error: 'All fields are required' });
   }
   if (!req.file) {
     return res.status(400).json({ message: 'Equip not found' });
   }
-
+  try {
+    const fileName = `${Date.now()}.webp`;
+    const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
+    await fs.writeFile(`./public/img/${fileName}`, outputBuffer);
+    const newEquip = await Equipment.create({
+      name,
+      description,
+      price,
+      catEId,
+      userId,
+      pathImg: fileName,
+    });
+    return res.json(newEquip);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
   const fileName = `${Date.now()}.webp`;
   const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
   await fs.writeFile(`./public/img/${fileName}`, outputBuffer);

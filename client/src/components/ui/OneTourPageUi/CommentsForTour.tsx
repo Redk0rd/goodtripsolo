@@ -73,7 +73,7 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
                 <Flex align="center" gap="4">
                   {' '}
                   {/* Added alignment and gap */}
-                  <Avatar src={comment.img} />
+                  <Avatar src={comment.User.pathImg} />
                   <Heading color="white" size="xs" textTransform="uppercase">
                     {comment.User.name}
                   </Heading>
