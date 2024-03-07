@@ -3,6 +3,7 @@ import authReducer from './slices/auth/authSlice';
 import tourSlice from './slices/categoryTour/tourSlice';
 import commentSlice from './slices/comments/commentSlice';
 import favoriteSlice from './slices/favorites/favoriteSlice';
+import equipmentSlice from './slices/equipment/equipmentSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     tour: tourSlice,
     comment: commentSlice,
     favorite: favoriteSlice,
+    equipment: equipmentSlice,
   },
 });
 

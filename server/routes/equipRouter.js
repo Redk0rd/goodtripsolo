@@ -27,7 +27,7 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
           model: CategoryEquipment,
         },
       ],
-      where: +id !== 0 ? { catTId: id } : {},
+      where: +id !== 0 ? { catEId: id } : {},
     });
     // if (Number(id) !== 0) {
     //   justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));

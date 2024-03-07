@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { ReactReduxContext } from 'react-redux';
 import { Box, Button, Flex, Heading, Select, SimpleGrid } from '@chakra-ui/react';
 import TourCard from '../ui/TourCard';
@@ -28,8 +28,10 @@ const MemoizedToursPage = React.memo(() => {
     void dispatch(changeCategoryTour());
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     void dispatch(getAllCategoryTourThunk());
+    void dispatch(getAllTourThunk({ id: filter, offset }));
+
   }, []);
 
   useEffect(() => {
