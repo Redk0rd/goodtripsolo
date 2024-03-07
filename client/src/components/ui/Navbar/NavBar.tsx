@@ -55,7 +55,7 @@ export default function NavBar(): JSX.Element {
               </>
             ) : (
               <>
-                <Avatar as={NavLink} to={`/user/${user.id}`} size="xl" src={user?.pathImg} />
+                <Avatar src={`${import.meta.env.VITE_APP_BASE_IMG}/${user.pathImg}`} as={NavLink} to={`/user/${user.id}`} size="xl" src={user?.pathImg} />
                 <Text className="nav_text">{user.name}</Text>
                 <Button onClick={logoutHandler}>Выйти</Button>
               </>
