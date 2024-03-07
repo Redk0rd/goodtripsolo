@@ -9,6 +9,7 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
 import { addTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
 import { getAllCategoryTourThunk } from '../../../redux/slices/categoryTour/categoryTourThunkActions';
@@ -32,6 +33,7 @@ export default function AddTourForm(): JSX.Element {
     authorId: user.id,
   });
   const [file, setFile] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false); // Добавлено новое состояние для перенаправления
 
   useEffect(() => {
     void dispatch(getAllCategoryTourThunk());
@@ -58,24 +60,29 @@ export default function AddTourForm(): JSX.Element {
     }
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const formData = new FormData();
     Object.entries(formValues).forEach(([key, value]) => {
-      formData.append(key, value);
+      formData.append(key, value.toString());
     });
 
     if (file) {
       formData.append('file', file);
     }
 
-    // Отправка formData на сервер
-    // Замените следующую строку на код для отправки данных формы
-    console.log('FormData ready to be sent', formData);
-
-    // Пример отправки formData с использованием Redux:
-    void dispatch(addTourThunk(formData));
+    try {
+      await dispatch(addTourThunk(formData)).unwrap(); // Используйте unwrap для обработки ошибок Redux Toolkit
+      setIsSubmitted(true); // Устанавливаем isSubmitted в true после успешной отправки
+    } catch (error) {
+      console.error('Ошибка при отправке формы:', error);
+    }
   };
+
+  if (isSubmitted) {
+    return <Navigate to="/tours" />;
+  }
+
   return (
     <Box as="form" maxW="100vh" minW="70vh" onSubmit={submitHandler}>
       <FormControl>
