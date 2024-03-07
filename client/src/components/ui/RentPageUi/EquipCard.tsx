@@ -26,23 +26,34 @@ export default function EquipCard({ equip }: EquipTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   return (
-    <Card maxW="sm" borderRadius="20px">
+    <Card
+      className="container_card_tour"
+      background="#00000090"
+      maxW="sm"
+      borderRadius="20px"
+      border="2px solid #ffffff47"
+    >
       <CardBody>
         <Image
           src={`${import.meta.env.VITE_APP_BASE_IMG}/${equip.pathImg}`}
           alt="Green double couch with wooden legs"
           borderRadius="lg"
         />
-        <Badge ml="1" fontSize="0.8em" colorScheme="purple">
-          {equip.CategoryEquipment?.name}
-        </Badge>
-        <Heading mt="4" size="md">
+        <Flex mt={3}>
+          <Badge ml="1" fontSize="0.8em" colorScheme="purple">
+            {equip.CategoryEquipment?.name}
+          </Badge>
+        </Flex>
+
+        <Heading mt="4" size="md" color="white" textAlign='center'>
           {equip.name}
         </Heading>
-        <Flex mt="4" align="center">
+        <Flex mt="4" align="center" justify='center'>
           <Avatar src={equip.User?.pathImg} />
           <Box ml="3">
-            <Text fontWeight="bold">{equip.User?.name}</Text>
+            <Text color="white" fontWeight="bold">
+              {equip.User?.name}
+            </Text>
           </Box>
         </Flex>
       </CardBody>

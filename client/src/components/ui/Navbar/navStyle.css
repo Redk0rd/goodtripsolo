@@ -21,7 +21,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-image: url(../../../../public/navnavIMGGG.jpeg);
+  /* background-image: url(../../../../public/navnavIMGGG.jpeg); */
+  background-color: black;
   background-size: cover;
   background-position: bottom;
 }
