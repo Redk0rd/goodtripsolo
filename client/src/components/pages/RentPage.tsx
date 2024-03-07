@@ -1,7 +1,7 @@
 import { Box, Button, Flex, HStack, Select, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import HeaderRentPage from '../ui/RentPageUi/HeaderRentPage';
-import './center.css';
+import './Styles/RentPageStyle.css';
 import AddEquipPage from './AddEquipPage';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
 import { getAllEquipmentCategoryThunk } from '../../redux/slices/equipment/equipmentCategoryThunkAction';
@@ -42,11 +42,15 @@ export default function RentPage(): JSX.Element {
   }, [filter]);
 
   return (
-    <Box className="center_100">
+    <Box className="center_100_RentStule">
       <HeaderRentPage />
       <Flex mt="10px" justify="space-between">
         <HStack spacing={3}>
-          <Select placeholder="Все оборудование" background="white" onChange={handleCategoryEquipChenge}>
+          <Select
+            placeholder="Все оборудование"
+            background="white"
+            onChange={handleCategoryEquipChenge}
+          >
             {categories?.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}

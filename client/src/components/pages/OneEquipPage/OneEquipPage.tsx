@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
 import { getOneEquipThunk } from '../../../redux/slices/equipment/equipmentThunkActions';
 import AboutEquip from './AboutEquip';
 import '../center.css';
-import '../OneTourPage/oneTourStyle.css';
+import '../Styles/oneTourStyle.css';
 
 export default function OneEquipPage() {
   const { id } = useParams();
