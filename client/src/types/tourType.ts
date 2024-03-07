@@ -9,6 +9,7 @@ export type OneUserType = {
   telegram: string;
 };
 
+
 export type OneCategoryType = {
   id: number;
   name: string;
