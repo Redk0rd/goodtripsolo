@@ -18,7 +18,7 @@ export default function Footer(): JSX.Element {
             </Flex>
 
             <Flex className="coloumn width">
-              <Image className="logo_footer" src="../../../public/logo.svg" />
+              <Image className="logo_footer" src="../../../public/logoGoodTrip.svg" />
             </Flex>
 
             <Flex className="coloumn width" align='flex-start'>

@@ -17,14 +17,14 @@
 
 .nav_center {
   width: 100vw;
-  height: 15vh;
+  height: 13vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   /* background: #535951ba;
    */
-  background-image: url(../../../../public/imgNAV.jpeg);
+  background-image: url(../../../../public/navnavIMGGG.jpeg);
   background-size: cover;
   background-position: bottom;
   /* background-attachment: fixed; */
@@ -41,7 +41,9 @@
   border-radius: 8px;
 }
 .nav_text:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Новый цвет фона при наведении */
+  background-color: rgba(0, 0, 0, 0.3); /* Новый цвет фона при наведении */
+  border-radius: 8px;
+  border: 1px solid white;
 }
 .active {
   background: rgba(255, 255, 255, 0.08);
@@ -57,8 +59,20 @@
   padding: 3px 7px;
   border-radius: 7px;
   transition: background-color 0.3s ease; /* Плавный переход для цвета фона */
+  font-weight: 600;
 }
 
 .nav_sign:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Новый цвет фона при наведении */
+  background-color: rgba(255, 255, 255, 0.2); /* Новый цвет фона при наведении */
+}
+
+/* .nav_logo_box {
+  background: rgba(255, 255, 255, 0.4);
+} */
+
+.nav_logo {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  width: 80px;
+  height: 75px;
 }
