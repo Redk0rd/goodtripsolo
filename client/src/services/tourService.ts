@@ -9,9 +9,9 @@ class TourService {
   //   return this.api.get<{justTours: TourType[], tours: CategoryTourType[]}>('/api/tour').then((res) => res.data);
   // }
 
-  // public addTour(tour: TourType): Promise<TourType> {
-  //   return this.api.post<TourType>('/api/tour', tour).then((res) => res.data);
-  // }
+  public addTour(tour: TourType): Promise<TourType> { // может понадобиться заголовок Multipart/formdata
+    return this.api.post<TourType>('/tour', tour).then((res) => res.data);
+  }
 
   // public deleteTour(id: number): Promise<void> {
   //   return this.api.delete(`/api/tour/${id}`);
@@ -36,6 +36,11 @@ class TourService {
   public getTours(id: CategoryTourType['id'],offset: number): Promise<TourCountType> {
     return this.api.get<TourCountType>(`/tour/${id || 0}/offset/${offset || 0}`).then((res) => res.data);
   }
+
+  public getOneTour(id: TourType['id']): Promise<TourType> {
+    return this.api.get<TourType>(`/tour/one/${id}`).then((res) => res.data);
+  }
+
 }
 
 export default new TourService(axiosInstance);

@@ -18,7 +18,7 @@ export default function FaqPage(): JSX.Element {
       <Box className="faq_container">
         <Accordion allowMultiple w="750px">
           <Flex justify="center">
-            <Image src="../../../../public/logo.svg" w="70px" mb="30px" />
+            {/* <Image src="../../../../public/logo.svg" w="70px" mb="30px" /> */}
           </Flex>
           <Text className="main_title_faq">Вопросы и ответы</Text>
           <AccordionItem w="100%">

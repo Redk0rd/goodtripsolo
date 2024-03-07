@@ -2,7 +2,11 @@ import React from 'react';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-export default function HeaderAddPage(): JSX.Element {
+type AddFormPropType = {
+  head: string;
+};
+
+export default function HeaderAddPage({ head }: AddFormPropType): JSX.Element {
   return (
     <Flex
       h="150px"
@@ -14,10 +18,9 @@ export default function HeaderAddPage(): JSX.Element {
       <Box>
         <Flex direction="column" align="center" justify="center">
           <Heading as="h1" size="xl" noOfLines={1} textAlign="center">
-            Добавить тур
+            {head}
           </Heading>
-          <Link to="/addtour">
-          </Link>
+          <Link to="/addtour" />
         </Flex>
       </Box>
     </Flex>
