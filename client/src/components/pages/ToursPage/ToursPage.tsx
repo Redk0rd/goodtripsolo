@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { ReactReduxContext } from 'react-redux';
 import { Box, Button, Flex, HStack, Heading, Select, SimpleGrid } from '@chakra-ui/react';
-import TourCard from '../../ui/TourCard';
+import TourCard from '../../ui/TourCard/TourCard';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
 import { getAllTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
 import './ToursStyle.css';
@@ -43,19 +43,17 @@ const MemoizedToursPage = React.memo(() => {
     <Box className="center_100_TourStule">
       <HeaderToursPage />
 
-      
-      
-
       <Flex mt="10px" justify="space-between">
         <HStack spacing={3} m={10}>
-          <Select placeholder="Все туры" background="#ffffffd0" onChange={handleCategoryTourChenge} >
+          <Select placeholder="Все туры" background="#ffffffd0" onChange={handleCategoryTourChenge}>
             {categories?.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option> // eslint-disable-line react/jsx-key
             ))}
           </Select>
-          <Button className=''
+          <Button
+            className=""
             width="180px"
             background="#ffffffd0"
             size="md"
