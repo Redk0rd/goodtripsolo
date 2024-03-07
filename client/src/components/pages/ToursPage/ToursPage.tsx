@@ -1,17 +1,17 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { ReactReduxContext } from 'react-redux';
 import { Box, Button, Flex, HStack, Heading, Select, SimpleGrid } from '@chakra-ui/react';
-import TourCard from '../ui/TourCard';
-import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
-import { getAllTourThunk } from '../../redux/slices/categoryTour/tourThunkActions';
-import './center.css';
-import HeaderToursPage from '../ui/ToursPageUi/HeaderToursPage';
-import { getAllCategoryTourThunk } from '../../redux/slices/categoryTour/categoryTourThunkActions';
+import TourCard from '../../ui/TourCard';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
+import { getAllTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
+import './ToursStyle.css';
+import HeaderToursPage from '../../ui/ToursPageUi/HeaderToursPage';
+import { getAllCategoryTourThunk } from '../../../redux/slices/categoryTour/categoryTourThunkActions';
 import {
   changeCategoryTour,
   setCleanTour,
   setSelectedCategoryTour,
-} from '../../redux/slices/categoryTour/tourSlice';
+} from '../../../redux/slices/categoryTour/tourSlice';
 
 const MemoizedToursPage = React.memo(() => {
   const dispatch = useAppDispatch();
@@ -40,24 +40,24 @@ const MemoizedToursPage = React.memo(() => {
   }, [filter]);
 
   return (
-    <Box className="center_100">
+    <Box className="center_100_TourStule">
       <HeaderToursPage />
 
       
       
 
       <Flex mt="10px" justify="space-between">
-        <HStack spacing={3}>
-          <Select placeholder="Все туры" background="white" onChange={handleCategoryTourChenge}>
+        <HStack spacing={3} m={10}>
+          <Select placeholder="Все туры" background="#ffffffd0" onChange={handleCategoryTourChenge} >
             {categories?.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option> // eslint-disable-line react/jsx-key
             ))}
           </Select>
-          <Button
+          <Button className=''
             width="180px"
-            colorScheme="teal"
+            background="#ffffffd0"
             size="md"
             onClick={() => {
               if (offset !== allCount) {
