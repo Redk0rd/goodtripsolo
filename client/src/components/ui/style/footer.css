@@ -1,29 +1,50 @@
+.wrapper_Footer_BG {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-image: url(../../../../public/FooterIMG.jpeg);
+  background-size: cover;
+  background-position: bottom;
+}
+
 .footer_background {
-  /* background: rgb(155, 68, 68); */
-  width: 800px;
+  width: 900px;
   height: 100%;
   display: flex;
   padding: 30px;
   justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo_footer {
-  width: 100px;
-  margin: 0 30px;
+  width: 200px;
+  height: 200px;
 }
 
 .coloumn {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 14px;
+  padding: 9px;
+  border-radius: 8px;
 }
-
-.width {
-  padding: 0 20px;
+.coloumn:nth-child(2) {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border: none;
+  width: 200px; /* Задайте нужную ширину и высоту для круглого элемента */
+  height: 200px;
+  margin: 0;
 }
 
 .logo {
-    width: 19px;
-    height: 19px;
-    margin: 0 7px;
+  width: 19px;
+  height: 19px;
+  margin: 0 7px;
 }

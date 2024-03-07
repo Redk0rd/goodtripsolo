@@ -1,9 +1,11 @@
 const categoryRouter = require('express').Router();
 
-const { CategoryEquipment } = require('../db/models');
+const { CategoryEquipment, Equipment } = require('../db/models');
 
 categoryRouter.get('/', async (req, res) => {
-  const categoriesEquip = await CategoryEquipment.findAll();
+  const categoriesEquip = await CategoryEquipment.findAll({
+    include: Equipment,
+  });
   res.json(categoriesEquip);
 });
 

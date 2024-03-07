@@ -10,12 +10,13 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
-import { addTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
 import { getAllCategoryTourThunk } from '../../../redux/slices/categoryTour/categoryTourThunkActions';
+import { addEquipThunk } from '../../../redux/slices/equipment/equipmentThunkActions';
+import { getAllEquipmentCategoryThunk } from '../../../redux/slices/equipment/equipmentCategoryThunkAction';
 
 export default function AddEquipForm(): JSX.Element {
   const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state);
+  const categories = useAppSelector((state) => state.equipment.category);
   const user = useAppSelector((state) => state.auth.user);
 
   const [formValues, setFormValues] = useState({
@@ -23,18 +24,18 @@ export default function AddEquipForm(): JSX.Element {
     description: '',
     catEId: '',
     price: '',
-    authorId: user.id,
+    userId: user.id,
   });
   const [file, setFile] = useState(null);
 
   useEffect(() => {
-    void dispatch(getAllCategoryTourThunk());
+    void dispatch(getAllEquipmentCategoryThunk());
   }, []);
 
   useEffect(() => {
     setFormValues((prevValues) => ({
       ...prevValues,
-      authorId: user.id, // Обновите это значение при изменении user.id
+      userId: user.id, // Обновите это значение при изменении user.id
     }));
   }, [user.id]); // Зависимость от user.id
 
@@ -68,12 +69,12 @@ export default function AddEquipForm(): JSX.Element {
     console.log('FormData ready to be sent', formData);
 
     // Пример отправки formData с использованием Redux:
-    void dispatch(addTourThunk(formData));
+    void dispatch(addEquipThunk(formData));
   };
   return (
     <Box as="form" maxW="100vh" minW="70vh" onSubmit={submitHandler}>
       <FormControl>
-        <FormLabel>Название тура</FormLabel>
+        <FormLabel>Наименование оборудования</FormLabel>
         <Input
           name="name"
           value={formValues.name}
@@ -96,7 +97,7 @@ export default function AddEquipForm(): JSX.Element {
         />
         <FormHelperText>добавьте подробное описание оборудования</FormHelperText>
         <FormLabel>Выберете тип оборудования</FormLabel>
-        {/* <Select
+        <Select
           name="catEId"
           value={formValues.catEId}
           onChange={handleChange}
@@ -109,7 +110,7 @@ export default function AddEquipForm(): JSX.Element {
               {category.name}
             </option>
           ))}
-        </Select> */}
+        </Select>
          <FormLabel>Стоимость</FormLabel>
         <Input
           name="price"
@@ -120,7 +121,7 @@ export default function AddEquipForm(): JSX.Element {
         />
         <FormHelperText>укажите стоимость аренды в сутки </FormHelperText>
       </FormControl>
-      <Button colorScheme="teal" size="lg" type="submit">
+      <Button colorScheme="teal" size="lg" type="submit" mt='10px' mb='10px'>
         Добавить
       </Button>
     </Box>

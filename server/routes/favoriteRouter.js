@@ -70,14 +70,18 @@ favouriteRouter.delete('/:id', verifyAccessToken, async (req, res) => {
   const { id } = req.params;
 
   if (Number.isNaN(+id)) return res.sendStatus(400);
-
-  await Favorite.destroy({
-    where: {
-      tourId: id,
-      userId,
-    },
-  });
-  res.sendStatus(200);
+  try {
+    await Favorite.destroy({
+      where: {
+        tourId: id,
+        userId,
+      },
+    });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 module.exports = favouriteRouter;

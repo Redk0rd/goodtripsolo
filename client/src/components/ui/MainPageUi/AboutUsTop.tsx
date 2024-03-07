@@ -6,13 +6,14 @@ import { textAnimation, textAnimation2, textAnimationTitle, containerOpen } from
 
 export default function AboutUsTop(): JSX.Element {
   return (
-    <Box className="wrapper_container_mainPage" bg="#714e3b">
+    <Box className="wrapper_container_mainPage" >
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.2, once: true }}
         variants={containerOpen}
         custom={0.8}
+        className='black_bg'
       >
         <Flex className="container">
           <Text as={motion.h1} className="title_M" custom={1} variants={textAnimationTitle}>
