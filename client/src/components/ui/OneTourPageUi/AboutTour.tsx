@@ -1,8 +1,8 @@
 import React from 'react';
+import { Flex } from '@chakra-ui/react';
 import type { TourType } from '../../../types/tourType';
 import { formatDate } from '../../../utils/dataFormater';
-import '../../pages/OneTourPage/oneTourStyle.css';
-import { Flex } from '@chakra-ui/react';
+import '../../pages/Styles/oneTourStyle.css';
 
 type Props = {
   tour: TourType;

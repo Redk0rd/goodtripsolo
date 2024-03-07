@@ -14,7 +14,7 @@ tourRouter.get('/:catTId/offset/:offset', async (req, res) => {
   try {
     const justTours = await Tour.findAndCountAll({
       offset,
-      limit: 3,
+      limit: 6,
       include: [
         {
           model: User,

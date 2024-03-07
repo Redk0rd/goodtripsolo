@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import UserPageAboutUser from '../ui/userPage/userPageAboutUser/UserPageAboutUser';
 import UserPageFeedback from '../ui/userPage/userPageFeedback/UserPageFeedback';
 import UserPageTours from '../ui/userPage/userPageTours/UserPageTours';
-import '../ui/userPage/userPage.css';
+// import '../ui/userPage/userPage.css';
 import { useAppSelector } from '../../hooks/useReduxHook';
 
 export default function UserPage(): JSX.Element {

@@ -12,7 +12,7 @@ import BlogPage from './components/pages/BlogPage';
 import FaqPage from './components/pages/FaqPage/FaqPage';
 import UserPage from './components/pages/UserPage';
 import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
-import OneTourPage from './components/pages/OneTourPage/OneTourPage';
+import OneTourPage from './components/pages/OneTourPage';
 import AddTourPage from './components/pages/AddTourPage';
 import AddEquipPage from './components/pages/AddEquipPage';
 import OneEquipPage from './components/pages/OneEquipPage/OneEquipPage';

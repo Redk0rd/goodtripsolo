@@ -5,29 +5,25 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-import TourCard from '../../TourCard';
+import TourCard from '../../TourCard/TourCard';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
-// import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
 import { getFavoritesToursThunk } from '../../../../redux/slices/favorites/favoriteThunkActions';
 import { UserStateType, UserType } from '../../../../types/authType';
-// import { getAllTourThunk } from '../../../../redux/thunkActions/tourThunkActions';
+import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
 
-// type UserPageToursPropType = {
-//   id: number;
-// };
 
 export default function UserPageTours(): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
-  const favoritesTours = useAppSelector((state)=> state.favorite.favTours)
-  console.log(favoritesTours);
+  const favoritesTours = useAppSelector((state) => state.favorite.favTours);
+  console.log('===============>>>>>>>>>>>>>>', favoritesTours);
+  
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // void dispatch(getAllTourThunk(id));
     void dispatch(getFavoritesToursThunk());
   }, []);
-  // console.log(tours);
+
 
   return (
     <Box className="wrapper_tours">
