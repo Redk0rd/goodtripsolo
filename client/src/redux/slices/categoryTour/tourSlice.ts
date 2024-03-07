@@ -39,6 +39,13 @@ const tourSlice = createSlice({
   reducers: {
 
 
+    setCleanTour: (state) => {
+      state.offset = 0
+      state.filter = 0
+      state.tours = []
+    },
+
+
     setSelectedCategoryTour: (state, action: PayloadAction<number>) => {
       state.filter = action.payload;
     },
@@ -131,4 +138,4 @@ const tourSlice = createSlice({
 });
 
 export default tourSlice.reducer;
-export const { setSelectedCategoryTour, changeCategoryTour } = tourSlice.actions;
+export const { setSelectedCategoryTour, changeCategoryTour, setCleanTour } = tourSlice.actions;
