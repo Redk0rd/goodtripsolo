@@ -107,8 +107,23 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
       places,
       pathImg,
     });
-    console.log(newTour);
-    return res.json(newTour);
+    const oneTour = await Tour.findOne({
+      where: { id: newTour.id },
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
+        },
+        {
+          model: CategoryTour,
+        },
+      ],
+    });
+
+    return res.json(oneTour);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
