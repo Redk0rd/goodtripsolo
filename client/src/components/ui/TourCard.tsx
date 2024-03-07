@@ -32,8 +32,7 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
   const formattedEndDate = formatDate(tour.endDate);
   const dispatch = useAppDispatch();
   const isFavorite = useAppSelector((state)=> state.favorite.isFavorite)
-  // const { id } = useParams();
-  const submitNadler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']) => {
+  const submitNadler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']): void => {
     e.preventDefault();
     void dispatch(addFavoriteThunk(id));
    

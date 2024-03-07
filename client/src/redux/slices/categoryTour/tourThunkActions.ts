@@ -3,25 +3,11 @@ import apiService from '../../../services/tourService';
 
 import type { CategoryTourType, TourCountType, TourType } from '../../../types/tourType';
 
-// export const getTours = createAsyncThunk<{justTours: TourType[], tours: CategoryTourType[]}>('tours/all', async () => {
-//   const tours = await apiService.getTours();
-//   return tours;
-// });
 
 export const addTourThunk = createAsyncThunk<TourType, TourType>('tour/add', async (obj) => {
   const tour = await apiService.addTour(obj);
   return tour;
 });
-
-// export const deleteTour = createAsyncThunk<number, number>('tour/delete', async (id) => {
-//   await apiService.deleteTour(id);
-//   return id;
-// });
-
-// export const changeTour = createAsyncThunk<TourType, number>('tour/change', async (id) => {
-//   const updateTour = await apiService.changeTour(id);
-//   return updateTour;
-// });
 
 export const getOneTourThunk = createAsyncThunk<TourType, TourType['id']>(
   'Tour/One',
@@ -39,8 +25,13 @@ export const getAllTourThunk = createAsyncThunk<TourCountType, { id: number; off
   },
 );
 
-// export const getFavoritesToursThunk = createAsyncThunk<TourType[]>('Favorites/all', async () => {
-//   const allFavoritesTours = await apiService.getFavoritesTours();
-//   return allFavoritesTours;
+
+// export const deleteTour = createAsyncThunk<number, number>('tour/delete', async (id) => {
+//   await apiService.deleteTour(id);
+//   return id;
 // });
-  
+
+// export const changeTour = createAsyncThunk<TourType, number>('tour/change', async (id) => {
+//   const updateTour = await apiService.changeTour(id);
+//   return updateTour;
+// });

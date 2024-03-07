@@ -23,7 +23,6 @@ const commentSlice = createSlice({
     });
     builder.addCase(deleteCommentThunk.fulfilled, (state, action)=> {
       const id = action.payload;
-      console.log('------------', id, action.payload);
       
       state.comments = state.comments.filter((comment)=> comment.id !== Number(id) )
     })
