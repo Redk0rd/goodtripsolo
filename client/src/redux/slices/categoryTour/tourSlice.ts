@@ -81,3 +81,4 @@ const tourSlice = createSlice({
 
 export default tourSlice.reducer;
 export const { setSelectedCategoryTour } = tourSlice.actions;
+
