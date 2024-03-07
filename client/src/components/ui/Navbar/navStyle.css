@@ -17,9 +17,9 @@
 
 .nav_center {
   width: 100vw;
-  height:11vh;
+  height: 13vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   /* background: #535951ba;
@@ -64,4 +64,15 @@
 
 .nav_sign:hover {
   background-color: rgba(255, 255, 255, 0.2); /* Новый цвет фона при наведении */
+}
+
+/* .nav_logo_box {
+  background: rgba(255, 255, 255, 0.4);
+} */
+
+.nav_logo {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  width: 80px;
+  height: 75px;
 }

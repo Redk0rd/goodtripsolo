@@ -53,6 +53,13 @@
   width: 80%;
 }
 
+.flex_card_btn_top{
+  width: 100%;
+  justify-content: space-evenly;
+}
+.w100{
+  width: 100%;
+}
 /* text style */
 
 .title_M {
