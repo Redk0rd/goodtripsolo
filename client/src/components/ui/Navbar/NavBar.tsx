@@ -16,32 +16,32 @@ export default function NavBar(): JSX.Element {
       <Box className="nav_container_center">
         <Box className="hundred" bg="transparent" px={4} fontSize={20}>
           <Flex h={24} alignItems="center" justifyContent="space-between">
-            <HStack className="margin" as={NavLink} to="/">
+            <HStack className="margin nav_text" as={NavLink} to="/">
               <Box fontSize={30}>GOOD</Box>
               <Avatar className="nav_logo" size="lg" src="/logo.svg" />
               <Box fontSize={30}>TRIP</Box>
             </HStack>
             <HStack className="margin " spacing={6} color="black">
-              <NavLink to="/tours" className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink to="/tours" className='nav_text'>
                 Туры
               </NavLink>
-              <NavLink to="/rent" className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink to="/rent" className='nav_text'>
                 Аренда
               </NavLink>
-              <NavLink to="/blog" className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink to="/blog" className='nav_text'>
                 Блог
               </NavLink>
-              <NavLink to="/faq" className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink to="/faq" className='nav_text'>
                 FAQ
               </NavLink>
             </HStack>
             <HStack className="margin" spacing={6} color="black">
               {user && user.status !== 'logged' ? ( // Исправлена проверка наличия пользователя
                 <>
-                  <NavLink to="/signin" className={({ isActive }) => (isActive ? 'active' : '')}>
+                  <NavLink to="/signin" className='nav_sign'>
                     Войти
                   </NavLink>
-                  <NavLink to="/signup" className={({ isActive }) => (isActive ? 'active' : '')}>
+                  <NavLink to="/signup" className='nav_sign'>
                     Зарегистрироваться
                   </NavLink>
                 </>

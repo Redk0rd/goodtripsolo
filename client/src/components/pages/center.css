@@ -1,16 +1,17 @@
 .center {
-    max-width: 1400px;
-  }
-  .center_100 {
-    background: rgba(71, 112, 53, 0.13);
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .bgMainPage {background-image: url(../../../../public/bgOneTour.jpeg);
+  max-width: 1400px;
+}
+.center_100 {
+  background: rgba(71, 112, 53, 0.13);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bgMainPage {
+  background-image: url(../../../../public/bgOneTour.jpeg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
