@@ -37,7 +37,7 @@
   border-radius: 8px;
 }
 .nav_text:hover {
-  background-color: rgba(0, 0, 0, 0.3); /* Новый цвет фона при наведении */
+  background-color: rgba(255, 255, 255, 0.3); /* Новый цвет фона при наведении */
   border-radius: 8px;
   border: 1px solid white;
 }
@@ -59,7 +59,7 @@
 }
 
 .nav_sign:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Новый цвет фона при наведении */
+  background-color: rgba(255, 255, 255, 0.3); /* Новый цвет фона при наведении */
 }
 
 /* .nav_logo_box {
