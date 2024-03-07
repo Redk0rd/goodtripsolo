@@ -77,6 +77,7 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
     pathImg, // Сохраняем оригинальное имя файла
     // Возможно, вам также потребуется сохранить измененное имя файла для доступа к файлу на сервере
   });
+  const tourTofront = await Tour.findOne
   console.log(newTour);
   return res.json(newTour);
 });

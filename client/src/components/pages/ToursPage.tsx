@@ -31,18 +31,14 @@ export default function ToursPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    void dispatch(getAllTourThunk({ id: filter, offset}));
+    void dispatch(getAllTourThunk({ id: filter, offset }));
   }, [filter]);
 
   return (
     <Box className="center_100">
       <HeaderToursPage />
       <Flex mt="10px" justify="space-between">
-        <Select
-          placeholder="Все туры"
-          background="white"
-          onChange={handleCategoryTourChenge}
-        >
+        <Select placeholder="Все туры" background="white" onChange={handleCategoryTourChenge}>
           {categories?.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
@@ -66,7 +62,7 @@ export default function ToursPage(): JSX.Element {
 
       <Box className="center" mt="10px">
         <SimpleGrid columns={[1, 1, 1, 3]} spacing={10}>
-          {tours?.map((tour) => <TourCard tour={tour} />)}
+          {tours?.map((tour) => <TourCard key={tour.id} tour={tour} />)}
         </SimpleGrid>
       </Box>
     </Box>
