@@ -14,11 +14,10 @@ equipRouter.get('/:id/offset/:offset', async (req, res) => {
   try {
     const justEquips = await Equipment.findAndCountAll({
       offset,
-      limit: 3,
+      limit: 6,
       include: [
         {
           model: User,
-          // as: 'author',
           attributes: {
             exclude: ['password', 'isAdmin'],
           },

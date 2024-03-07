@@ -76,7 +76,7 @@ const tourSlice = createSlice({
 
       // добавляем элементы только при условии длины стейта меньше длины исходного массива
       if (state.tours.length < state.allCount) {
-        state.tours = [...action.payload.rows, ...state.tours];
+        state.tours = [ ...state.tours, ...action.payload.rows];
       }
 
       // если выбрана определенная категория, то ее id , будет неравен 0
