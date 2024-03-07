@@ -9,9 +9,13 @@ class EquipmentService {
     return this.api.get<EquipmentCountType>(`/equip/${id || 0}/offset/${offset || 0}`).then((res) => res.data);
   }
 
-  // public addEquipment(equipment: EquipmentType): Promise<EquipmentType> {
-  //   return this.api.post<EquipmentType>('/equip', equipment).then((res) => res.data);
-  // }
+  public addEquipment(equipment: EquipmentType): Promise<EquipmentType> {
+    return this.api.post<EquipmentType>('/equip', equipment).then((res) => res.data);
+  }
+
+  public getOneEquipment(id: EquipmentType['id']): Promise<EquipmentType> {
+    return this.api.get<EquipmentType>(`/equip/one/${id}`).then((res) => res.data);
+  }
 
   // public deleteEquipment(id: number): Promise<void> {
   //   return this.api.delete(`/equip/${id}`);

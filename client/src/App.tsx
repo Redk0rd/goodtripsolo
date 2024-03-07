@@ -15,6 +15,7 @@ import { checkTokenThunk } from './redux/slices/auth/authThunkActions';
 import OneTourPage from './components/pages/OneTourPage/OneTourPage';
 import AddTourPage from './components/pages/AddTourPage';
 import AddEquipPage from './components/pages/AddEquipPage';
+import OneEquipPage from './components/pages/OneEquipPage/OneEquipPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,6 +40,8 @@ function App(): JSX.Element {
         { path: '/addtour', element: <AddTourPage /> },
         { path: '/user/:id', element: <UserPage /> },
         { path: '/addequip', element: <AddEquipPage /> },
+        { path: '/equip/:id', element: <OneEquipPage /> },
+        { path: '*', element: <Navigate to="/" replace /> },
       ],
     },
     {

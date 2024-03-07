@@ -12,25 +12,53 @@
 
 .nav_container_center {
   max-width: 1400px;
+  position: relative;
 }
 
 .nav_center {
   width: 100vw;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(180deg, #485056 0%, #446153 50%, #485056 100%);
+  /* background: #535951ba;
+   */
+  background-image: url(../../../../public/imgNAV.jpeg);
+  background-size: cover;
+  background-position: bottom;
+  /* background-attachment: fixed; */
 }
 
 .text_white {
-    color: white;
+  color: white;
+}
+.nav_text {
+  color: white;
+  font-size: 23px;
+  transition: background-color 0.3s ease; /* Плавный переход для цвета фона */
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+.nav_text:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Новый цвет фона при наведении */
+}
+.active {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 5px 8px;
+  border-radius: 12px;
+  color: white;
+  border: none;
+}
+.nav_sign {
+  color: white;
+  font-size: 19px;
+  border: 1px solid white;
+  padding: 3px 7px;
+  border-radius: 7px;
+  transition: background-color 0.3s ease; /* Плавный переход для цвета фона */
 }
 
-.active {
-background: rgba(255, 255, 255, 0.18);
-padding: 5px 8px;
-border-radius: 12px;
-color: white;
-border: none;
+.nav_sign:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Новый цвет фона при наведении */
 }
