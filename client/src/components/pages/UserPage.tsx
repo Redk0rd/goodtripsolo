@@ -13,9 +13,8 @@ export default function UserPage(): JSX.Element {
   return (
     <Box mt={0} p={0}>
       <UserPageAboutUser user={user} />
-      {/* <UserPageTours id={Number(id)} /> */}
-      
-      {/* <UserPageFeedback /> */}
+      <UserPageTours />
+      <UserPageFeedback />
     </Box>
   );
 }

@@ -4,7 +4,10 @@ const { CategoryTour, Tour } = require('../db/models');
 
 categoryRouter.get('/', async (req, res) => {
   const categoriesTour = await CategoryTour.findAll({
-    include: Tour,
+    include: {
+      model: Tour,
+      // include Favorite Model
+    },
   });
 
   res.json(categoriesTour);

@@ -27,6 +27,15 @@ export type TourType = {
   places: number;
   CategoryTour?: OneCategoryType;
   author: OneUserType;
+  Favorites: FavoriteType;
+};
+// добавить тип на Favorite из БД = {id: ; userId: ; tourId: }
+
+export type FavoriteType = {
+  id: number;
+  userId: number;
+  tourId: number;
+  Tour: TourType;
 };
 
 export type TourCountType = {
@@ -55,6 +64,6 @@ export type CommentsTypeState = {
 };
 
 export type FavoriteTypeState = {
-  favorites: TourType[]
-  isFavorite: boolean;
-}
+  favorites: FavoriteType[];
+  favTours: TourType[]
+};
