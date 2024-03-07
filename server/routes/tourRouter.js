@@ -6,12 +6,11 @@ const sharp = require('sharp');
 const { Tour, User, CategoryTour } = require('../db/models');
 const upload = require('../middlewares/multerMid');
 
-tourRouter.get('/:id/offset/:offset', async (req, res) => {
-  const { id, offset } = req.params;
-  if (Number.isNaN(+id)) {
+tourRouter.get('/:catTId/offset/:offset', async (req, res) => {
+  const { catTId, offset } = req.params;
+  if (Number.isNaN(+catTId)) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
-
   try {
     const justTours = await Tour.findAndCountAll({
       offset,
@@ -28,7 +27,7 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
           model: CategoryTour,
         },
       ],
-      where: +id !== 0 ? { catTId: id } : {},
+      where: +catTId !== 0 ? { catTId } : {},
       order: [['id', 'ASC']],
     });
 
@@ -36,6 +35,34 @@ tourRouter.get('/:id/offset/:offset', async (req, res) => {
     //   justTours.rows = justTours.rows.filter((el) => el.catTId === Number(id));
     // }
     res.json(justTours);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+tourRouter.get('/one/:id', async (req, res) => {
+  const { id } = req.params;
+  if (Number.isNaN(+id)) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
+  try {
+    const oneTour = await Tour.findOne({
+      where: { id },
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: {
+            exclude: ['password', 'isAdmin'],
+          },
+        },
+        {
+          model: CategoryTour,
+        },
+      ],
+    });
+    res.json(oneTour);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

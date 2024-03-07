@@ -8,7 +8,7 @@ import '../ui/userPage/userPage.css';
 import { useAppSelector } from '../../hooks/useReduxHook';
 
 export default function UserPage(): JSX.Element {
-  const { id } = useParams();
+  // const { id } = useParams();
   const user = useAppSelector((state) => state.auth.user);
   return (
     <Box mt={0} p={0}>

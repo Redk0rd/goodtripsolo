@@ -1,12 +1,12 @@
 import type { AxiosInstance } from 'axios';
 import axiosInstance from './apiInstance';
-import type { EquipmentType } from '../types/equipmentType';
+import type { CategoryEquipmentType, EquipmentCountType, EquipmentType } from '../types/equipmentType';
 
 class EquipmentService {
   constructor(private readonly api: AxiosInstance) {}
 
-  public getEquipment(): Promise<EquipmentType[]> {
-    return this.api.get<EquipmentType[]>('/equip').then((res) => res.data);
+  public getEquipments(id: CategoryEquipmentType['id'],offset: number): Promise<EquipmentCountType> {
+    return this.api.get<EquipmentCountType>(`/equip/${id || 0}/offset/${offset || 0}`).then((res) => res.data);
   }
 
   // public addEquipment(equipment: EquipmentType): Promise<EquipmentType> {

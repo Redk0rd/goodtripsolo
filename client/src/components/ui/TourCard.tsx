@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Avatar,
   Badge,
@@ -17,6 +17,11 @@ import {
 import { Link } from 'react-router-dom';
 import type { TourType } from '../../types/tourType';
 import { formatDate } from '../../utils/dataFormater';
+import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHook';
+import {
+  addFavoriteThunk,
+  deleteFavoriteThunk,
+} from '../../redux/slices/favorites/favoriteThunkActions';
 
 type TourCardPropType = {
   tour: TourType;
@@ -25,6 +30,18 @@ type TourCardPropType = {
 export default function TourCard({ tour }: TourCardPropType): JSX.Element {
   const formattedStartDate = formatDate(tour.date);
   const formattedEndDate = formatDate(tour.endDate);
+  const dispatch = useAppDispatch();
+  const isFavorite = useAppSelector((state)=> state.favorite.isFavorite)
+  const submitNadler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']): void => {
+    e.preventDefault();
+    void dispatch(addFavoriteThunk(id));
+   
+  };
+  const deleteHandler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']): void => {
+    e.preventDefault();
+    void dispatch(deleteFavoriteThunk(id));
+    
+  };
 
   return (
     <Card maxW="sm" borderRadius="20px">
@@ -63,9 +80,23 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
+          {!isFavorite ?
+          
+          <Button
+            onClick={(e) => submitNadler(e, Number(tour.id))}
+            variant="solid"
+            colorScheme="blue"
+          >
             Добавить в избранное
+          </Button> :
+          <Button
+            onClick={(e) => deleteHandler(e, Number(tour.id))}
+            variant="solid"
+            colorScheme="red"
+          >
+            Удалить избранное
           </Button>
+        }
           <Button variant="ghost" colorScheme="blue" as={Link} to={`/tours/${tour.id}`}>
             Подробнее
           </Button>

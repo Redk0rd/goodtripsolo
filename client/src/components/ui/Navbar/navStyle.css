@@ -1,0 +1,36 @@
+@keyframes waveAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.nav_container_center {
+  max-width: 1400px;
+}
+
+.nav_center {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(180deg, #485056 0%, #446153 50%, #485056 100%);
+}
+
+.text_white {
+    color: white;
+}
+
+.active {
+background: rgba(255, 255, 255, 0.18);
+padding: 5px 8px;
+border-radius: 12px;
+color: white;
+border: none;
+}
