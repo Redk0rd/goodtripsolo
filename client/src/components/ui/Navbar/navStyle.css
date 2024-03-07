@@ -19,15 +19,11 @@
   width: 100vw;
   height: 13vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  /* background: #535951ba;
-   */
   background-image: url(../../../../public/navnavIMGGG.jpeg);
   background-size: cover;
   background-position: bottom;
-  /* background-attachment: fixed; */
 }
 
 .text_white {

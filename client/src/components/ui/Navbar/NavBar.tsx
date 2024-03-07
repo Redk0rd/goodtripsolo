@@ -13,7 +13,6 @@ export default function NavBar(): JSX.Element {
   };
   return (
     <Box className="nav_center">
-      {/* <Box className="nav_container_center"> */}
         <Box className="hundred" bg="transparent" px={4} fontSize={20}>
           <Flex h={24} alignItems="center" justifyContent="space-between">
             <HStack className="margin nav_text  nav_logo_box" as={NavLink} to="/">
@@ -60,7 +59,6 @@ export default function NavBar(): JSX.Element {
               )}
             </HStack>
           </Flex>
-        {/* </Box> */}
       </Box>
     </Box>
   );
