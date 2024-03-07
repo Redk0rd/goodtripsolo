@@ -26,7 +26,7 @@ export default function OneTourPage(): JSX.Element {
   }, []);
 
   if (!tour) {
-    return <div>Tour not found</div>;
+    return <h1>Tour not found</h1>;
   }
 
   return (

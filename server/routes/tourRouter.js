@@ -43,7 +43,7 @@ tourRouter.get('/:catTId/offset/:offset', async (req, res) => {
 
 tourRouter.get('/one/:id', async (req, res) => {
   const { id } = req.params;
-  if (Number.isNaN(+id)) {
+  if (Number.isNaN(Number(id))) {
     return res.status(400).json({ error: 'Id is invalid' });
   }
   try {
@@ -62,6 +62,10 @@ tourRouter.get('/one/:id', async (req, res) => {
         },
       ],
     });
+    // Проверяем, найден ли тур
+    if (!oneTour) {
+      return res.status(404).json({ error: 'Tour not found' });
+    }
     res.json(oneTour);
   } catch (error) {
     console.log(error);
@@ -79,33 +83,36 @@ tourRouter.post('/', upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'File not found' });
   }
+  try {
+    // Имя файла для сохранения
+    const fileName = `${Date.now()}.webp`;
 
-  // Имя файла для сохранения
-  const fileName = `${Date.now()}.webp`;
+    // Путь для сохранения оригинального имени файла в базе данных
+    const pathImg = fileName;
 
-  // Путь для сохранения оригинального имени файла в базе данных
-  const pathImg = fileName;
+    // Обработка и сохранение файла с новым именем
+    const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
+    await fs.writeFile(`./public/img/${fileName}`, outputBuffer); // Исправленная строка
 
-  // Обработка и сохранение файла с новым именем
-  const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
-  await fs.writeFile(`./public/img/${fileName}`, outputBuffer); // Исправленная строка
-
-  // Создание записи тура с pathImg содержащим оригинальное имя файла
-  const newTour = await Tour.create({
-    name,
-    description,
-    price,
-    catTId,
-    authorId,
-    location,
-    date,
-    endDate,
-    places,
-    pathImg, // Сохраняем оригинальное имя файла
-    // Возможно, вам также потребуется сохранить измененное имя файла для доступа к файлу на сервере
-  });
-  console.log(newTour);
-  return res.json(newTour);
+    // Создание записи тура с pathImg содержащим оригинальное имя файла
+    const newTour = await Tour.create({
+      name,
+      description,
+      price,
+      catTId,
+      authorId,
+      location,
+      date,
+      endDate,
+      places,
+      pathImg,
+    });
+    console.log(newTour);
+    return res.json(newTour);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 tourRouter.delete('/:id', async (req, res) => {

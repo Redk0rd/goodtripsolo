@@ -5,15 +5,23 @@ const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 commentRouter.get('/:id', async (req, res) => {
   const { id } = req.params;
+  if (Number.isNaN(Number(id))) {
+    return res.status(400).json({ error: 'Id is invalid' });
+  }
   //   const tour = await Tour.finbByPk(id);
-  const comments = await Comment.findAll({
-    where: { tourId: id },
-    include: {
-      model: User,
-      attributes: ['id', 'name', 'pathImg'],
-    },
-  });
-  res.json(comments);
+  try {
+    const comments = await Comment.findAll({
+      where: { tourId: id },
+      include: {
+        model: User,
+        attributes: ['id', 'name', 'pathImg'],
+      },
+    });
+    res.json(comments);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 commentRouter.post('/:id', verifyAccessToken, async (req, res) => {

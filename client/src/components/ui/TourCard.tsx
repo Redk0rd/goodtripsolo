@@ -56,16 +56,12 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
         <Heading mt="4" size="md">
           {tour.name}
         </Heading>
-        <Flex mt="4">
+        <Flex mt="4" align="center">
           <Avatar src={tour?.author?.pathImg} />
           <Box ml="3">
             <Text fontWeight="bold">
               {tour.author?.name}
-              <Badge ml="1" variant="outline" colorScheme="green">
-                PRO
-              </Badge>
             </Text>
-            <Text fontSize="sm">Рейтинг</Text>
           </Box>
         </Flex>
         <Flex justify="space-between">
