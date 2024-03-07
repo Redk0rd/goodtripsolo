@@ -12,8 +12,7 @@
 
 .nav_container_center {
   max-width: 1400px;
-  /* background: rgba(0, 0, 0, 0.4); */
-  border-radius: 13px;
+  position: relative;
 }
 
 .nav_center {
@@ -25,7 +24,7 @@
   flex-direction: column;
   /* background: #535951ba;
    */
-  background-image: url(../../../../public/NavBarImg.jpeg);
+  background-image: url(../../../../public/imgNAV.jpeg);
   background-size: cover;
   background-position: bottom;
   /* background-attachment: fixed; */
