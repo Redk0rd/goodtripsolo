@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Link, Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import Root from './components/Root';
 import SignInPage from './components/pages/SignInPage';
@@ -28,6 +28,7 @@ function App(): JSX.Element {
     {
       path: '/',
       element: <Root />,
+      errorElement: <Navigate to="/" replace />,
       children: [
         { path: '/', element: <MainPage /> },
         { path: '/tours', element: <ToursPage /> },
