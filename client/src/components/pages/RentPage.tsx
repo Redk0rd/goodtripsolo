@@ -48,7 +48,7 @@ export default function RentPage(): JSX.Element {
         <HStack spacing={3}>
           <Select
             placeholder="Все оборудование"
-            background="white"
+            background="#ffffffd0"
             onChange={handleCategoryEquipChenge}
           >
             {categories?.map((category) => (
@@ -59,7 +59,7 @@ export default function RentPage(): JSX.Element {
           </Select>
           <Button
             width="180px"
-            colorScheme="teal"
+            background="#ffffffd0"
             size="md"
             onClick={() => {
               if (offset !== allCount) {
