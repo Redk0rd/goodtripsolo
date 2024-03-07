@@ -1,6 +1,6 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
-import '../../pages/ToursPage/ToursStyle.css';
+import '../../pages/Styles/ToursStyle.css';
 import { Link } from 'react-router-dom';
 
 export default function HeaderToursPage(): JSX.Element {

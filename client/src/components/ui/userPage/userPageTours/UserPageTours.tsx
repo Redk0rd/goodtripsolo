@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-import TourCard from '../../TourCard';
+import TourCard from '../../TourCard/TourCard';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHook';
 // import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
 import { getFavoritesToursThunk } from '../../../../redux/slices/favorites/favoriteThunkActions';
@@ -18,13 +18,13 @@ import { UserStateType, UserType } from '../../../../types/authType';
 
 export default function UserPageTours(): JSX.Element {
   // const tours = useAppSelector((state) => state.tour.tours);
-  const favoritesTours = useAppSelector((state)=>state.favorite.favorites)
+  const favoritesTours = useAppSelector((state) => state.favorite.favorites);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     // void dispatch(getAllTourThunk(id));
-    void dispatch(getFavoritesToursThunk())
+    void dispatch(getFavoritesToursThunk());
   }, []);
 
   return (
@@ -47,7 +47,7 @@ export default function UserPageTours(): JSX.Element {
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {favoritesTours?.map((tour)=> (<TourCard tour={tour} />))}
+                    {favoritesTours?.map((tour) => <TourCard tour={tour} />)}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
