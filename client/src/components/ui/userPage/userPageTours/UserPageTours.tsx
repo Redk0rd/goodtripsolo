@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, GridItem, Image, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './userPageToursStyle.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,16 +18,16 @@ type UserPageToursPropType = {
 
 export default function UserPageTours({ id }: UserPageToursPropType): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
-  const favoritesTours = useAppSelector((state)=>state.favorite.favorites)
-  console.log(favoritesTours)
+  const favoritesTours = useAppSelector((state)=> state.favorite.favTours)
+  console.log(favoritesTours);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(getAllTourThunk(id));
-    void dispatch(getFavoritesToursThunk())
+    // void dispatch(getAllTourThunk(id));
+    void dispatch(getFavoritesToursThunk());
   }, []);
-  console.log(tours);
+  // console.log(tours);
 
   return (
     <Box className="wrapper_tours">
@@ -49,7 +49,7 @@ export default function UserPageTours({ id }: UserPageToursPropType): JSX.Elemen
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {favoritesTours?.map((tour)=> (<TourCard tour={tour} />))}
+                    {favoritesTours?.map((tour) => <TourCard favoritesTours={favoritesTours} tour={tour} />)}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -70,7 +70,7 @@ export default function UserPageTours({ id }: UserPageToursPropType): JSX.Elemen
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {tours?.map((el) => <TourCard tour={el} />)}
+                    {/* {tours?.map((el) => <TourCard tour={el} />)} */}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -91,9 +91,9 @@ export default function UserPageTours({ id }: UserPageToursPropType): JSX.Elemen
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {tours.map((el) => (
-                      <TourCard tour={el} />
-                    ))}
+                    {/* {tours.map((el) => (
+                      <TourCard tour={el} /> */}
+                    {/* ))} */}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
