@@ -9,18 +9,17 @@ import '../ui/MainPageUi/AboutUsStyle.css';
 import SliderPhotoTopPage from '../ui/MainPageUi/Slider/SliderPhotoTopPage';
 import { useAppSelector } from '../../hooks/useReduxHook';
 
-
-
 export default function MainPage(): JSX.Element {
   return (
     <Box mt={0} p={0}>
       {/* <SliderPhotoTopPage /> */}
       <ImgUnderHeader />
-      <AboutUsTop />
-      <AboutUsMid />
-      <AboutUsBot />
+      <Box className='bgMainPage'>
+        <AboutUsTop />
+        <AboutUsMid />
+        <AboutUsBot />
+      </Box>
       <AboutUsImgBot />
-
     </Box>
   );
 }
