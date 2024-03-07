@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, GridItem, Image, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './userPageToursStyle.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -17,15 +17,17 @@ import { UserStateType, UserType } from '../../../../types/authType';
 // };
 
 export default function UserPageTours(): JSX.Element {
-  // const tours = useAppSelector((state) => state.tour.tours);
-  const favoritesTours = useAppSelector((state)=>state.favorite.favorites)
+  const tours = useAppSelector((state) => state.tour.tours);
+  const favoritesTours = useAppSelector((state)=> state.favorite.favTours)
+  console.log(favoritesTours);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     // void dispatch(getAllTourThunk(id));
-    void dispatch(getFavoritesToursThunk())
+    void dispatch(getFavoritesToursThunk());
   }, []);
+  // console.log(tours);
 
   return (
     <Box className="wrapper_tours">
@@ -47,7 +49,7 @@ export default function UserPageTours(): JSX.Element {
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {favoritesTours?.map((tour)=> (<TourCard tour={tour} />))}
+                    {favoritesTours?.map((tour) => <TourCard favoritesTours={favoritesTours} tour={tour} />)}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -90,8 +92,8 @@ export default function UserPageTours(): JSX.Element {
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
                     {/* {tours.map((el) => (
-                      <TourCard tour={el} />
-                    ))} */}
+                      <TourCard tour={el} /> */}
+                    {/* ))} */}
                   </Grid>
                 </Carousel.Item>
               </Carousel>

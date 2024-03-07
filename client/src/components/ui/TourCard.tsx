@@ -25,28 +25,38 @@ import {
 
 type TourCardPropType = {
   tour: TourType;
+  favoritesTours: TourType[];
 };
 
-export default function TourCard({ tour }: TourCardPropType): JSX.Element {
+export default function TourCard({ tour, favoritesTours }: TourCardPropType): JSX.Element {
   const formattedStartDate = formatDate(tour.date);
   const formattedEndDate = formatDate(tour.endDate);
   const dispatch = useAppDispatch();
-  const isFavorite = useAppSelector((state)=> state.favorite.isFavorite)
+
+  const aidishki = favoritesTours.map((el) => el.id);
+  const isLiked = aidishki.includes(tour.id);
+  console.log(tour);
+  console.log('----------------------------', favoritesTours);
+  
+  
+
   const submitNadler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']): void => {
     e.preventDefault();
     void dispatch(addFavoriteThunk(id));
-   
   };
   const deleteHandler = (e: React.MouseEvent<HTMLButtonElement>, id: TourType['id']): void => {
     e.preventDefault();
     void dispatch(deleteFavoriteThunk(id));
-    
   };
 
   return (
     <Card maxW="sm" borderRadius="20px">
       <CardBody>
-        <Image src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`} alt="Green double couch with wooden legs" borderRadius="lg" />
+        <Image
+          src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour.pathImg}`}
+          alt="Green double couch with wooden legs"
+          borderRadius="lg"
+        />
         <Badge ml="1" fontSize="0.8em" colorScheme="green">
           {tour.location}
         </Badge>
@@ -76,23 +86,24 @@ export default function TourCard({ tour }: TourCardPropType): JSX.Element {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          {!isFavorite ?
-          
-          <Button
-            onClick={(e) => submitNadler(e, Number(tour.id))}
-            variant="solid"
-            colorScheme="blue"
-          >
-            Добавить в избранное
-          </Button> :
-          <Button
-            onClick={(e) => deleteHandler(e, Number(tour.id))}
-            variant="solid"
-            colorScheme="red"
-          >
-            Удалить избранное
-          </Button>
-        }
+          {!isLiked ? (
+            <Button
+              onClick={(e) => submitNadler(e, Number(tour.id))}
+              variant="solid"
+              colorScheme="blue"
+            >
+              Добавить в избранное
+            </Button>
+          ) : (
+            <Button
+              onClick={(e) => deleteHandler(e, Number(tour.id))}
+              variant="solid"
+              colorScheme="red"
+            >
+              Удалить избранное
+            </Button>
+          )}
+
           <Button variant="ghost" colorScheme="blue" as={Link} to={`/tours/${tour.id}`}>
             Подробнее
           </Button>
