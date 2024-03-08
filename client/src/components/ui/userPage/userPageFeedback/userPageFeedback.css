@@ -1,6 +1,6 @@
 .wrapper {
   widows: 100vw;
-  background-color: rgb(167, 149, 126);
+  /* background-color: rgb(167, 149, 126); */
 }
 .container {
   max-width: 1300px;

@@ -53,7 +53,7 @@ export default function UserPageTours(): JSX.Element {
           </Flex>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">участник:</Text>
+            {/* <Text className="text_description_who">участник:</Text> */}
 
             <Box>
               <Carousel
