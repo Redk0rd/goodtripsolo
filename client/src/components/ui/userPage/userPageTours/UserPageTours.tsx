@@ -11,19 +11,17 @@ import { getFavoritesToursThunk } from '../../../../redux/slices/favorites/favor
 import { UserStateType, UserType } from '../../../../types/authType';
 import { getAllTourThunk } from '../../../../redux/slices/categoryTour/tourThunkActions';
 
-
 export default function UserPageTours(): JSX.Element {
   const tours = useAppSelector((state) => state.tour.tours);
   const favoritesTours = useAppSelector((state) => state.favorite.favTours);
+  const user = useAppSelector((state) => state.auth.user );
   console.log('===============>>>>>>>>>>>>>>', favoritesTours);
-  
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     void dispatch(getFavoritesToursThunk());
   }, []);
-
 
   return (
     <Box className="wrapper_tours">
@@ -45,7 +43,9 @@ export default function UserPageTours(): JSX.Element {
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {favoritesTours?.map((tour) => <TourCard favoritesTours={favoritesTours} tour={tour} />)}
+                    {favoritesTours?.map((tour) => (
+                      <TourCard favoritesTours={favoritesTours} tour={tour} />
+                    ))}
                   </Grid>
                 </Carousel.Item>
               </Carousel>
@@ -53,7 +53,7 @@ export default function UserPageTours(): JSX.Element {
           </Flex>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">участник:</Text>
+            {/* <Text className="text_description_who">участник:</Text> */}
 
             <Box>
               <Carousel
@@ -74,7 +74,7 @@ export default function UserPageTours(): JSX.Element {
           </Flex>
 
           <Flex className="flex_column">
-            <Text className="text_description_who">организатор: </Text>
+            <Text className="text_description_who">Туры, организованные мной: </Text>
 
             <Box>
               <Carousel
@@ -87,9 +87,9 @@ export default function UserPageTours(): JSX.Element {
               >
                 <Carousel.Item>
                   <Grid templateColumns="repeat(3, 1fr)" gap={3}>
-                    {/* {tours.map((el) => (
-                      <TourCard tour={el} /> */}
-                    {/* ))} */}
+                    {tours?.filter(el=> el.authorId === user.id).map((tour) => (
+                      <TourCard favoritesTours={favoritesTours} tour={tour} />
+                    ))}
                   </Grid>
                 </Carousel.Item>
               </Carousel>

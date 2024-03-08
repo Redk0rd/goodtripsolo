@@ -12,8 +12,8 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
     <Box className="wrapper">
       <Box className="container">
         <Text className="main_title">Личный кабинет:</Text>
-        <Flex className="flex_center">
-          <Box className="width">
+        <Flex className="flex_center" >
+          <Box className="width_userPage">
             <Box className="ava_container">
               {/* <Image className="ava" src="null" /> */}
               <Avatar size='4xl' className="avatar" src={`${import.meta.env.VITE_APP_BASE_IMG}/${user?.pathImg}`}/>
@@ -28,7 +28,6 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
             <Box className="text_container">
               <Flex className="flex_column text_shadow">
                 <Text className="text_description">Имя: {user.name}</Text>
-                <Text className="text_description">О себе: {user.about}</Text>
                 <Text className="text_description">
                   Email: <a href="mailto:info@example.com">{user.email}</a>
                 </Text>
@@ -38,6 +37,8 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
                 <Text className="text_description">
                   Телеграм: <a href={`https://t.me/${user.telegram}`}>{user.telegram}</a>
                 </Text>
+                <Text mt={3}className="text_description">О себе: {user.about}</Text>
+               
               </Flex>
             </Box>
           </Box>
