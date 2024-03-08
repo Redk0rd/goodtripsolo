@@ -16,7 +16,7 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
           <Box className="width">
             <Box className="ava_container">
               {/* <Image className="ava" src="null" /> */}
-              <Avatar className="avatar" />
+              <Avatar size='4xl' className="avatar" src={`${import.meta.env.VITE_APP_BASE_IMG}/${user?.pathImg}`}/>
               {/* <button type="button" className="btn">Редактировать</button> */}
               <button type="button" className="Btn">
                 Редактировать

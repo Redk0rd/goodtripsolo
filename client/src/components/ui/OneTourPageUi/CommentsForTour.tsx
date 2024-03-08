@@ -77,7 +77,7 @@ export default function CommentsForTour({ comments }: CommentsProps): JSX.Elemen
                   <Flex align="center" gap="4">
                     {' '}
                     {/* Added alignment and gap */}
-                    <Avatar src={comment.User.pathImg} />
+                    <Avatar src={`${import.meta.env.VITE_APP_BASE_IMG}/${comment.User.pathImg}`} />
                     <Heading color="white" size="xs" textTransform="uppercase">
                       {comment.User.name}
                     </Heading>
