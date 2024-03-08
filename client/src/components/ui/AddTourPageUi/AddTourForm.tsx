@@ -177,7 +177,7 @@ export default function AddTourForm(): JSX.Element {
           ))}
         </Select>
       </FormControl>
-      <Button colorScheme="teal" size="lg" type="submit">
+      <Button colorScheme="teal" size="lg" type="submit" mb='20px'>
         Добавить
       </Button>
     </Box>

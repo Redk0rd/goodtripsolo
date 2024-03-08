@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import './userPageAboutUserStyle.css';
-import type { UserStateType, UserType } from '../../../../types/authType';
+import type { UserStateType } from '../../../../types/authType';
 
 type UserPageAboutUserPropsType = {
   user: UserStateType;
@@ -34,6 +34,9 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
                 </Text>
                 <Text className="text_description">
                   Телефон: <a href="tel:+1234567890">{user.phone}</a>
+                </Text>
+                <Text className="text_description">
+                  Телеграм: <a href={`https://t.me/${user.telegram}`}>{user.telegram}</a>
                 </Text>
               </Flex>
             </Box>

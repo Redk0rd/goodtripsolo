@@ -66,7 +66,7 @@ export default function TourCard({ tour, favoritesTours }: TourCardPropType): JS
           {tour.name}
         </Heading>
         <Flex mt="4" align="center">
-          <Avatar src={tour?.author?.pathImg} />
+          <Avatar src={`${import.meta.env.VITE_APP_BASE_IMG}/${tour?.author?.pathImg}`}/>
           <Box ml="3">
             <Text fontWeight="bold">
               {tour.author?.name}
