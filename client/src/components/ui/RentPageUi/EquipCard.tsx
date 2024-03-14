@@ -52,13 +52,16 @@ export default function EquipCard({ equip }: EquipTypeProps): JSX.Element {
           {equip.name}
         </Heading>
         <Flex mt="4" align="center" justify="center">
-          <Avatar src={equip.User?.pathImg} />
+          <Avatar src={`${import.meta.env.VITE_APP_BASE_IMG}/${equip.User?.pathImg}`} />
           <Box ml="3">
             <Text color="white" fontWeight="bold">
               {equip.User?.name}
             </Text>
           </Box>
         </Flex>
+        <Heading mt="4" size="md" color="white" textAlign="center">
+          Цена в сутки : {equip.price} рублей
+        </Heading>
       </CardBody>
       <Divider />
       <CardFooter display="flex" justify="center">

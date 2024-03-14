@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -9,6 +10,7 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import '../../pages/Styles/AddPageStyle.css';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHook';
 import { addTourThunk } from '../../../redux/slices/categoryTour/tourThunkActions';
@@ -86,44 +88,68 @@ export default function AddTourForm(): JSX.Element {
   return (
     <Box as="form" maxW="100vh" minW="70vh" onSubmit={submitHandler}>
       <FormControl>
-        <FormLabel>Название тура</FormLabel>
+        <FormLabel color="white" fontSize="18px">
+          Название тура
+        </FormLabel>
         <Input
           name="name"
           value={formValues.name}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           type="text"
         />
-        <FormHelperText>введите название своего тура чтобы привлечь туристов</FormHelperText>
+        <FormHelperText color="white" fontSize="18px">
+          введите название своего тура чтобы привлечь туристов
+        </FormHelperText>
         <FormControl>
-          <FormLabel>Фото</FormLabel>
+          <FormLabel color="white" fontSize="18px">
+            Фото
+          </FormLabel>
           <input type="file" name="pathImg" onChange={handleFileChange} />
         </FormControl>
-        <FormLabel>Локация</FormLabel>
+        <FormLabel color="white" fontSize="18px">
+          Локация
+        </FormLabel>
         <Input
           name="location"
           value={formValues.location}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           type="text"
         />
-        <FormHelperText>опишите локацию где будет проходить тур</FormHelperText>
-        <FormLabel>Описание тура</FormLabel>
+        <FormHelperText color="white" fontSize="18px">
+          опишите локацию где будет проходить тур
+        </FormHelperText>
+        <FormLabel color="white" fontSize="18px">
+          Описание тура
+        </FormLabel>
         <Textarea
           name="description"
           value={formValues.description}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           placeholder=""
         />
-        <FormHelperText>добавьте подробное описание тура</FormHelperText>
-        <FormLabel>Выберете тип тура</FormLabel>
+        <FormHelperText color="white" fontSize="18px">
+          добавьте подробное описание тура
+        </FormHelperText>
+        <FormLabel color="white" fontSize="18px">
+          Выберете тип тура
+        </FormLabel>
         <Select
           name="catTId"
           value={formValues.catTId}
           onChange={handleChange}
           placeholder="Тип тура"
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           typeof="number"
         >
           {categories.map((category) => (
@@ -132,42 +158,61 @@ export default function AddTourForm(): JSX.Element {
             </option>
           ))}
         </Select>
-        <FormHelperText>Дата начала тура</FormHelperText>
+        <FormHelperText color="white" fontSize="18px">
+          Дата начала тура
+        </FormHelperText>
         <Input
           name="date"
           value={formValues.date}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           placeholder="Select Date and Time"
           size="md"
           type="datetime-local"
         />
-        <FormHelperText>Дата окончания тура</FormHelperText>
+        <FormHelperText color="white" fontSize="18px">
+          Дата окончания тура
+        </FormHelperText>
         <Input
           name="endDate"
           value={formValues.endDate}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           placeholder="Select Date and Time"
           size="md"
           type="datetime-local"
         />
-         <FormLabel>Стоимость</FormLabel>
+         
+        <FormLabel color="white" fontSize="18px">
+          Стоимость
+        </FormLabel>
         <Input
           name="price"
           value={formValues.price}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           type="number"
         />
-        <FormHelperText>укажите ориентировачную стоимость тура </FormHelperText>
-        <FormLabel mt="10px">Укажите колчисство мест</FormLabel>
+        <FormHelperText color="white" fontSize="18px">
+          укажите ориентировачную стоимость тура{' '}
+        </FormHelperText>
+        <FormLabel mt="10px" color="white" fontSize="18px">
+          Укажите колчисство мест
+        </FormLabel>
         <Select
           name="places"
           placeholder="Количество мест"
           value={formValues.places}
           onChange={handleChange}
-          background="white"
+          background="#ffffff40"
+          color="white"
+          fontSize="18px"
           mb="10px"
         >
           {nums.map((num) => (
@@ -177,9 +222,11 @@ export default function AddTourForm(): JSX.Element {
           ))}
         </Select>
       </FormControl>
-      <Button colorScheme="teal" size="lg" type="submit" mb='20px'>
-        Добавить
-      </Button>
+      <Flex justify="center" mt={10}>
+        <Button size="lg" type="submit" mb="20px">
+          Добавить
+        </Button>
+      </Flex>
     </Box>
   );
 }
