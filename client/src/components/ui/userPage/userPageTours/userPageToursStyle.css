@@ -1,6 +1,6 @@
 .wrapper_tours {
     widows: 100vw;
-    background-color: rgb(155, 136, 111);
+    /* background-color: rgb(155, 136, 111); */
   }
   .container_tours_flex {
     max-width: 1300px;
@@ -12,9 +12,10 @@
 
   .text_description_who{
     color: white;
-    font-size: 25px;
+    font-size: 29px;
     margin: 0;
     padding: 0;
+    font-weight: bold;
 }
 
 .box {
@@ -24,8 +25,7 @@
     border-radius: 14px;
 }
 
-.text_description_who {
+/* .text_description_who {
   font-size: 20px;
-  font-weight: bold;
   padding: 20px;;
-}
+} */

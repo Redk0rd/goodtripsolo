@@ -112,7 +112,23 @@ equipRouter.post('/', upload.single('file'), async (req, res) => {
     catEId,
     pathImg: fileName,
   });
-  return res.json(newEquip);
+
+  const eqipToFront = await Equipment.findOne({
+    where: { id: newEquip.id },
+    include: [
+      {
+        model: User,
+        attributes: {
+          exclude: ['password', 'isAdmin'],
+        },
+      },
+      {
+        model: CategoryEquipment,
+      },
+    ],
+  });
+
+  return res.json(eqipToFront);
 });
 
 equipRouter.delete('/:id', async (req, res) => {

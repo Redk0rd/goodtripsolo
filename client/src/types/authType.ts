@@ -2,7 +2,7 @@ export type UserType = {
   id: number;
   name: string;
   email: string;
-  pathImg:string;
+  pathImg: string;
 };
 export type UserSignUpType = {
   name: string;

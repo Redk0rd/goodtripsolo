@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import './userPageAboutUserStyle.css';
-import type { UserStateType, UserType } from '../../../../types/authType';
+import type { UserStateType } from '../../../../types/authType';
 
 type UserPageAboutUserPropsType = {
   user: UserStateType;
@@ -12,11 +12,11 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
     <Box className="wrapper">
       <Box className="container">
         <Text className="main_title">Личный кабинет:</Text>
-        <Flex className="flex_center">
-          <Box className="width">
+        <Flex className="flex_center" >
+          <Box className="width_userPage">
             <Box className="ava_container">
               {/* <Image className="ava" src="null" /> */}
-              <Avatar className="avatar" />
+              <Avatar size='4xl' className="avatar" src={`${import.meta.env.VITE_APP_BASE_IMG}/${user?.pathImg}`}/>
               {/* <button type="button" className="btn">Редактировать</button> */}
               <button type="button" className="Btn">
                 Редактировать
@@ -28,13 +28,17 @@ export default function UserPageAboutUser({ user }: UserPageAboutUserPropsType):
             <Box className="text_container">
               <Flex className="flex_column text_shadow">
                 <Text className="text_description">Имя: {user.name}</Text>
-                <Text className="text_description">О себе: {user.about}</Text>
                 <Text className="text_description">
                   Email: <a href="mailto:info@example.com">{user.email}</a>
                 </Text>
                 <Text className="text_description">
                   Телефон: <a href="tel:+1234567890">{user.phone}</a>
                 </Text>
+                <Text className="text_description">
+                  Телеграм: <a href={`https://t.me/${user.telegram}`}>{user.telegram}</a>
+                </Text>
+                <Text mt={3}className="text_description">О себе: {user.about}</Text>
+               
               </Flex>
             </Box>
           </Box>

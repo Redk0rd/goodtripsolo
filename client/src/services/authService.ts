@@ -1,7 +1,7 @@
 import type { AxiosInstance, AxiosResponse } from 'axios';
 import type { AuthStateType, UserSignInType, UserSignUpType, UserType } from '../types/authType';
 import axiosInstance from './apiInstance';
-import { OneUserType } from '../types/tourType';
+import type { OneUserType } from '../types/tourType';
 
 class AuthService {
   constructor(private readonly api: AxiosInstance) {}
@@ -22,8 +22,8 @@ class AuthService {
     return this.api('/auth/logout');
   }
 
-  public updateUser(data: OneUserType): Promise<OneUserType> {
-    return this.api.patch<OneUserType>(`/auth/${data.id}`, data).then((res) => res.data);
+  public updateUser(id: OneUserType['id'], user: OneUserType): Promise<OneUserType> {
+    return this.api.patch<OneUserType>(`/auth/${user.id}`, user).then((res) => res.data);
   }
 }
 

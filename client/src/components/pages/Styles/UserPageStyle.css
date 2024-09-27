@@ -1,0 +1,32 @@
+.userPgaeConatiner {
+  /* background: rgba(71, 112, 53, 0.3); */
+  width: 100vw;
+  min-height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-image: url(../../../../public/UserPageBG.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  padding-bottom: 60px;
+}
+.userPgaeConatinerBLUR {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  height: 90%;
+  width: 90%;
+  /* margin: 10px 0; */
+  border-radius: 30px;
+}
+.css-g79gv9 {
+  background: rgba(0, 0, 0, 0.17);
+}
+.carousel-item{
+  padding: 0;
+}
